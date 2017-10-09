@@ -246,16 +246,17 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/2017/09/01/Golang/网络编程/Go http执行流程/">
+    <a href="/2017/09/01/Golang/govendor的使用/">
         <h2 class="post-title">
-            [Golang] GO HTTP执行流程
+            [Golang] govendor的使用
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. http包建立web服务器
-1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
+            1. govendor简介
+golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
+常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
         </div>
     </a>
     
@@ -275,17 +276,16 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/2017/09/01/Golang/govendor的使用/">
+    <a href="/2017/09/01/Golang/网络编程/Go http执行流程/">
         <h2 class="post-title">
-            [Golang] govendor的使用
+            [Golang] GO HTTP执行流程
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. govendor简介
-golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
-常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
+            1. http包建立web服务器
+1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
         </div>
     </a>
     
@@ -431,23 +431,18 @@ Scheduler：
 
 <div class="post-preview">
 
-    <a href="/2017/08/13/Kubernetes/监控/influxdb/">
+    <a href="/2017/08/13/Kubernetes/Kubernetes常用命令/">
         <h2 class="post-title">
-            [Kubernetes] Influxdb介绍
+            [Kubernetes] Kubernetes常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. InfluxDB简介
-InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
-主要特色功能：
-1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
-2）可度量性：你可以实时对大量数据进行计算
-3）基于事件：它支持任意的事件数据
-2. InfluxDB安装
-1）安装
-wget ......
+            一、kubectl介绍
+kubectl controls the Kubernetes cluster manager.
+Usage: kubectl [flags] kubectl [command]
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
         </div>
     </a>
     
@@ -467,17 +462,16 @@ wget ......
 
 <div class="post-preview">
 
-    <a href="/2017/08/13/Kubernetes/监控/k8s集群监控/">
+    <a href="/2017/08/13/Kubernetes/监控/cadvisor/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes集群监控
+            [Kubernetes] cAdvisor介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. 概述
-1.1. cAdvisor
-cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor......
+            1. cAdvisor简介
+​	cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor对外提供......
         </div>
     </a>
     
@@ -497,22 +491,24 @@ cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采�
 
 <div class="post-preview">
 
-    <a href="/2017/08/13/Kubernetes/Kubernetes基本概念/">
+    <a href="/2017/08/13/Database/Mysql常用命令/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes基本概念
+            [Database] Mysql常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. Master
-集群的控制节点，负责整个集群的管理和控制，kubernetes的所有的命令基本都是发给Master，由它来负责具体的执行过程。
-1.1. Master的组件
-
-kube-apiserver：资源增删改查的入口
-kube-controller-manager：资源对象的大总管
-kube-scheduler：负责资源调度（Pod调度）
-etcd Server:kubernet......
+            1. 系统管理
+1.1. 连接mysql
+格式： mysql -h主机地址 -u用户名 －p用户密码
+连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
+连接远程：mysql -h主机地址 -u用户名 －p用户密码
+退出连接：exit
+1.2. 备份数据库
+1.导出整个数据库
+导出文件默认是存在mysql\bin目录下
+mysqldump -u 用户名......
         </div>
     </a>
     
@@ -522,7 +518,7 @@ etcd Server:kubernet......
         </p>
         <div class="tags">
             
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+              <a href="/tags/#Database" title="Database">Database</a>
             
         </div>
     
@@ -586,9 +582,9 @@ etcd Server:kubernet......
             
         
             
-        
-            
             <a href="/tags/#Golang" title="Golang" rel="9">Golang</a>
+            
+        
             
         
             
@@ -635,7 +631,7 @@ etcd Server:kubernet......
             
             
                 <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                    <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -686,6 +682,10 @@ etcd Server:kubernet......
     
         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
     
+        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+    
+        <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
+    
 </ul>
 
         <hr>
@@ -733,7 +733,7 @@ etcd Server:kubernet......
 
                 
                     <li>
-                        <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                        <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -848,6 +848,20 @@ etcd Server:kubernet......
 
 
 <!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'e146d71b77957235bba1e709d930f62e';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 

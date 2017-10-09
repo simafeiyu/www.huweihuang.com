@@ -24,7 +24,7 @@ catagories:
 
 ### 2.1. 内存定义
 计算机的内存 RAM 可以把它想象成一些有序的盒子，一个接一个的排成一排，每一个盒子或者单元格都被一个唯一的数字标记依次递增，这个数字就是该单元格的地址，也就是内存的地址。
-![这里写图片描述](http://img.blog.csdn.net/20170907125622072?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是内存](/img/article/golang/go指针/什么是内存.png)
 
 **硬件角度**：内存是CPU沟通的桥梁，程序运行在内存中。
 
@@ -66,14 +66,14 @@ catagories:
 2. 将存储在 CPU 中的值乘以 3
 3. 将 CPU 中存储的结果，写入地址为 201 的内存块中
 
-![这里写图片描述](http://img.blog.csdn.net/20170907130852225?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是变量](/img/article/golang/go指针/什么是变量.png)
 
 ### 3.2.基于变量的理解
 1. 获取变量 a 中存储的值，并将其存储在 CPU 中
 2. 将其乘以 3
 3. 将结果保存在变量 b 中
 
-![这里写图片描述](http://img.blog.csdn.net/20170907131045953?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是变量2](/img/article/golang/go指针/什么是变量2.png)
 
 ```
 var a = 6 
@@ -92,17 +92,17 @@ func main() {
 
 **1.a:=200**
 
-![这里写图片描述](http://img.blog.csdn.net/20170907131917257?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是指针](/img/article/golang/go指针/什么是指针.png)
 
 **2.  b := &a**
 
-![这里写图片描述](http://img.blog.csdn.net/20170907132113460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是指针2](/img/article/golang/go指针/什么是指针2.png)
 
 **3. *b++**
 
-![这里写图片描述](http://img.blog.csdn.net/20170907132146682?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是指针3](/img/article/golang/go指针/什么是指针3.png)
 
-![这里写图片描述](http://img.blog.csdn.net/20170907132200014?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaHV3aF8=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![什么是指针4](/img/article/golang/go指针/什么是指针4.png)
 
 ## 4. 指针的使用
 

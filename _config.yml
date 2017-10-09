@@ -35,7 +35,7 @@ signature-img: img/signature/BeanTechSign-white.png
 github_username:    huweihuang
 # twitter_username:   Demonbane_x
 #facebook_username:  YenYuHsuan
-linkedin_username:  伟煌-胡-5b757ba4
+linkedin_username:  huweihuang
 
 # Build settings
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
@@ -52,7 +52,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Analytics settings
 #Baidu Analytics
-# ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
+ba_track_id: e146d71b77957235bba1e709d930f62e
 # Google Analytics
 ga_track_id: 'UA-XXXXXXXX-X'          # Format: UA-xxxxxx-xx
 ga_domain: yoursite
@@ -86,6 +86,14 @@ friends: [
     {
         title: "CSDN Blog 胡伟煌",
         href: "http://blog.csdn.net/huwh_"
+    },
+    {
+        title: "DockOne 胡伟煌",
+        href: "http://dockone.io/people/胡伟煌"
+    },
+    {
+        title: "阿里云栖社区 胡伟煌",
+        href: "https://yq.aliyun.com/u/huweihuang"
     }
 ]
 

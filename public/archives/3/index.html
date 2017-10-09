@@ -209,74 +209,6 @@
 
 <div class="post-preview">
 
-    <a href="/2017/08/13/Kubernetes/Kubernetes常用命令/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes常用命令
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、kubectl介绍
-kubectl controls the Kubernetes cluster manager.
-Usage: kubectl [flags] kubectl [command]
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/08/13/Database/Mysql常用命令/">
-        <h2 class="post-title">
-            [Database] Mysql常用命令
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. 系统管理
-1.1. 连接mysql
-格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －p用户密码
-退出连接：exit
-1.2. 备份数据库
-1.导出整个数据库
-导出文件默认是存在mysql\bin目录下
-mysqldump -u 用户名......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Database" title="Database">Database</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2017/08/13/Kubernetes/Kubernetes网络原理/">
         <h2 class="post-title">
             [Kubernetes] Kubernetes网络原理
@@ -291,35 +223,6 @@ mysqldump -u 用户名......
 每个Pod都拥有一个独立的IP地址，而且假定所有Pod都在一个可以直接连通的、扁平的网络空间中，不管是否运行在同一Node上都可以通过Pod的IP来访问。
 k8s中Pod的IP是最小粒度IP。同一个Pod内所有的容器共享一个网络堆栈，该模型称为IP-per-Pod模型。
 Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/08/13/Kubernetes/监控/cadvisor/">
-        <h2 class="post-title">
-            [Kubernetes] cAdvisor介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. cAdvisor简介
-​	cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor对外提供......
         </div>
     </a>
     
@@ -371,6 +274,107 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
 
 <div class="post-preview">
 
+    <a href="/2017/08/13/Kubernetes/监控/influxdb/">
+        <h2 class="post-title">
+            [Kubernetes] Influxdb介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. InfluxDB简介
+InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
+主要特色功能：
+1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
+2）可度量性：你可以实时对大量数据进行计算
+3）基于事件：它支持任意的事件数据
+2. InfluxDB安装
+1）安装
+wget ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/08/13/Kubernetes/Kubernetes基本概念/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes基本概念
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. Master
+集群的控制节点，负责整个集群的管理和控制，kubernetes的所有的命令基本都是发给Master，由它来负责具体的执行过程。
+1.1. Master的组件
+
+kube-apiserver：资源增删改查的入口
+kube-controller-manager：资源对象的大总管
+kube-scheduler：负责资源调度（Pod调度）
+etcd Server:kubernet......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/08/13/Kubernetes/监控/k8s集群监控/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes集群监控
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 概述
+1.1. cAdvisor
+cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/2017/07/15/Database/Redis介绍/">
         <h2 class="post-title">
             [Database] Redis介绍
@@ -401,18 +405,19 @@ Redis是......
 
 <div class="post-preview">
 
-    <a href="/2017/07/10/Etcd/Etcd常用命令/">
+    <a href="/2017/07/10/Etcd/Etcd介绍/">
         <h2 class="post-title">
-            [Etcd] Etcd常用命令
+            [Etcd] Etcd介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、etcdctl介绍
-etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。
-用法：etcdctl [global options] command [command options][args…]
-二、Etcd常用命......
+            一、Etcd是什么（what）
+（一）概述
+etcd is a distributed, consistent key-value store for shared configuration and service discovery, with a focus on being:
+
+Secure: automatic TLS with optional client cert authe......
         </div>
     </a>
     
@@ -432,19 +437,18 @@ etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可�
 
 <div class="post-preview">
 
-    <a href="/2017/07/10/Etcd/Etcd介绍/">
+    <a href="/2017/07/10/Etcd/Etcd常用命令/">
         <h2 class="post-title">
-            [Etcd] Etcd介绍
+            [Etcd] Etcd常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Etcd是什么（what）
-（一）概述
-etcd is a distributed, consistent key-value store for shared configuration and service discovery, with a focus on being:
-
-Secure: automatic TLS with optional client cert authe......
+            一、etcdctl介绍
+etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。
+用法：etcdctl [global options] command [command options][args…]
+二、Etcd常用命......
         </div>
     </a>
     
@@ -496,17 +500,19 @@ settings resources: securi......
 
 <div class="post-preview">
 
-    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（三）之Docker Server/">
+    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（二）之Docker Daemon/">
         <h2 class="post-title">
-            [Docker] Docker源码分析（三）之Docker Server
+            [Docker] Docker源码分析（二）之Docker Daemon
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Docker Server创建流程
-Docker Server是Daemon Server的重要组成部分，功能：接收Docker Client发送的请求，并按照相应的路由规则实现请求的路由分发，最终将请求处理的结果返回给Docker Client。
-Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的Job，让Docker Daemon提供A......
+            一、Docker Daemon架构示意图
+
+Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
+Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
+运行过程的作用有以下几种可能：......
         </div>
     </a>
     
@@ -580,9 +586,9 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
             
         
             
-        
-            
             <a href="/tags/#Golang" title="Golang" rel="9">Golang</a>
+            
+        
             
         
             
@@ -629,7 +635,7 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
             
             
                 <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                    <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -680,6 +686,10 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
     
         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
     
+        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+    
+        <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
+    
 </ul>
 
         <hr>
@@ -727,7 +737,7 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
 
                 
                     <li>
-                        <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                        <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -842,6 +852,20 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
 
 
 <!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'e146d71b77957235bba1e709d930f62e';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 

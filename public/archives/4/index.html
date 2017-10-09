@@ -209,19 +209,21 @@
 
 <div class="post-preview">
 
-    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（二）之Docker Daemon/">
+    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（一）之Docker Client/">
         <h2 class="post-title">
-            [Docker] Docker源码分析（二）之Docker Daemon
+            [Docker] Docker源码分析（一）之Docker Client
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Docker Daemon架构示意图
+            一、创建Docker Client
+​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
+Docker Client运行流程图如下：
 
-Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
-Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
-运行过程的作用有以下几种可能：......
+说明：本文分析的代码为Docker 1.2.0版本。
+（一）Docker命令flag参数解析
+Docker......
         </div>
     </a>
     
@@ -345,21 +347,17 @@ dockerfile指令分为构建指令和设置指令。
 
 <div class="post-preview">
 
-    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（一）之Docker Client/">
+    <a href="/2017/07/09/Docker/Docker源码/Docker源码分析（三）之Docker Server/">
         <h2 class="post-title">
-            [Docker] Docker源码分析（一）之Docker Client
+            [Docker] Docker源码分析（三）之Docker Server
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、创建Docker Client
-​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
-Docker Client运行流程图如下：
-
-说明：本文分析的代码为Docker 1.2.0版本。
-（一）Docker命令flag参数解析
-Docker......
+            一、Docker Server创建流程
+Docker Server是Daemon Server的重要组成部分，功能：接收Docker Client发送的请求，并按照相应的路由规则实现请求的路由分发，最终将请求处理的结果返回给Docker Client。
+Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的Job，让Docker Daemon提供A......
         </div>
     </a>
     
@@ -463,9 +461,9 @@ Flannel官网：https://github.com/coreos/flannel
             
         
             
-        
-            
             <a href="/tags/#Golang" title="Golang" rel="9">Golang</a>
+            
+        
             
         
             
@@ -512,7 +510,7 @@ Flannel官网：https://github.com/coreos/flannel
             
             
                 <li>
-                    <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                    <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -563,6 +561,10 @@ Flannel官网：https://github.com/coreos/flannel
     
         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
     
+        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+    
+        <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
+    
 </ul>
 
         <hr>
@@ -610,7 +612,7 @@ Flannel官网：https://github.com/coreos/flannel
 
                 
                     <li>
-                        <a target="_blank"  href="https://www.linkedin.com/in/伟煌-胡-5b757ba4">
+                        <a target="_blank"  href="https://www.linkedin.com/in/huweihuang">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
@@ -725,6 +727,20 @@ Flannel官网：https://github.com/coreos/flannel
 
 
 <!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'e146d71b77957235bba1e709d930f62e';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
 
 

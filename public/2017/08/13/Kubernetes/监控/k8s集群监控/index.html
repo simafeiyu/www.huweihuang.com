@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -263,11 +263,11 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker pull registry.wae.haplat.net/test/influxdb:1.0.0</div><div class="line">docker pull registry.wae.haplat.net/test/cadvisor:latest</div><div class="line">docker pull registry.wae.haplat.net/test/grafana:latest</div><div class="line">docker pull registry.wae.haplat.net/test/heapster:latest</div></pre></td></tr></table></figure>
 <h3><span id="42-运行容器">4.2. 运行容器</span></h3>
 <h4><span id="421-influxdb">4.2.1. influxdb</span></h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">influxdb</span></div><div class="line">docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv registry.wae.haplat.net/test/influxdb:1.0.0</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>influxdb</div><div class="line">docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv registry.wae.haplat.net/test/influxdb:1.0.0</div></pre></td></tr></table></figure>
 <h4><span id="422-cadvisor">4.2.2. cadvisor</span></h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">cadvisor</span></div><div class="line">docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true --link influxsrv:influxsrv --name=cadvisor registry.wae.haplat.net/test/cadvisor:latest -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>cadvisor</div><div class="line">docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true --link influxsrv:influxsrv --name=cadvisor registry.wae.haplat.net/test/cadvisor:latest -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086</div></pre></td></tr></table></figure>
 <h4><span id="423-grafana">4.2.3. grafana</span></h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">grafana</span></div><div class="line">docker run -d -p 3000:3000 -e INFLUXDB_HOST=influxsrv -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=root -e INFLUXDB_PASS=root --link influxsrv:influxsrv --name grafana registry.wae.haplat.net/test/grafana:latest</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>grafana</div><div class="line">docker run -d -p 3000:3000 -e INFLUXDB_HOST=influxsrv -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=root -e INFLUXDB_PASS=root --link influxsrv:influxsrv --name grafana registry.wae.haplat.net/test/grafana:latest</div></pre></td></tr></table></figure>
 <h4><span id="424-heapster">4.2.4. heapster</span></h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -d -p 8082:8082 --net=host heapster:canary --source=kubernetes:http://`k8s-server-ip`:8080?inClusterConfig=false/&amp;useServiceAccount=false --sink=influxdb:http://`influxdb-ip`:8086</div></pre></td></tr></table></figure>
 <h3><span id="43-访问">4.3. 访问</span></h3>
@@ -280,12 +280,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/08/13/Kubernetes/Kubernetes基本概念/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes基本概念">&larr; Previous Post</a>
+                            <a href="/2017/08/13/Kubernetes/Kubernetes网络原理/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes网络原理">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/07/15/Database/Redis介绍/" data-toggle="tooltip" data-placement="top" title="[Database] Redis介绍">Next Post &rarr;</a>
+                            <a href="/2017/08/13/Database/Mysql常用命令/" data-toggle="tooltip" data-placement="top" title="[Database] Mysql常用命令">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -346,7 +346,7 @@
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

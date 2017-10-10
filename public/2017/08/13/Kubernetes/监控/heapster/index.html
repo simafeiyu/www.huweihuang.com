@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -220,7 +220,7 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
 <p>crontab –e</p>
 <p>30 5 * * *          /usr/sbin/ntpdate <a href="http://time.windows.com" target="_blank" rel="external">time.windows.com</a>          //每天早晨5点半执行</p>
 <h3><span id="22-容器式部署">2.2. 容器式部署</span></h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">拉取镜像</span></div><div class="line">docker pull registry.wae.haplat.net/test/heapster:v1.3.0</div><div class="line"><span class="meta">#</span><span class="bash">运行容器</span></div><div class="line">docker run -d -p 8082:8082 --net=host registry.wae.haplat.net/test/heapster:latest --source=kubernetes:http://&lt;k8s-server-ip&gt;:8080?inClusterConfig=false\&amp;useServiceAccount=false --sink=influxdb:http://&lt;influxdb-ip&gt;:8086?db=&lt;k8s_env_zone&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>拉取镜像</div><div class="line">docker pull registry.wae.haplat.net/test/heapster:v1.3.0</div><div class="line"><span class="meta">#</span>运行容器</div><div class="line">docker run -d -p 8082:8082 --net=host registry.wae.haplat.net/test/heapster:latest --source=kubernetes:http://&lt;k8s-server-ip&gt;:8080?inClusterConfig=false\&amp;useServiceAccount=false --sink=influxdb:http://&lt;influxdb-ip&gt;:8086?db=&lt;k8s_env_zone&gt;</div></pre></td></tr></table></figure>
 <h3><span id="23-配置说明">2.3. 配置说明</span></h3>
 <p>可以参考<a href="https://github.com/kubernetes/heapster/tree/master/docs" target="_blank" rel="external">官方文档</a></p>
 <h4><span id="231-source">2.3.1. –source</span></h4>
@@ -531,7 +531,7 @@ withfields： 使用InfluxDB fields(默认：false)。</p>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/08/13/Kubernetes/Kubernetes网络原理/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes网络原理">&larr; Previous Post</a>
+                            <a href="/2017/08/15/Kubernetes/kubernetes核心原理/kubernetes核心原理（三）之Scheduler/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes核心原理（三）之Scheduler">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -597,7 +597,7 @@ withfields： 使用InfluxDB fields(默认：false)。</p>
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

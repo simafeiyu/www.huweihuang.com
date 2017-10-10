@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -219,7 +219,7 @@
 <h3><span id="122-创建临时目录并解压源码包">1.2.2. 创建临时目录并解压源码包</span></h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir $HOME/build</div><div class="line">cd $HOME/build &amp;&amp; tar zxvf nginx-`version-number`.tar.gz</div></pre></td></tr></table></figure>
 <h4><span id="123-编译并安装">1.2.3. 编译并安装</span></h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> cd $HOME/build/nginx-`version-number`</div><div class="line"> </div><div class="line">./configure \</div><div class="line">--prefix=/etc/nginx \</div><div class="line">--sbin-path=/usr/sbin/nginx \</div><div class="line">--conf-path=/etc/nginx/nginx.conf \</div><div class="line">...</div><div class="line"><span class="meta">#</span><span class="bash">`更多配置项见以下说明`</span></div><div class="line"> </div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> cd $HOME/build/nginx-`version-number`</div><div class="line"> </div><div class="line">./configure \</div><div class="line">--prefix=/etc/nginx \</div><div class="line">--sbin-path=/usr/sbin/nginx \</div><div class="line">--conf-path=/etc/nginx/nginx.conf \</div><div class="line">...</div><div class="line"><span class="meta">#</span>`更多配置项见以下说明`</div><div class="line"> </div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
 <h4><span id="124-配置项">1.2.4. 配置项</span></h4>
 <h5><span id="1241-通用配置项">1.2.4.1. 通用配置项</span></h5>
 <table>
@@ -483,7 +483,7 @@
 <p>nginx -t -c path-to-nginx.conf</p>
 <h3><span id="24-配置说明">2.4. 配置说明</span></h3>
 <h4><span id="241-main模块">2.4.1. main模块</span></h4>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">main模块类似main函数包含其他子模块，非模块配置项(包括模块内)分号结尾，子模块配置花括号结尾</span></div><div class="line">user nobady;   #一般按默认设置</div><div class="line">pid /var/run/nginx.pid;   #进程标识符存放路径，一般按默认设置</div><div class="line">worker_processes auto;   #nginx对外提供web服务时的worder进程数，可将其设置为可用的CPU内核数，auto为自动检测</div><div class="line">worker_rlimit_nofile 100000;  # 更改worker进程的最大打开文件数限制</div><div class="line">error_log logs/error.log  info;   #错误日志存放路径</div><div class="line">keepalive_timeout 60;  #keepalive_timeout 60;</div><div class="line">events&#123;</div><div class="line"><span class="meta">  #</span><span class="bash">见events模块</span></div><div class="line">&#125;</div><div class="line">http&#123;  #见http模块</div><div class="line">  server&#123; </div><div class="line">    ...</div><div class="line">    location /&#123;</div><div class="line">     </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">mail&#123;</div><div class="line"><span class="meta">  #</span><span class="bash">见mail模块</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>main模块类似main函数包含其他子模块，非模块配置项(包括模块内)分号结尾，子模块配置花括号结尾</div><div class="line">user nobady;   #一般按默认设置</div><div class="line">pid /var/run/nginx.pid;   #进程标识符存放路径，一般按默认设置</div><div class="line">worker_processes auto;   #nginx对外提供web服务时的worder进程数，可将其设置为可用的CPU内核数，auto为自动检测</div><div class="line">worker_rlimit_nofile 100000;  # 更改worker进程的最大打开文件数限制</div><div class="line">error_log logs/error.log  info;   #错误日志存放路径</div><div class="line">keepalive_timeout 60;  #keepalive_timeout 60;</div><div class="line">events&#123;</div><div class="line"><span class="meta">  #</span>见events模块</div><div class="line">&#125;</div><div class="line">http&#123;  #见http模块</div><div class="line">  server&#123; </div><div class="line">    ...</div><div class="line">    location /&#123;</div><div class="line">     </div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">mail&#123;</div><div class="line"><span class="meta">  #</span>见mail模块</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4><span id="242-events模块">2.4.2. events模块</span></h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">events &#123;</div><div class="line">  worker_connections 2048;    #设置可由一个worker进程同时打开的最大连接数</div><div class="line">  multi_accept on;   #告诉nginx收到一个新连接通知后接受尽可能多的连接</div><div class="line">  use epoll; #设置用于复用客户端线程的轮询方法。Linux 2.6+：使用epoll；*BSD：使用kqueue。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4><span id="243-http模块">2.4.3. http模块</span></h4>
@@ -563,7 +563,7 @@
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

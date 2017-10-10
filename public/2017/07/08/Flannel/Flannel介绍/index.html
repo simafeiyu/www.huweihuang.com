@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -252,12 +252,12 @@ Flannel官网：<a href="https://github.com/coreos/flannel" target="_blank" rel=
 <p>例如现在有一个数据包要从IP为172.17.18.2的容器发到IP为172.17.46.2的容器。根据数据发送节点的路由表，它只与 172.17.0.0/16匹配这条记录匹配，因此数据从docker0出来以后就被投递到了flannel0。同理在目标节点，由于投递的地址是一个容 器，因此目的地址一定会落在docker0对于的172.17.46.0/24这个记录上，自然的被投递到了docker0网卡。</p>
 <h3><span id="三flannel的安装与配置">（三）flannel的安装与配置</span></h3>
 <h4><span id="1-安装"><strong>1、安装</strong></span></h4>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http:<span class="comment">//&lt;官网&gt;/flannel/flannel-0.2.0-10.el7.x86_64.rpm</span></div><div class="line">yum localinstall -y flannel-<span class="number">0.2</span>.<span class="number">0</span>-<span class="number">10</span><span class="selector-class">.el7</span><span class="selector-class">.x86_64</span><span class="selector-class">.rpm</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget http://&lt;官网&gt;/flannel/flannel-0.2.0-10.el7.x86_64.rpm</div><div class="line">yum localinstall -y flannel-0.2.0-10.el7.x86_64.rpm</div></pre></td></tr></table></figure>
 <h4><span id="2-配置"><strong>2、配置</strong></span></h4>
 <p>vi /etc/sysconfig/flanneld</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> Flanneld configuration options</span></div><div class="line"> </div><div class="line"><span class="meta">#</span><span class="bash"> etcd url location. Point this to the server <span class="built_in">where</span> etcd runs</span></div><div class="line">FLANNEL_ETCD="http://127.0.0.1:4001"</div><div class="line">  </div><div class="line"><span class="meta">#</span><span class="bash"> etcd config key. This is the configuration key that flannel queries</span></div><div class="line"><span class="meta">#</span><span class="bash"> For address range assignment</span></div><div class="line">FLANNEL_ETCD_KEY="/wae/flannel/product/network"</div><div class="line">  </div><div class="line"><span class="meta">#</span><span class="bash"> Any additional options that you want to pass</span></div><div class="line">FLANNEL_OPTIONS=" -iface=eth0"</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> Flanneld configuration options</div><div class="line"> </div><div class="line"><span class="meta">#</span> etcd url location. Point this to the server where etcd runs</div><div class="line">FLANNEL_ETCD="http://127.0.0.1:4001"</div><div class="line">  </div><div class="line"><span class="meta">#</span> etcd config key. This is the configuration key that flannel queries</div><div class="line"><span class="meta">#</span> For address range assignment</div><div class="line">FLANNEL_ETCD_KEY="/wae/flannel/product/network"</div><div class="line">  </div><div class="line"><span class="meta">#</span> Any additional options that you want to pass</div><div class="line">FLANNEL_OPTIONS=" -iface=eth0"</div></pre></td></tr></table></figure>
 <h4><span id="3-初始化flannel的etcd配置"><strong>3、初始化flannel的etcd配置</strong></span></h4>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">etcdctl <span class="keyword">set</span> <span class="string">/wae/flannel/network/config</span> '&#123;</div><div class="line">   <span class="string">"Network"</span>: <span class="string">"10.0.0.0/16"</span>,</div><div class="line">   <span class="string">"Backend"</span>: &#123;</div><div class="line">       <span class="string">"Type"</span>: <span class="string">"vxlan"</span></div><div class="line">   &#125;</div><div class="line">&#125;'</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">etcdctl set /wae/flannel/network/config &apos;&#123;</div><div class="line">   &quot;Network&quot;: &quot;10.0.0.0/16&quot;,</div><div class="line">   &quot;Backend&quot;: &#123;</div><div class="line">       &quot;Type&quot;: &quot;vxlan&quot;</div><div class="line">   &#125;</div><div class="line">&#125;&apos;</div></pre></td></tr></table></figure>
 
                 
 
@@ -328,7 +328,7 @@ Flannel官网：<a href="https://github.com/coreos/flannel" target="_blank" rel=
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

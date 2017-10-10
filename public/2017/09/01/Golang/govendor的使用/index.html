@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -217,7 +217,7 @@
 <h3><span id="21-安装">2.1. 安装</span></h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> get -u -v github.com/kardianos/govendor</div></pre></td></tr></table></figure>
 <h3><span id="22-使用">2.2. 使用</span></h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">进入到项目目录</span></div><div class="line">cd /home/gopath/src/waetool</div><div class="line"><span class="meta">#</span><span class="bash">初始化vendor目录</span></div><div class="line">govendor init</div><div class="line"><span class="meta">#</span><span class="bash">查看vendor目录</span></div><div class="line">[root@CC54425A waetool]# ls</div><div class="line">commands  main.go  vendor  waetool_test.sh</div><div class="line"><span class="meta">#</span><span class="bash">进入vendor目录</span></div><div class="line">cd vendor</div><div class="line"><span class="meta">#</span><span class="bash">将GOPATH中本工程使用到的依赖包自动移动到vendor目录中</span></div><div class="line"><span class="meta">#</span><span class="bash">说明：如果本地GOPATH没有依赖包，先go get相应的依赖包</span></div><div class="line">govendor add +external</div><div class="line"><span class="meta">#</span><span class="bash">通过设置环境变量 GO15VENDOREXPERIMENT=1 使用vendor文件夹构建文件。</span></div><div class="line"><span class="meta">#</span><span class="bash">可以选择 <span class="built_in">export</span> GO15VENDOREXPERIMENT=1 或 GO15VENDOREXPERIMENT=1 go build 执行编译</span></div><div class="line">export GO15VENDOREXPERIMENT=1</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>进入到项目目录</div><div class="line">cd /home/gopath/src/waetool</div><div class="line"><span class="meta">#</span>初始化vendor目录</div><div class="line">govendor init</div><div class="line"><span class="meta">#</span>查看vendor目录</div><div class="line">[root@CC54425A waetool]# ls</div><div class="line">commands  main.go  vendor  waetool_test.sh</div><div class="line"><span class="meta">#</span>进入vendor目录</div><div class="line">cd vendor</div><div class="line"><span class="meta">#</span>将GOPATH中本工程使用到的依赖包自动移动到vendor目录中</div><div class="line"><span class="meta">#</span>说明：如果本地GOPATH没有依赖包，先go get相应的依赖包</div><div class="line">govendor add +external</div><div class="line"><span class="meta">#</span>通过设置环境变量 GO15VENDOREXPERIMENT=1 使用vendor文件夹构建文件。</div><div class="line"><span class="meta">#</span>可以选择 export GO15VENDOREXPERIMENT=1 或 GO15VENDOREXPERIMENT=1 go build 执行编译</div><div class="line">export GO15VENDOREXPERIMENT=1</div></pre></td></tr></table></figure>
 <h3><span id="23-说明">2.3. 说明</span></h3>
 <p>govendor只是用来管理项目的依赖包，如果GOPATH中本身没有项目的依赖包，则需要通过go get先下载到GOPATH中，再通过govendor add +external 拷贝到vendor目录中。</p>
 <h2><span id="3-govendor使用命令">3. govendor使用命令</span></h2>
@@ -232,12 +232,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/09/01/Golang/Golang之GDB调试/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang之GDB调试">&larr; Previous Post</a>
+                            <a href="/2017/09/01/Golang/网络编程/Go http执行流程/" data-toggle="tooltip" data-placement="top" title="[Golang] GO HTTP执行流程">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/09/01/Golang/网络编程/Go http执行流程/" data-toggle="tooltip" data-placement="top" title="[Golang] GO HTTP执行流程">Next Post &rarr;</a>
+                            <a href="/2017/09/01/Golang/beego/beego介绍/" data-toggle="tooltip" data-placement="top" title="[Golang] beego介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -298,7 +298,7 @@
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

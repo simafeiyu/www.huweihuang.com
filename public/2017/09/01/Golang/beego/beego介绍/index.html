@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -237,7 +237,7 @@
 <p>必须在<code>$GOPATH/src/appname</code>下执行bee run，默认监听8080端口：<code>http://localhost:8080/。</code></p>
 <h4><span id="143-api">1.4.3. api</span></h4>
 <p><code>api</code> 命令就是用来创建 API 应用，生成以下文件：和 Web 项目相比，少了 static 和 views 目录，多了一个 test 模块，用来做单元测试。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apiproject</div><div class="line">├── conf</div><div class="line">│   └── app.conf</div><div class="line">├── controllers</div><div class="line">│   └── <span class="selector-tag">object</span>.go</div><div class="line">│   └── user.go</div><div class="line">├── docs</div><div class="line">│   └── doc.go</div><div class="line">├── main.go</div><div class="line">├── models</div><div class="line">│   └── <span class="selector-tag">object</span>.go</div><div class="line">│   └── user.go</div><div class="line">├── routers</div><div class="line">│   └── router.go</div><div class="line">└── tests</div><div class="line">    └── default_test.go</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">apiproject</div><div class="line">├── conf</div><div class="line">│   └── app.conf</div><div class="line">├── controllers</div><div class="line">│   └── object.go</div><div class="line">│   └── user.go</div><div class="line">├── docs</div><div class="line">│   └── doc.go</div><div class="line">├── main.go</div><div class="line">├── models</div><div class="line">│   └── object.go</div><div class="line">│   └── user.go</div><div class="line">├── routers</div><div class="line">│   └── router.go</div><div class="line">└── tests</div><div class="line">    └── default_test.go</div></pre></td></tr></table></figure>
 <h4><span id="144-pack">1.4.4. pack</span></h4>
 <p><code>pack</code> 目录用来发布应用的时候打包，会把项目打包成 zip 包(<code>apiproject.tar.gz</code>)，这样我们部署的时候直接把打包之后的项目上传，解压就可以部署了：</p>
 <h4><span id="145-generate">1.4.5. generate</span></h4>
@@ -327,12 +327,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/2017/09/01/Golang/网络编程/Go http执行流程/" data-toggle="tooltip" data-placement="top" title="[Golang] GO HTTP执行流程">&larr; Previous Post</a>
+                            <a href="/2017/09/01/Golang/govendor的使用/" data-toggle="tooltip" data-placement="top" title="[Golang] govendor的使用">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/2017/08/16/Kubernetes/kubernetes核心原理/kubernetes核心原理（四）之Kubelet/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes核心原理（四）之kubelet">Next Post &rarr;</a>
+                            <a href="/2017/09/01/Golang/Golang之GDB调试/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang之GDB调试">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -395,7 +395,7 @@
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

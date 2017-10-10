@@ -140,13 +140,6 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/archive/">Archives</a>
                         </li>
                         
@@ -155,6 +148,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -252,10 +252,10 @@
 <p>更多Controller Manager信息请参考：<a href="http://blog.csdn.net/huwh_/article/details/75675761" target="_blank" rel="external">Kubernetes核心原理（二）之Controller Manager</a></p>
 <h4><span id="3-scheduler集群分发调度器">3、Scheduler[集群分发调度器]</span></h4>
 <ol>
-<li>Scheduler收集和分析当前Kubernetes集群中所有Minion节点的资源(内存、CPU)负载情况，然后依此分发新建的Pod到Kubernetes集群中可用的节点。</li>
+<li>Scheduler收集和分析当前Kubernetes集群中所有Minion/Node节点的资源(内存、CPU)负载情况，然后依此分发新建的Pod到Kubernetes集群中可用的节点。</li>
 <li>实时监测Kubernetes集群中未分发和已分发的所有运行的Pod。</li>
-<li>Scheduler也监测Minion节点信息，由于会频繁查找Minion节点，Scheduler会缓存一份最新的信息在本地。</li>
-<li>最后，Scheduler在分发Pod到指定的Minion节点后，会把Pod相关的信息Binding写回API Server。</li>
+<li>Scheduler也监测Minion/Node节点信息，由于会频繁查找Minion/Node节点，Scheduler会缓存一份最新的信息在本地。</li>
+<li>最后，Scheduler在分发Pod到指定的Minion/Node节点后，会把Pod相关的信息Binding写回API Server。</li>
 </ol>
 <p>更多Scheduler信息请参考：<a href="http://blog.csdn.net/huwh_/article/details/77017353" target="_blank" rel="external">Kubernetes核心原理（三）之Scheduler</a></p>
 <h3><span id="二kube-node服务节点">（二）kube-node[服务节点]</span></h3>
@@ -269,7 +269,7 @@
 <ol>
 <li>负责Node节点上pod的创建、修改、监控、删除等全生命周期的管理</li>
 <li>定时上报本Node的状态信息给API Server。</li>
-<li>kubelet是Master API Server和Minion之间的桥梁，接收Master API Server分配给它的commands和work，与持久性键值存储etcd、file、server和http进行交互，读取配置信息。</li>
+<li>kubelet是Master API Server和Minion/Node之间的桥梁，接收Master API Server分配给它的commands和work，通过kube-apiserver间接与Etcd集群交互，读取配置信息。</li>
 <li>具体的工作如下：
 <ol>
 <li>设置容器的环境变量、给容器绑定Volume、给容器绑定Port、根据指定的Pod运行一个单一容器、给指定的Pod创建network 容器。</li>
@@ -281,7 +281,7 @@
 <p>更多Kubelet信息请参考：<a href="http://blog.csdn.net/huwh_/article/details/77922293" target="_blank" rel="external">Kubernetes核心原理（四）之Kubelet</a></p>
 <h4><span id="2-proxy负载均衡-路由转发">2、Proxy[负载均衡、路由转发]</span></h4>
 <ol>
-<li>Proxy是为了解决外部网络能够访问跨机器集群中容器提供的应用服务而设计的，运行在每个Node上。Proxy提供TCP/UDP sockets的proxy，每创建一种Service，Proxy主要从etcd获取Services和Endpoints的配置信息（也可以从file获取），然后根据配置信息在Minion上启动一个Proxy的进程并监听相应的服务端口，当外部请求发生时，Proxy会根据Load Balancer将请求分发到后端正确的容器处理。</li>
+<li>Proxy是为了解决外部网络能够访问跨机器集群中容器提供的应用服务而设计的，运行在每个Minion/Node上。Proxy提供TCP/UDP sockets的proxy，每创建一种Service，Proxy主要从etcd获取Services和Endpoints的配置信息（也可以从file获取），然后根据配置信息在Minion/Node上启动一个Proxy的进程并监听相应的服务端口，当外部请求发生时，Proxy会根据Load Balancer将请求分发到后端正确的容器处理。</li>
 <li>Proxy不但解决了同一主宿机相同服务端口冲突的问题，还提供了Service转发服务端口对外提供服务的能力，Proxy后端使用了随机、轮循负载均衡算法。</li>
 </ol>
 <h4><span id="3-kubectlkubelet-client集群管理命令行工具集">3、kubectl（kubelet client）[集群管理命令行工具集]</span></h4>
@@ -364,7 +364,7 @@
                     
                         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
                     
-                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockerOne 胡伟煌</a></li>
+                        <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
                     
                         <li><a href="https://yq.aliyun.com/u/huweihuang" target="_blank">阿里云栖社区 胡伟煌</a></li>
                     

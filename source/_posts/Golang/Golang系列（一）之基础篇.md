@@ -315,7 +315,6 @@ for i,v:=range slice{
 //添加元素
 newSlice:=append(oldSlice,1,2,3)   //直接将元素加进去，若存储空间不够会按上述方式扩容。
 newSlice1:=append(oldSlice1,oldSlice2...)  //将oldSlice2的元素打散后加到oldSlice1中，三个点不可省略。
-//删除元素则用delete函数替换append函数，用法一致。
 
 //4、内容复制
 //copy()函数可以复制切片，如果切片大小不一样，按较小的切片元素个数进行复制
@@ -330,15 +329,25 @@ copy(slice1,slice1)   //只会复制slice2的三个元素到slice1中的前三�
 map是一堆键值对的未排序集合。
 
 ```go
-//1、声明
+//1、先声明后创建再赋值
 var map1 map[键类型] 值类型
 //创建
 map1=make(map[键类型] 值类型)
 map1=make(map[键类型] 值类型 存储空间)
 //赋值
 map1[key]=value
-//创建并初始化
-map1=map[key] value
+
+// 直接创建
+m2 := make(map[string]string)
+// 然后赋值
+m2["a"] = "aa"
+m2["b"] = "bb"
+
+// 初始化 + 赋值一体化
+m3 := map[string]string{
+    "a": "aa",
+    "b": "bb",
+}
 
 //2、元素删除
 //delete()函数删除对应key的键值对，如果key不存在，不会报错；如果value为nil，则会抛出异常(panic)。
@@ -348,6 +357,11 @@ delete(map1,key)
 value,ok:=myMap[key]
 if ok{//如果找到
   //处理找到的value值
+}
+
+//遍历
+for key,value:=range myMap{
+    //处理key或value
 }
 ```
 

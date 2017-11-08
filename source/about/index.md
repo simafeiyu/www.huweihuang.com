@@ -1,14 +1,14 @@
 ---
 layout: "about"
 title: "About"
-date: 2017-10-03 10:48:33
+date: 2017-10-04 10:48:33
 description: "走在成为极客的路上"
-header-img: "img/header_img/Iron-Man-3.jpg"
+header-img: "img/header_img/Iron-Man.jpg"
 ---
 
 ### 一句话
 
->Just do it !    (翻译：我只是个搞IT的！哭笑脸)
+>Just do it !    (翻译：我只是个搞 IT的！哭笑脸)
 
 ### 关于我
 
@@ -33,4 +33,3 @@ header-img: "img/header_img/Iron-Man-3.jpg"
 ### 联系我
 
 >Email: huweihuang@foxmail.com
-

@@ -13,8 +13,8 @@ timezone:
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://www.huweihuang.com/       # Note: don't forget to modify the CNAME file to your url
 root: /
-permalink: :year/:month/:day/:title/
-#permalink: :category/:title
+# permalink: :year/:month/:day/:title/
+permalink: :category/:title/
 permalink_defaults:
   lang: en
 
@@ -175,7 +175,7 @@ markdown:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: beantech
+theme: huweihuang
 
 #sitemap
 sitemap:
@@ -187,4 +187,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Change background images
+  message: Chang theme to HuWeihuang

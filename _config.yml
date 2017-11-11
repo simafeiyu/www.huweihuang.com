@@ -187,4 +187,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Chang theme to HuWeihuang
+  message: Modify the format of permalink

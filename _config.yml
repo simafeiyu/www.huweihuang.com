@@ -25,7 +25,9 @@ SEOTitle: 胡伟煌 | Blog
 email: huweihuang@foxmail.com
 description: ""
 keyword: ""
-header-img: img/header_img/home-bg-2-dark.png
+header-img: http://ozilwgpje.bkt.clouddn.com/home.png
+article-img: http://ozilwgpje.bkt.clouddn.com/article_header.png
+# header-img: img/header_img/home-bg-2-dark.png
 signature: false #show signature
 signature-img: img/signature/BeanTechSign-white.png 
 
@@ -187,4 +189,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Modify the format of permalink
+  message: Modify the header-img external link reference

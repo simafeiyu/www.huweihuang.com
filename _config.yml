@@ -76,6 +76,7 @@ widgets:
 
 # widget behavior
 ## Archive
+archives-img: http://ozilwgpje.bkt.clouddn.com/archives.jpg
 archive_type: 'monthly'
 show_count: true
 
@@ -189,4 +190,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Modify the header-img external link reference
+  message: Fix archives-img error

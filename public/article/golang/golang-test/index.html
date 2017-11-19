@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Etcd] Etcd常用命令 - 胡伟煌 | Blog
+          [Golang] Golang测试用例 - 胡伟煌 | Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.huweihuang.com/article/etcd/etcd-commands/">
+    <link rel="canonical" href="http://www.huweihuang.com/article/golang/golang-test/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -86,14 +86,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Etcd" title="Etcd">Etcd</a>
+                              <a class="tag" href="/tags/#Golang" title="Golang">Golang</a>
                             
                         </div>
-                        <h1>[Etcd] Etcd常用命令</h1>
+                        <h1>[Golang] Golang测试用例</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 胡伟煌 on
-                            2017-07-10
+                            2017-09-01
                         </span>
                     </div>
                 
@@ -210,156 +210,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="一-etcdctl介绍">一、etcdctl介绍</span></h2>
-<p>etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。</p>
-<p>用法：etcdctl [global options] command [command options][args…]</p>
-<h2><span id="二-etcd常用命令">二、Etcd常用命令</span></h2>
-<h3><span id="一数据库操作命令">（一）数据库操作命令</span></h3>
-<p>etcd 在键的组织上采用了层次化的空间结构（类似于文件系统中目录的概念），数据库操作围绕对键值和目录的 CRUD [增删改查]（符合 REST 风格的一套操作：Create, Read, Update, Delete）完整生命周期的管理。</p>
-<p>具体的命令选项参数可以通过 etcdctl command --help来获取相关帮助。</p>
-<h4><span id="1对象为键值">1）对象为键值</span></h4>
-<ol>
-<li>
-<h5><span id="set增无论是否存在etcdctl-set-key-value">set[增:无论是否存在]:etcdctl set key value</span></h5>
-</li>
-<li>
-<h5><span id="mk增必须不存在etcdctl-mk-key-value">mk[增:必须不存在]:etcdctl mk key value</span></h5>
-</li>
-<li>
-<h5><span id="rm删etcdctl-rm-key">rm[删]:etcdctl rm key</span></h5>
-</li>
-<li>
-<h5><span id="update改etcdctl-update-key-value">update[改]:etcdctl update key value</span></h5>
-</li>
-<li>
-<h5><span id="get查etcdctl-get-key">get[查]:etcdctl get key</span></h5>
-</li>
-</ol>
-<h4><span id="2对象为目录">2）对象为目录</span></h4>
-<ol>
-<li>
-<h5><span id="setdir增无论是否存在etcdctl-setdir-dir">setdir[增:无论是否存在]:etcdctl setdir dir</span></h5>
-</li>
-<li>
-<h5><span id="mkdir增必须不存在-etcdctl-mkdir-dir">mkdir[增:必须不存在]: etcdctl mkdir dir</span></h5>
-</li>
-<li>
-<h5><span id="rmdir删etcdctl-rmdir-dir">rmdir[删]:etcdctl rmdir dir</span></h5>
-</li>
-<li>
-<h5><span id="updatedir改etcdctl-updatedir-dir">updatedir[改]:etcdctl updatedir dir</span></h5>
-</li>
-<li>
-<h5><span id="ls查etcdclt-ls">ls[查]:etcdclt ls</span></h5>
-</li>
-</ol>
-<h3><span id="二非数据库操作命令">（二）非数据库操作命令</span></h3>
-<ol>
-<li>
-<h5><span id="backup备份-etcd-的数据">backup[备份 etcd 的数据]</span></h5>
-<p>etcdctl backup</p>
-</li>
-<li>
-<h5><span id="watch监测一个键值的变化一旦键值发生更新就会输出最新的值并退出">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</span></h5>
-<p>etcdctl watch key</p>
-</li>
-<li>
-<h5><span id="exec-watch监测一个键值的变化一旦键值发生更新就执行给定命令">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</span></h5>
-<p>etcdctl exec-watch key --sh -c “ls”</p>
-</li>
-<li>
-<h5><span id="member通过-list-add-remove-update-命令列出-添加-删除-更新etcd-实例到-etcd-集群中">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</span></h5>
-<p>etcdctl member list；etcdctl member add 实例；etcdctl member remove 实例；etcdctl member update 实例。</p>
-</li>
-<li>
-<h5><span id="etcdctl-cluster-health检查集群健康状态">etcdctl cluster-health[检查集群健康状态]</span></h5>
-</li>
-</ol>
-<h3><span id="三常用配置参数">（三）常用配置参数</span></h3>
-<p>设置配置文件，默认为/etc/etcd/etcd.conf。</p>
-<table>
-<thead>
-<tr>
-<th>配置参数</th>
-<th>参数说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>配置参数</td>
-<td>参数说明</td>
-</tr>
-<tr>
-<td>-name</td>
-<td>节点名称</td>
-</tr>
-<tr>
-<td>-data-dir</td>
-<td>保存日志和快照的目录，默认为当前工作目录，指定节点的数据存储目录</td>
-</tr>
-<tr>
-<td>-addr</td>
-<td>公布的ip地址和端口。 默认为127.0.0.1:2379</td>
-</tr>
-<tr>
-<td>-bind-addr</td>
-<td>用于客户端连接的监听地址，默认为-addr配置</td>
-</tr>
-<tr>
-<td>-peers</td>
-<td>集群成员逗号分隔的列表，例如 127.0.0.1:2380,127.0.0.1:2381</td>
-</tr>
-<tr>
-<td>-peer-addr</td>
-<td>集群服务通讯的公布的IP地址，默认为 127.0.0.1:2380.</td>
-</tr>
-<tr>
-<td>-peer-bind-addr</td>
-<td>集群服务通讯的监听地址，默认为-peer-addr配置</td>
-</tr>
-<tr>
-<td>-wal-dir</td>
-<td>指定节点的was文件的存储目录，若指定了该参数，wal文件会和其他数据文件分开存储</td>
-</tr>
-<tr>
-<td>-listen-client-urls</td>
-<td></td>
-</tr>
-<tr>
-<td>-listen-peer-urls</td>
-<td>监听URL，用于与其他节点通讯</td>
-</tr>
-<tr>
-<td>-initial-advertise-peer-urls</td>
-<td>告知集群其他节点url.</td>
-</tr>
-<tr>
-<td>-advertise-client-urls</td>
-<td>告知客户端url, 也就是服务的url</td>
-</tr>
-<tr>
-<td>-initial-cluster-token</td>
-<td>集群的ID</td>
-</tr>
-<tr>
-<td>-initial-cluster</td>
-<td>集群中所有节点</td>
-</tr>
-<tr>
-<td>-initial-cluster-state</td>
-<td>-initial-cluster-state=new 表示从无到有搭建etcd集群</td>
-</tr>
-<tr>
-<td>-discovery-srv</td>
-<td>用于DNS动态服务发现，指定DNS SRV域名</td>
-</tr>
-<tr>
-<td>-discovery</td>
-<td>用于etcd动态发现，指定etcd发现服务的URL [<a href="https://discovery.etcd.io/" target="_blank" rel="external">https://discovery.etcd.io/</a>],用环境变量表示</td>
-</tr>
-</tbody>
-</table>
-
+                <h2><span id="1-go中的测试框架">1. Go中的测试框架</span></h2>
+<p>Go语言中自带有一个轻量级的测试框架<code>testing</code>和自带的<code>go test</code>命令来实现单元测试和性能测试，<code>testing</code>框架和其他语言中的测试框架类似，你可以基于这个框架写针对相应函数的测试用例，也可以基于该框架写相应的压力测试用例。</p>
+<h2><span id="2-单元测试原则">2. 单元测试原则</span></h2>
+<ul>
+<li>文件名必须是<code>_test.go</code>结尾的，这样在执行<code>go test</code>的时候才会执行到相应的代码</li>
+<li>你必须import <code>testing</code>这个包</li>
+<li>所有的测试用例函数必须是<code>Test</code>开头</li>
+<li>测试用例会按照源代码中写的顺序依次执行</li>
+<li>测试函数<code>TestXxx()</code>的参数是<code>testing.T</code>，我们可以使用该类型来记录错误或者是测试状态</li>
+<li>测试格式：<code>func TestXxx (t *testing.T)</code>,<code>Xxx</code>部分可以为任意的字母数字的组合，但是首字母不能是小写字母[a-z]，例如<code>Testintdiv</code>是错误的函数名。</li>
+<li>函数中通过调用<code>testing.T</code>的<code>Error</code>, <code>Errorf</code>, <code>FailNow</code>, <code>Fatal</code>, <code>FatalIf</code>方法，说明测试不通过，调用<code>Log</code>方法用来记录测试的信息。</li>
+</ul>
+<h2><span id="3-示例">3. 示例</span></h2>
+<h3><span id="31-源文件getestgo">3.1. 源文件getest.go</span></h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> gotest</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"errors"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Division</span><span class="params">(a, b <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, errors.New(<span class="string">"除数不能为0"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a / b, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="32-测试文件gotest_testgo">3.2. 测试文件gotest_test.go</span></h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Test_Division_2</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> _, e := Division(<span class="number">6</span>, <span class="number">0</span>); e == <span class="literal">nil</span> &#123; <span class="comment">//try a unit test on function</span></span><br><span class="line">        t.Error(<span class="string">"Division did not work as expected."</span>) <span class="comment">// 如果不是如预期的那么就报错</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        t.Log(<span class="string">"one test passed."</span>, e) <span class="comment">//记录一些你期望记录的信息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="4-压力测试">4. 压力测试</span></h2>
+<p>压力测试用来检测函数(方法）的性能，和编写单元功能测试的方法类似。</p>
+<ul>
+<li>压力测试用例必须遵循如下格式，其中XXX可以是任意字母数字的组合，但是首字母不能是小写字母</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func BenchmarkXXX(b *testing.B) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>go test</code>不会默认执行压力测试的函数，如果要执行压力测试需要带上参数<code>-test.bench</code>，语法:<code>-test.bench=&quot;test_name_regex&quot;</code>,例如<code>go test -test.bench=&quot;.*&quot;</code>表示测试全部的压力测试函数</li>
+<li>在压力测试用例中,请记得在循环体内使用<code>testing.B.N</code>,以使测试可以正常的运行</li>
+<li>文件名也必须以<code>_test.go</code>结尾</li>
+</ul>
+<h3><span id="41-示例">4.1. 示例</span></h3>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> gotest</span><br><span class="line">     </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"testing"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Benchmark_Division</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123; <span class="comment">//use b.N for looping</span></span><br><span class="line">        Division(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Benchmark_TimeConsumingFunction</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    b.StopTimer() <span class="comment">//调用该函数停止压力测试的时间计数</span></span><br><span class="line">    <span class="comment">//做一些初始化的工作,例如读取文件数据,数据库连接之类的,</span></span><br><span class="line">    <span class="comment">//这样这些时间不影响我们测试函数本身的性能</span></span><br><span class="line">    b.StartTimer() <span class="comment">//重新开始时间</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">        Division(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行测试命令</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> test -file webbench_test.<span class="keyword">go</span> -test.bench=<span class="string">".*"</span></span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
@@ -367,12 +249,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/etcd/etcd-auth&security/" data-toggle="tooltip" data-placement="top" title="[Etcd] Etcd访问控制">&larr; Previous Post</a>
+                            <a href="/article/nginx/nginx-deploy&config/" data-toggle="tooltip" data-placement="top" title="[Nginx] Nginx的部署与配置">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">Next Post &rarr;</a>
+                            <a href="/article/golang/golang-text-process/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang文本处理">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -398,7 +280,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、etcdctl介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Etcd常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">（一）数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">1）对象为键值</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.1.</span> <span class="toc-nav-text">set[增:无论是否存在]:etcdctl set key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.2.</span> <span class="toc-nav-text">mk[增:必须不存在]:etcdctl mk key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.3.</span> <span class="toc-nav-text">rm[删]:etcdctl rm key</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.4.</span> <span class="toc-nav-text">update[改]:etcdctl update key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.5.</span> <span class="toc-nav-text">get[查]:etcdctl get key</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2）对象为目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.1.</span> <span class="toc-nav-text">setdir[增:无论是否存在]:etcdctl setdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.2.</span> <span class="toc-nav-text">mkdir[增:必须不存在]: etcdctl mkdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.3.</span> <span class="toc-nav-text">rmdir[删]:etcdctl rmdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.4.</span> <span class="toc-nav-text">updatedir[改]:etcdctl updatedir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.5.</span> <span class="toc-nav-text">ls[查]:etcdclt ls</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">（二）非数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.1.</span> <span class="toc-nav-text">backup[备份 etcd 的数据]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.2.</span> <span class="toc-nav-text">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.3.</span> <span class="toc-nav-text">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.4.</span> <span class="toc-nav-text">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.5.</span> <span class="toc-nav-text">etcdctl cluster-health[检查集群健康状态]</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">（三）常用配置参数</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Go中的测试框架</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 单元测试原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 示例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 源文件getest.go</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 测试文件gotest_test.go</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 压力测试</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 示例</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -418,7 +300,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Etcd" title="Etcd">Etcd</a>
+                          <a class="tag" href="/tags/#Golang" title="Golang">Golang</a>
                         
                     </div>
                 </section>

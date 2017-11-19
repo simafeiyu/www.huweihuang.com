@@ -139,14 +139,14 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -209,24 +209,53 @@
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-gdb-debug/">
+    <a href="/article/golang/golang-test/">
         <h2 class="post-title">
-            [Golang] Golang之GDB调试
+            [Golang] Golang测试用例
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. GDB简介
-GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
+            1. Go中的测试框架
+Go语言中自带有一个轻量级的测试框架testing和自带的go test命令来实现单元测试和性能测试，testing框架和其他语言中的测试框架类似，你可以基于这个框架写针对相应函数的测试用例，也可以基于该框架写相应的压力测试用例。
+2. 单元测试原则
 
-启动程序，可以按照开发者的自定义要求运行程序。
-可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
-当程序被停住时，可以检查此时程序中所发生的事。
-动态的改变当前程序的执行环境。
+文件名必须是_test.go结尾的，这样在执行go test的时候才会执行到相应的代码
+你必须import test......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
 
-目前支持调试Go程序的GDB版本必须大于7.1。
-编译Go程序......
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/golang/golang-text-process/">
+        <h2 class="post-title">
+            [Golang] Golang文本处理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. JSON处理
+JSON是一种轻量级的数据交换语言。
+1.1. 解析JSON[Unmarshal(data []byte, v interface{})]
+1.1.1. Unmarshal源码
+/src/encoding/json/decode.go
+1234567891011121314151617181920212223242526272829303132func Unmarshal......
         </div>
     </a>
     
@@ -340,6 +369,43 @@ golang工程的依赖包经常使用go get 的方式来获取，例如：go get 
 
 <div class="post-preview">
 
+    <a href="/article/golang/golang-gdb-debug/">
+        <h2 class="post-title">
+            [Golang] Golang之GDB调试
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. GDB简介
+GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
+
+启动程序，可以按照开发者的自定义要求运行程序。
+可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
+当程序被停住时，可以检查此时程序中所发生的事。
+动态的改变当前程序的执行环境。
+
+目前支持调试Go程序的GDB版本必须大于7.1。
+编译Go程序......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">
         <h2 class="post-title">
             [Kubernetes] Kubernetes核心原理（四）之kubelet
@@ -429,88 +495,22 @@ Scheduler：
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-commands/">
+    <a href="/article/kubernetes/kubernetes-basic-concepts/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes常用命令
+            [Kubernetes] Kubernetes基本概念
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、kubectl介绍
-kubectl controls the Kubernetes cluster manager.
-Usage: kubectl [flags] kubectl [command]
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
+            1. Master
+集群的控制节点，负责整个集群的管理和控制，kubernetes的所有的命令基本都是发给Master，由它来负责具体的执行过程。
+1.1. Master的组件
 
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/database/mysql-commonds/">
-        <h2 class="post-title">
-            [Database] Mysql常用命令
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. 系统管理
-1.1. 连接mysql
-格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －p用户密码
-退出连接：exit
-1.2. 备份数据库
-1.导出整个数据库
-导出文件默认是存在mysql\bin目录下
-mysqldump -u 用户名......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Database" title="Database">Database</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/kubernetes/kubernetes-network/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes网络原理
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. kubernetes网络模型
-1.1. 基础原则
-
-每个Pod都拥有一个独立的IP地址，而且假定所有Pod都在一个可以直接连通的、扁平的网络空间中，不管是否运行在同一Node上都可以通过Pod的IP来访问。
-k8s中Pod的IP是最小粒度IP。同一个Pod内所有的容器共享一个网络堆栈，该模型称为IP-per-Pod模型。
-Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
+kube-apiserver：资源增删改查的入口
+kube-controller-manager：资源对象的大总管
+kube-scheduler：负责资源调度（Pod调度）
+etcd Server:kubernet......
         </div>
     </a>
     
@@ -584,7 +584,7 @@ Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
             
         
             
-            <a href="/tags/#Golang" title="Golang" rel="9">Golang</a>
+            <a href="/tags/#Golang" title="Golang" rel="11">Golang</a>
             
         
             
@@ -650,11 +650,11 @@ Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
@@ -693,7 +693,7 @@ Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

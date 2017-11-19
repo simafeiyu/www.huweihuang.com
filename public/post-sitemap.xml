@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>http://www.huweihuang.com/article/golang/golang-test/</loc>
+        <lastmod>2017-11-18T13:57:12.143Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/article/golang/golang-text-process/</loc>
+        <lastmod>2017-11-18T13:53:13.223Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.huweihuang.com/article/golang/golang-packages/</loc>
         <lastmod>2017-11-11T02:36:45.740Z</lastmod>
         <changefreq>weekly</changefreq>

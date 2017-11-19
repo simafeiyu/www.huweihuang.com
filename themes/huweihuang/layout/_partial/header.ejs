@@ -9,7 +9,7 @@
             background-image: url('<%= config["article-img"]  %>')
             /*post*/
         <%} else {%>
-            background-image: url('<%= page["header-img"] %>')
+            background-image: url('<%= page["header-img"] || config["archives-img"] %>')
             /*page*/
         <%} %>
     }

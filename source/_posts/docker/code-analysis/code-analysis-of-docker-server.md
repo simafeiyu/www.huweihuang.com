@@ -209,7 +209,7 @@ ListenAndServe执行流程：
 4. 启动API服务
 
 流程图：
-![流程图](/img/article/docker/docker源码分析之Docker-Server/流程图.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578158/article/docker/dockerServer/DockerServerFlow.jpg" width="50%">
 
 ### （一）创建route路由实例
 

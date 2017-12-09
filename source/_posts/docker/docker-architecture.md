@@ -14,7 +14,7 @@ catagories:
 
 ## 一、Docker的总架构图 
 
-![docker总架构图](/img/article/docker/docker整体架构图/docker总架构图.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577966/article/docker/dockerArch/docker-architecture.jpg" width="60%"/>
 
 docker是一个C/S模式的架构，后端是一个松耦合架构，模块各司其职。
 
@@ -38,13 +38,13 @@ docker是一个C/S模式的架构，后端是一个松耦合架构，模块各�
 
 - Docker Daemon的架构图
 
-  ![docker daemon](/img/article/docker/docker整体架构图/docker-daemon.jpg)
+  <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/docker-daemon.jpg" width="60%"/>
 
 1. #### Docker Server[调度分发请求]
 
    - Docker Server的架构图
 
-   ![docker server](/img/article/docker/docker整体架构图/docker-server.jpg)
+   <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/docker-server.jpg" width="60%"/>
 
    1. Docker Server相当于C/S架构的服务端。功能为接受并调度分发Docker Client发送的请求。接受请求后，Server通过路由与分发调度，找到相应的Handler来执行请求。
    2. 在Docker的启动过程中，通过包gorilla/mux，创建了一个mux.Router，提供请求的路由功能。在Golang中，gorilla/mux是一个强大的URL路由器以及调度分发器。该mux.Router中添加了众多的路由项，每一个路由项由HTTP请求方法（PUT、POST、GET或DELETE）、URL、Handler三部分组成。
@@ -71,7 +71,7 @@ docker是一个C/S模式的架构，后端是一个松耦合架构，模块各�
 
 - Graph的架构图
 
-  ![graph架构](/img/article/docker/docker整体架构图/graph架构.jpg)
+  <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/graph-architecture.jpg" width="60%"/>
 
 1. #### Repository
 
@@ -93,7 +93,7 @@ Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实�
 
    - graphdriver架构图
 
-      ![graphdriver](/img/article/docker/docker整体架构图/graphdriver.jpg)
+      <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/graphdriver.jpg" width="60%"/>
 
    1. graphdriver主要用于完成容器镜像的管理，包括存储与获取。
    2. 存储：docker pull下载的镜像由graphdriver存储到本地的指定目录（Graph中）。
@@ -104,7 +104,7 @@ Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实�
 
    - networkdriver的架构图
 
-      ![networkdriver](/img/article/docker/docker整体架构图/networkdriver.jpg)
+      <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/networkdriver.jpg" width="60%"/>
 
    1. networkdriver的用途是完成Docker容器网络环境的配置，其中包括
       - Docker启动时为Docker环境创建网桥；
@@ -115,7 +115,7 @@ Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实�
 
    - execdriver的架构图
 
-      ![execdriver](/img/article/docker/docker整体架构图/execdriver.jpg)
+      <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/execdriver.jpg" width="55%"/>
 
    1. execdriver作为Docker容器的执行驱动，负责创建容器运行命名空间，负责容器资源使用的统计与限制，负责容器内部进程的真正运行等。
    2. 现在execdriver默认使用native驱动，不依赖于LXC。
@@ -124,7 +124,7 @@ Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实�
 
 - libcontainer的架构图
 
-   ![libcontainer](/img/article/docker/docker整体架构图/libcontainer.jpg)
+   <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/libcontainer.jpg" width="60%"/>
 
 1. libcontainer是Docker架构中一个使用Go语言设计实现的库，设计初衷是希望该库可以不依靠任何依赖，直接访问内核中与容器相关的API。
 2. Docker可以直接调用libcontainer，而最终操纵容器的namespace、cgroups、apparmor、网络设备以及防火墙规则等。
@@ -134,7 +134,7 @@ Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实�
 
 - container架构
 
-  ![container](/img/article/docker/docker整体架构图/container.jpg)
+  <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577966/article/docker/dockerArch/container.jpg" width="60%"/>
 
 1. Docker container（Docker容器）是Docker架构中服务交付的最终体现形式。
 

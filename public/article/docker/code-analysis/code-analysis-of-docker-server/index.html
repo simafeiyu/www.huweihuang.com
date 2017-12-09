@@ -345,7 +345,7 @@ ListenAndServe执行流程：</p>
 <li>启动API服务</li>
 </ol>
 <p>流程图：<br>
-<img src="/img/article/docker/docker%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BDocker-Server/%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg" alt="流程图"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578158/article/docker/dockerServer/DockerServerFlow.jpg" width="50%"></p>
 <h3><span id="一创建route路由实例">（一）创建route路由实例</span></h3>
 <p><strong>/api/server/server.go</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ListenAndServe sets up the required http.Server and gets it listening for</span></span><br><span class="line"><span class="comment">// each addr passed in and does protocol specific checking.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ListenAndServe</span><span class="params">(proto, addr <span class="keyword">string</span>, job *engine.Job)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> l net.Listener</span><br><span class="line">    r, err := createRouter(job.Eng, job.GetenvBool(<span class="string">"Logging"</span>), job.GetenvBool(<span class="string">"EnableCors"</span>), job.Getenv(<span class="string">"Version"</span>))</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> err</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -404,12 +404,12 @@ mux.Router特性</p>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">&larr; Previous Post</a>
+                            <a href="/article/docker/docker-architecture/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker整体架构图">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/docker/code-analysis/code-analysis-of-docker-client/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（一）之Docker Client">Next Post &rarr;</a>
+                            <a href="/article/flannel/flannel-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Flannel介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

@@ -219,10 +219,10 @@
 <ol>
 <li>PaaS(Platform as a service)，平台即服务，指将软件研发的平台（或业务基础平台）作为一种服务，以SaaS的模式提交给用户。</li>
 <li>PaaS是云计算服务的其中一种模式，云计算是一种按使用量付费的模式的服务，类似一种租赁服务，服务可以是基础设施计算资源（IaaS），平台（PaaS），软件（SaaS）。租用IT资源的方式来实现业务需要，如同水力、电力资源一样，计算、存储、网络将成为企业IT运行的一种被使用的资源，无需自己建设，可按需获得。</li>
-<li>PaaS的实质是将互联网的资源服务化为可编程接口，为第三方开发者提供有商业价值的资源和服务平台。简而言之，IaaS就是卖硬件及计算资源，PaaS就是卖开发、运行环境，SaaS就是卖软件。</li>
+<li>PaaS的实质是将互联网的资源服务化为可编程接口，为第三方开发者提供有商业价值的资源和服务平台。简而言之，<strong>IaaS就是卖硬件及计算资源，PaaS就是卖开发、运行环境，SaaS就是卖软件</strong>。</li>
 </ol>
 <h3><span id="12-iaaspaassaas说明">1.2. IaaS/PaaS/SaaS说明</span></h3>
-<p><img src="/img/article/CaaS/%E4%BA%91%E8%AE%A1%E7%AE%97%E4%B8%89%E4%B8%AA%E5%B1%82%E6%AC%A1.jpg" alt="云计算三个层次"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577867/article/caas/cloud-computing.jpg" width="40%">
 <table>
 <thead>
 <tr>
@@ -253,7 +253,7 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/img/article/CaaS/PaaS.jpg" alt="PaaS"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577869/article/caas/paas.jpg" width="70%">
 <h3><span id="13-paas的特点三种层次">1.3. PaaS的特点（三种层次）</span></h3>
 <table>
 <thead>
@@ -281,9 +281,9 @@
 <h3><span id="21-app-engine概念">2.1. App Engine概念</span></h3>
 <p>App Engine是PaaS模式的一种实现方式，App Engine将应用运行所需的 IT 资源和基础设施以服务的方式提供给用户，包括了中间件服务、资源管理服务、弹性调度服务、消息服务等多种服务形式。App Engine的目标是对应用提供完整生命周期（包括设计、开发、测试和部署等阶段）的支持，从而减少了用户在购置和管理应用生命周期内所必须的软硬件以及部署应用和IT 基础设施的成本，同时简化了以上工作的复杂度。常见的App Engine有：GAE(Google App Engine)，SAE(Sina App Engine)，BAE(Baidu App Engine)。</p>
 <p>App Engine利用虚拟化与自动化技术实现快速搭建部署应用运行环境和动态调整应用运行时环境资源这两个目标。一方面实现即时部署以及快速回收，降低了环境搭建时间，避免了手工配置错误，快速重复搭建环境，及时回收资源， 减少了低利用率硬件资源的空置。另一方面，根据应用运行时的需求对应用环境进行动态调整，实现了应用平台的弹性扩展和自优化，减少了非高峰时硬件资源的空置。</p>
-<p>简而言之，App Engine主要目标是：Easy to maintain(维护), Easy to scale(扩容), Easy to build(构建)。</p>
+<p>简而言之，<strong>App Engine主要目标是：Easy to maintain(维护), Easy to scale(扩容), Easy to build(构建)</strong>。</p>
 <h3><span id="22-架构设计">2.2. 架构设计</span></h3>
-<p><img src="/img/article/CaaS/AppEngine.jpg" alt="App Engine"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/AppEngine.jpg" width="80%">
 <h3><span id="23-组成模块说明">2.3. 组成模块说明</span></h3>
 <table>
 <thead>
@@ -345,7 +345,7 @@
 <td>Kubernetes</td>
 </tr>
 <tr>
-<td>配置管理</td>
+<td>配置数据</td>
 <td>Etcd</td>
 </tr>
 <tr>
@@ -369,16 +369,16 @@ Namespaces机制提供一种资源隔离方案。PID,IPC,Network等系统资源�
 CGroup（control group）是将任意进程进行分组化管理的Linux内核功能。CGroup本身是提供将进程进行分组化管理的功能和接口的基础结构，I/O或内存的分配控制等具体的资源管理功能是通过这个功能来实现的。CGroups可以限制、记录、隔离进程组所使用的物理资源（包括：CPU、memory、IO等），为容器实现虚拟化提供了基本保证。CGroups本质是内核附加在程序上的一系列钩子（hooks），通过程序运行时对资源的调度触发相应的钩子以达到资源追踪和限制的目的。</li>
 </ul>
 <h2><span id="4-docker概述">4. Docker概述</span></h2>
-<p>更多详情请参考：<a href="http://wiki.haplat.net/pages/viewpage.action?pageId=11176501" target="_blank" rel="external">Docker整体架构图</a></p>
+<p>更多详情请参考：<a href="http://www.huweihuang.com/article/docker/docker-architecture/">Docker整体架构图</a></p>
 <h3><span id="41-docker介绍">4.1. Docker介绍</span></h3>
 <ol>
 <li>Docker - Build, Ship, and Run Any App, Anywhere</li>
 <li>Docker是一种Linux容器工具集，它是为“构建（Build）、交付（Ship）和运行（Run）”分布式应用而设计的。</li>
 <li>Docker相当于把应用以及应用所依赖的环境完完整整地打成了一个包，这个包拿到哪里都能原生运行。因此可以在开发、测试、运维中保证环境的一致性。</li>
-<li>Docker的本质：Docker=LXC(Namespace+CGroups)+Docker Images，即在Linux内核的Namespace[资源隔离]和CGroups[资源控制]技术的基础上通过镜像管理机制来实现轻量化设计。</li>
+<li><strong>Docker的本质：Docker=LXC(Namespace+CGroups)+Docker Images，即在Linux内核的Namespace[资源隔离]和CGroups[资源控制]技术的基础上通过镜像管理机制来实现轻量化设计。</strong></li>
 </ol>
 <h3><span id="42-docker的基本概念">4.2. Docker的基本概念</span></h3>
-<p><img src="/img/article/CaaS/docker.png" alt="image2016-3-15 15-48-30"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/docker.png" width="70%">
 <h4><span id="421-镜像">4.2.1. 镜像</span></h4>
 <p>Docker 镜像就是一个只读的模板，可以把镜像理解成一个模子（模具），由模子（镜像）制作的成品（容器）都是一样的（除非在生成时加额外参数），修改成品（容器）本身并不会对模子（镜像）产生影响（除非将成品提交成一个模子），容器重启时，即由模子（镜像）重新制作成一个成品（容器），与其他由该模子制作成的成品并无区别。</p>
 <p>例如：一个镜像可以包含一个完整的 ubuntu 操作系统环境，里面仅安装了 Apache 或用户需要的其它应用程序。镜像可以用来创建 Docker 容器。Docker 提供了一个很简单的机制来创建镜像或者更新现有的镜像，用户可以直接从其他人那里下载一个已经做好的镜像来直接使用。</p>
@@ -387,7 +387,7 @@ CGroup（control group）是将任意进程进行分组化管理的Linux内核�
 <h4><span id="423-仓库">4.2.3. 仓库</span></h4>
 <p>仓库是集中存放镜像文件的场所。有时候会把仓库和仓库注册服务器（Registry）混为一谈，并不严格区分。实际上，仓库注册服务器上往往存放着多个仓库，每个仓库中又包含了多个镜像，每个镜像有不同的标签（tag）。</p>
 <h3><span id="43-docker的优势">4.3. Docker的优势</span></h3>
-<p><img src="/img/article/CaaS/ContainerVSVMs.jpg" alt="Container VS VMs"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/ContainerVSVMs.jpg" width="80%">
 <ol>
 <li>
 <p>容器的快速轻量</p>
@@ -403,7 +403,7 @@ CGroup（control group）是将任意进程进行分组化管理的Linux内核�
 </li>
 </ol>
 <h2><span id="5-kubernetes概述">5. Kubernetes概述</span></h2>
-<p>更多详情请参考：<a href="http://wiki.haplat.net/pages/viewpage.action?pageId=11896198" target="_blank" rel="external">Kubernetes总架构图</a></p>
+<p>更多详情请参考：<a href="http://www.huweihuang.com/article/kubernetes/kubernetes-architecture/">Kubernetes总架构图</a></p>
 <h3><span id="51-kubernetes介绍">5.1. Kubernetes介绍</span></h3>
 <p>Kubernetes是Google开源的容器集群管理系统。它构建Docker技术之上，为容器化的应用提供资源调度、部署运行、服务发现、扩容缩容等整一套功能，本质上可看作是基于容器技术的Micro-PaaS平台，即第三代PaaS的代表性项目。</p>
 <h3><span id="52-kubernetes的基本概念">5.2. Kubernetes的基本概念</span></h3>
@@ -418,8 +418,7 @@ CGroup（control group）是将任意进程进行分组化管理的Linux内核�
 <h4><span id="525-node">5.2.5. Node</span></h4>
 <p>Kubernets属于主从的分布式集群架构，Kubernets Node（简称为Node，早期版本叫做Minion）运行并管理容器。Node作为Kubernetes的操作单元，将用来分配给Pod（或者说容器）进行绑定，Pod最终运行在Node上，Node可以认为是Pod的宿主机。</p>
 <h3><span id="53-kubernetes架构">5.3. Kubernetes架构</span></h3>
-<p><img src="/img/article/CaaS/k8s%E6%9E%B6%E6%9E%84.png" alt="k8s架构"></p>
-
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1512807966/article/caas/architecture.png" width="100%">
                 
 
                 <hr>
@@ -427,7 +426,7 @@ CGroup（control group）是将任意进程进行分组化管理的Linux内核�
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/kubernetes-architecture/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes总架构图">&larr; Previous Post</a>
+                            <a href="/article/kubernetes/kubernetes-troubleshooting/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes集群问题排查">&larr; Previous Post</a>
                         </li>
                     
                     

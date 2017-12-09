@@ -211,7 +211,7 @@
                 post-container">
 
                 <h2><span id="一-docker的总架构图">一、Docker的总架构图</span></h2>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/docker%E6%80%BB%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="docker总架构图"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577966/article/docker/dockerArch/docker-architecture.jpg" width="60%">
 <p>docker是一个C/S模式的架构，后端是一个松耦合架构，模块各司其职。</p>
 <ol>
 <li>用户是使用Docker Client与Docker Daemon建立通信，并发送请求给后者。</li>
@@ -233,7 +233,7 @@
 <ul>
 <li>
 <p>Docker Daemon的架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/docker-daemon.jpg" alt="docker daemon"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/docker-daemon.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -242,7 +242,7 @@
 <ul>
 <li>Docker Server的架构图</li>
 </ul>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/docker-server.jpg" alt="docker server"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/docker-server.jpg" width="60%">
 <ol>
 <li>Docker Server相当于C/S架构的服务端。功能为接受并调度分发Docker Client发送的请求。接受请求后，Server通过路由与分发调度，找到相应的Handler来执行请求。</li>
 <li>在Docker的启动过程中，通过包gorilla/mux，创建了一个mux.Router，提供请求的路由功能。在Golang中，gorilla/mux是一个强大的URL路由器以及调度分发器。该mux.Router中添加了众多的路由项，每一个路由项由HTTP请求方法（PUT、POST、GET或DELETE）、URL、Handler三部分组成。</li>
@@ -275,7 +275,7 @@
 <ul>
 <li>
 <p>Graph的架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/graph%E6%9E%B6%E6%9E%84.jpg" alt="graph架构"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/graph-architecture.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -304,7 +304,7 @@
 <ul>
 <li>
 <p>graphdriver架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/graphdriver.jpg" alt="graphdriver"></p>
+ <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/graphdriver.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -320,7 +320,7 @@
 <ul>
 <li>
 <p>networkdriver的架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/networkdriver.jpg" alt="networkdriver"></p>
+ <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577968/article/docker/dockerArch/networkdriver.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -338,7 +338,7 @@
 <ul>
 <li>
 <p>execdriver的架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/execdriver.jpg" alt="execdriver"></p>
+ <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/execdriver.jpg" width="55%">
 </li>
 </ul>
 <ol>
@@ -351,7 +351,7 @@
 <ul>
 <li>
 <p>libcontainer的架构图</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/libcontainer.jpg" alt="libcontainer"></p>
+ <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577967/article/docker/dockerArch/libcontainer.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -363,7 +363,7 @@
 <ul>
 <li>
 <p>container架构</p>
-<p><img src="/img/article/docker/docker%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE/container.jpg" alt="container"></p>
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577966/article/docker/dockerArch/container.jpg" width="60%">
 </li>
 </ul>
 <ol>
@@ -391,12 +391,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/docker/dockerfile-usage/" data-toggle="tooltip" data-placement="top" title="[Docker] Dockerfile使用说明">&larr; Previous Post</a>
+                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/flannel/flannel-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Flannel介绍">Next Post &rarr;</a>
+                            <a href="/article/docker/code-analysis/code-analysis-of-docker-server/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（三）之Docker Server">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

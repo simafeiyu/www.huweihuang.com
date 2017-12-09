@@ -226,33 +226,33 @@ settings resources: security settings, auth settings, and dynamic etcd cluster s
 <h3><span id="32-user相关命令">3.2. user相关命令</span></h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etcd]# etcdctl user --help</span><br><span class="line">NAME:</span><br><span class="line">   etcdctl user - user add, grant and revoke subcommands</span><br><span class="line">USAGE:</span><br><span class="line">   etcdctl user command [command options] [arguments...]</span><br><span class="line">COMMANDS:</span><br><span class="line">   add      add a new user for the etcd cluster</span><br><span class="line">   get      get details for a user</span><br><span class="line">   list     list all current users</span><br><span class="line">   remove   remove a user for the etcd cluster</span><br><span class="line">   grant    grant roles to an etcd user</span><br><span class="line">   revoke   revoke roles for an etcd user</span><br><span class="line">   passwd   change password for a user</span><br><span class="line">   help, h  Shows a list of commands or help for one command</span><br><span class="line">    </span><br><span class="line">OPTIONS:</span><br><span class="line">   --help, -h   show help</span><br></pre></td></tr></table></figure>
 <h4><span id="321-添加root用户并设置密码">3.2.1. 添加root用户并设置密码</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> user add root</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> user add root</p>
 <h4><span id="322-添加非root用户并设置密码">3.2.2. 添加非root用户并设置密码</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 user add huwh</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 user add huwh</p>
 <h4><span id="323-查看当前所有用户">3.2.3. 查看当前所有用户</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 user list</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 user list</p>
 <h4><span id="324-将用户添加到对应角色">3.2.4. 将用户添加到对应角色</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 user grant --roles test1 phpor</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 user grant --roles test1 phpor</p>
 <h4><span id="325-查看用户拥有哪些角色">3.2.5. 查看用户拥有哪些角色</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 user get phpor</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 user get phpor</p>
 <h3><span id="33-role相关命令">3.3. role相关命令</span></h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etcd]# etcdctl role --help</span><br><span class="line">NAME:</span><br><span class="line">   etcdctl role - role add, grant and revoke subcommands</span><br><span class="line">USAGE:</span><br><span class="line">   etcdctl role command [command options] [arguments...]</span><br><span class="line">COMMANDS:</span><br><span class="line">   add      add a new role for the etcd cluster</span><br><span class="line">   get      get details for a role</span><br><span class="line">   list     list all roles</span><br><span class="line">   remove   remove a role from the etcd cluster</span><br><span class="line">   grant    grant path matches to an etcd role</span><br><span class="line">   revoke   revoke path matches for an etcd role</span><br><span class="line">   help, h  Shows a list of commands or help for one command</span><br><span class="line">    </span><br><span class="line">OPTIONS:</span><br><span class="line">   --help, -h   show help</span><br></pre></td></tr></table></figure>
 <h4><span id="331-添加角色">3.3.1. 添加角色</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:2379 role add test1</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:2379 role add test1</p>
 <h4><span id="332-查看所有角色">3.3.2. 查看所有角色</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 role list</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 role list</p>
 <h4><span id="333-给角色分配权限">3.3.3. 给角色分配权限</span></h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etcd]# etcdctl role grant --help</span><br><span class="line">NAME:</span><br><span class="line">   grant - grant path matches to an etcd role</span><br><span class="line">USAGE:</span><br><span class="line">   command grant [command options] [arguments...]</span><br><span class="line">OPTIONS:</span><br><span class="line">   --path   Path granted for the role to access</span><br><span class="line">   --read   Grant read-only access</span><br><span class="line">   --write  Grant write-only access</span><br><span class="line">   --readwrite  Grant read-write access</span><br></pre></td></tr></table></figure>
 <p>1、只包含目录<br>
-etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 role grant --readwrite --path /test1 test1</p>
+etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 role grant --readwrite --path /test1 test1</p>
 <p>2、包括目录和子目录或文件<br>
-etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:123 role grant --readwrite --path /test1/* test1</p>
+etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:123 role grant --readwrite --path /test1/* test1</p>
 <h3><span id="334-查看角色所拥有的权限">3.3.4. 查看角色所拥有的权限</span></h3>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> --username root:2379 role get test1</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> --username root:2379 role get test1</p>
 <h3><span id="34-auth相关操作">3.4. auth相关操作</span></h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost etcd]# etcdctl auth --help</span><br><span class="line">NAME:</span><br><span class="line">   etcdctl auth - overall auth controls</span><br><span class="line">USAGE:</span><br><span class="line">   etcdctl auth command [command options] [arguments...]</span><br><span class="line">COMMANDS:</span><br><span class="line">   enable   enable auth access controls</span><br><span class="line">   disable  disable auth access controls</span><br><span class="line">   help, h  Shows a list of commands or help for one command</span><br><span class="line">    </span><br><span class="line">OPTIONS:</span><br><span class="line">   --help, -h   show help</span><br></pre></td></tr></table></figure>
 <h4><span id="341-开启认证">3.4.1. 开启认证</span></h4>
-<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="external">http://172.16.22.36:2379</a> auth enable</p>
+<p>etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="noopener">http://172.16.22.36:2379</a> auth enable</p>
 <h2><span id="4-访问控制设置步骤">4. 访问控制设置步骤</span></h2>
 <table>
 <thead>
@@ -297,8 +297,8 @@ etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="ext
 </table>
 <h2><span id="5-访问认证的api调用">5. 访问认证的API调用</span></h2>
 <p>更多参考</p>
-<p><a href="https://coreos.com/etcd/docs/latest/v2/auth_api.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/v2/auth_api.html</a></p>
-<p><a href="https://coreos.com/etcd/docs/latest/v2/authentication.html" target="_blank" rel="external">https://coreos.com/etcd/docs/latest/v2/authentication.html</a></p>
+<p><a href="https://coreos.com/etcd/docs/latest/v2/auth_api.html" target="_blank" rel="noopener">https://coreos.com/etcd/docs/latest/v2/auth_api.html</a></p>
+<p><a href="https://coreos.com/etcd/docs/latest/v2/authentication.html" target="_blank" rel="noopener">https://coreos.com/etcd/docs/latest/v2/authentication.html</a></p>
 
                 
 
@@ -307,7 +307,7 @@ etcdctl --endpoints <a href="http://172.16.22.36:2379/" target="_blank" rel="ext
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/etcd/etcd-introduction/" data-toggle="tooltip" data-placement="top" title="[Etcd] Etcd介绍">&larr; Previous Post</a>
+                            <a href="/article/database/redis-introduction/" data-toggle="tooltip" data-placement="top" title="[Database] Redis介绍">&larr; Previous Post</a>
                         </li>
                     
                     

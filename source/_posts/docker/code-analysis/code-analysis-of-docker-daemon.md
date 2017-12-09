@@ -13,7 +13,7 @@ catagories:
 
 ## 一、Docker Daemon架构示意图
 
-![Daemon架构图](/img/article/docker/docker源码之Docker-Daemon/Daemon架构图.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578079/article/docker/dockerDaemon/DaemonArchitecture.jpg" width="60%">
 
 Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
 
@@ -30,7 +30,7 @@ Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请�
 
 ## 二、Docker Daemon启动流程图
 
-![Daemon启动流程](/img/article/docker/docker源码之Docker-Daemon/Daemon启动流程.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578079/article/docker/dockerDaemon/DaemonFlow.jpg" width="50%">
 
 启动Docker Daemon时，一般可以使用以下命令：docker --daemon=true; docker –d; docker –d=true等。接着由docker的main()函数来解析以上命令的相应flag参数，并最终完成Docker Daemon的启动。
 

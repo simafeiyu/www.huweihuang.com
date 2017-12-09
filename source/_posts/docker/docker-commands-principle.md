@@ -13,7 +13,7 @@ catagories:
 
 ## docker常用命令原理图概览：
 
-![docker命令原理图](/img/article/docker/docker常用命令原理图/docker命令原理图.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578333/article/docker/commands/dockerCommands.jpg" width="70%">
 
 ## （一）image layer（镜像层）
 

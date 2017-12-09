@@ -209,6 +209,73 @@
 
 <div class="post-preview">
 
+    <a href="/article/nginx/nginx-deploy&config/">
+        <h2 class="post-title">
+            [Nginx] Nginx的部署与配置
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 部署
+1.1. 使用安装包的方式
+rpm -ivh nginx-xxx.rpm
+1.2. 使用源代码安装
+1.2.1. 下载源码包
+1wget http://blob.wae.haplat.net/nginx/nginx-1.9.13.tar.gz
+1.2.2. 创建临时目录并解压源码包
+12mkdir $HOME/buildcd $HOME/build &amp;&amp; tar ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Nginx" title="Nginx">Nginx</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/python/basics/python-basics/">
+        <h2 class="post-title">
+            [Python] Python系列（一）之基础篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 数据类型和变量
+​	Python使用缩进来组织代码块，一般使用4个空格的缩进。使用#来注释一行，其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。Python对大小写敏感。
+1.1 整数
+​	Python可以处理任意大小的整数，包括负整数，写法与数学上写法一致，例如：-100。如果用十六进制表示，则用前缀为0x和0-9，a-f表示，例如：0xff00。
+1.2 浮点数......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Python" title="Python">Python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/golang/golang-test/">
         <h2 class="post-title">
             [Golang] Golang测试用例
@@ -223,6 +290,36 @@ Go语言中自带有一个轻量级的测试框架testing和自带的go test命�
 
 文件名必须是_test.go结尾的，这样在执行go test的时候才会执行到相应的代码
 你必须import test......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/golang/govendor-usage/">
+        <h2 class="post-title">
+            [Golang] govendor的使用
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. govendor简介
+golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
+常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
         </div>
     </a>
     
@@ -275,52 +372,24 @@ JSON是一种轻量级的数据交换语言。
 
 <div class="post-preview">
 
-    <a href="/article/golang/govendor-usage/">
+    <a href="/article/golang/golang-gdb-debug/">
         <h2 class="post-title">
-            [Golang] govendor的使用
+            [Golang] Golang之GDB调试
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. govendor简介
-golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
-常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Golang" title="Golang">Golang</a>
-            
-        </div>
-    
+            1. GDB简介
+GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
 
-</div>
-<hr>
+启动程序，可以按照开发者的自定义要求运行程序。
+可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
+当程序被停住时，可以检查此时程序中所发生的事。
+动态的改变当前程序的执行环境。
 
-<div class="post-preview">
-
-    <a href="/article/golang/beego/beego-introduction/">
-        <h2 class="post-title">
-            [Golang] beego介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. beego的使用
-1.1. beego的安装
-1go get github.com/astaxie/beego
-1.2. beego的升级
-1、直接升级
-1go get -u github.com/astaxie/beego
-2、源码下载升级
-用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
+目前支持调试Go程序的GDB版本必须大于7.1。
+编译Go程序......
         </div>
     </a>
     
@@ -369,24 +438,22 @@ golang工程的依赖包经常使用go get 的方式来获取，例如：go get 
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-gdb-debug/">
+    <a href="/article/golang/beego/beego-introduction/">
         <h2 class="post-title">
-            [Golang] Golang之GDB调试
+            [Golang] beego介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. GDB简介
-GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
-
-启动程序，可以按照开发者的自定义要求运行程序。
-可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
-当程序被停住时，可以检查此时程序中所发生的事。
-动态的改变当前程序的执行环境。
-
-目前支持调试Go程序的GDB版本必须大于7.1。
-编译Go程序......
+            1. beego的使用
+1.1. beego的安装
+1go get github.com/astaxie/beego
+1.2. beego的升级
+1、直接升级
+1go get -u github.com/astaxie/beego
+2、源码下载升级
+用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
         </div>
     </a>
     
@@ -462,72 +529,6 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes核心原理（三）之Scheduler
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. Scheduler简介
-Scheduler负责Pod调度。在整个系统中起&quot;承上启下&quot;作用，承上：负责接收Controller Manager创建的新的Pod，为其选择一个合适的Node；启下：Node上的kubelet接管Pod的生命周期。
-Scheduler：
-1）通过调度算法为待调度Pod列表的每个Pod从Node列表中选择一个最适合的Node，并将信息写入et......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-15
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/kubernetes/kubernetes-basic-concepts/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes基本概念
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. Master
-集群的控制节点，负责整个集群的管理和控制，kubernetes的所有的命令基本都是发给Master，由它来负责具体的执行过程。
-1.1. Master的组件
-
-kube-apiserver：资源增删改查的入口
-kube-controller-manager：资源对象的大总管
-kube-scheduler：负责资源调度（Pod调度）
-etcd Server:kubernet......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -568,11 +569,11 @@ etcd Server:kubernet......
     <div class="tags">
         
             
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -580,11 +581,13 @@ etcd Server:kubernet......
             
         
             
-            <a href="/tags/#Kubernetes" title="Kubernetes" rel="15">Kubernetes</a>
+            <a href="/tags/#Kubernetes" title="Kubernetes" rel="16">Kubernetes</a>
             
         
             
             <a href="/tags/#Golang" title="Golang" rel="11">Golang</a>
+            
+        
             
         
             
@@ -650,11 +653,11 @@ etcd Server:kubernet......
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
@@ -666,7 +669,7 @@ etcd Server:kubernet......
         </li>
       
         <li>
-          <a href="/article/golang/golang-packages/">[Golang] Golang常用包</a>
+          <a href="/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a>
         </li>
       
     </ul>
@@ -693,7 +696,7 @@ etcd Server:kubernet......
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

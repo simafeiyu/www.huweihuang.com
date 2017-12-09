@@ -209,20 +209,24 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-troubleshooting/">
+    <a href="/article/kubernetes/kubernetes-architecture/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes集群问题排查
+            [Kubernetes] Kubernetes总架构图
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. 查看系统Event事件
- 1kubectl describe pod &lt;PodName&gt; --namespace=&lt;NAMESPACE&gt;
-该命令可以显示Pod创建时的配置定义、状态等信息和最近的Event事件，事件信息可用于排错。例如当Pod状态为Pending，可通过查看Event事件确认原因，一般原因有几种：
+            1. Kubernetes的总架构图
 
-没有可用的Node可调度
-开启了资源配额管理并......
+2. Kubernetes各个组件介绍
+2.1 kube-master[控制节点]
+master的工作流程图
+
+
+Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
+Kubernetes Client将请求发送给API server。
+API Server根据请求的类型，比如创建Pod时storage类型是pods，......
         </div>
     </a>
     
@@ -242,28 +246,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-architecture/">
+    <a href="/article/kubernetes/kubernetes-troubleshooting/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes总架构图
+            [Kubernetes] Kubernetes集群问题排查
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Kubernetes的总架构图
+            1. 查看系统Event事件
+ 1kubectl describe pod &lt;PodName&gt; --namespace=&lt;NAMESPACE&gt;
+该命令可以显示Pod创建时的配置定义、状态等信息和最近的Event事件，事件信息可用于排错。例如当Pod状态为Pending，可通过查看Event事件确认原因，一般原因有几种：
 
-二、Kubernetes各个组件介绍
-（一）kube-master[控制节点]
-
-
-master的工作流程图
-
-
-
-
-Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
-Kubernetes Client将请求发送给API server。
-API Server根据请求的类型，比如创建Pod时storage类型是pods......
+没有可用的Node可调度
+开启了资源配额管理并......
         </div>
     </a>
     
@@ -334,6 +330,37 @@ kubernetes API Server的功能：
         <p class="post-meta" style="margin: 10px 0;">
             Posted by 胡伟煌 on
             2017-09-18
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/kubernetes/kubernetes-pod-introduction/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes之Pod详解
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. Pod的基本用法
+1.1. 说明
+
+Pod实际上是容器的集合，在k8s中对运行容器的要求为：容器的主程序需要一直在前台运行，而不是后台运行。应用可以改造成前台运行的方式，例如Go语言的程序，直接运行二进制文件；java语言则运行主类；tomcat程序可以写个运行脚本。或者通过supervisor的进程管理工具，即supervisor在前台运行，应用程序由supervisor管理在后台运......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-17
         </p>
         <div class="tags">
             
@@ -608,41 +635,6 @@ interface
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/nginx/nginx-deploy&config/">
-        <h2 class="post-title">
-            [Nginx] Nginx的部署与配置
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. 部署
-1.1. 使用安装包的方式
-rpm -ivh nginx-xxx.rpm
-1.2. 使用源代码安装
-1.2.1. 下载源码包
-1wget http://blob.wae.haplat.net/nginx/nginx-1.9.13.tar.gz
-1.2.2. 创建临时目录并解压源码包
-12mkdir $HOME/buildcd $HOME/build &amp;&amp; tar ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Nginx" title="Nginx">Nginx</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -679,11 +671,11 @@ rpm -ivh nginx-xxx.rpm
     <div class="tags">
         
             
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -691,11 +683,13 @@ rpm -ivh nginx-xxx.rpm
             
         
             
-            <a href="/tags/#Kubernetes" title="Kubernetes" rel="15">Kubernetes</a>
+            <a href="/tags/#Kubernetes" title="Kubernetes" rel="16">Kubernetes</a>
             
         
             
             <a href="/tags/#Golang" title="Golang" rel="11">Golang</a>
+            
+        
             
         
             
@@ -761,11 +755,11 @@ rpm -ivh nginx-xxx.rpm
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
@@ -777,7 +771,7 @@ rpm -ivh nginx-xxx.rpm
         </li>
       
         <li>
-          <a href="/article/golang/golang-packages/">[Golang] Golang常用包</a>
+          <a href="/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a>
         </li>
       
     </ul>
@@ -804,7 +798,7 @@ rpm -ivh nginx-xxx.rpm
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

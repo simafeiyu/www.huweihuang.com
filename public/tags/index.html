@@ -196,22 +196,61 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#Docker" title="Docker" rel="6">Docker</a>
-                
                     <a href="#Database" title="Database" rel="2">Database</a>
+                
+                    <a href="#Docker" title="Docker" rel="6">Docker</a>
                 
                     <a href="#Etcd" title="Etcd" rel="3">Etcd</a>
                 
-                    <a href="#Kubernetes" title="Kubernetes" rel="15">Kubernetes</a>
+                    <a href="#Kubernetes" title="Kubernetes" rel="16">Kubernetes</a>
                 
                     <a href="#Golang" title="Golang" rel="11">Golang</a>
                 
                     <a href="#Nginx" title="Nginx" rel="1">Nginx</a>
                 
+                    <a href="#Python" title="Python" rel="1">Python</a>
+                
             </div>
 
             <!-- 标签列表 -->
 
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Database">
+                    <span class="tag-text">Database</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/database/mysql-commonds/">
+                        <h2 class="post-title">
+                            [Database] Mysql常用命令
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/database/redis-introduction/">
+                        <h2 class="post-title">
+                            [Database] Redis介绍
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
             
             <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Docker">
@@ -311,43 +350,6 @@
             </div>
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Database">
-                    <span class="tag-text">Database</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/database/redis-introduction/">
-                        <h2 class="post-title">
-                            [Database] Redis介绍
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/article/database/mysql-commonds/">
-                        <h2 class="post-title">
-                            [Database] Mysql常用命令
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="Etcd">
                     <span class="tag-text">Etcd</span>
                 </span>
@@ -357,9 +359,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/etcd/etcd-commands/">
+                     <a href="/article/etcd/etcd-auth&security/">
                         <h2 class="post-title">
-                            [Etcd] Etcd常用命令
+                            [Etcd] Etcd访问控制
                         </h2>
                         
                     </a>
@@ -372,9 +374,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/etcd/etcd-auth&security/">
+                     <a href="/article/etcd/etcd-commands/">
                         <h2 class="post-title">
-                            [Etcd] Etcd访问控制
+                            [Etcd] Etcd常用命令
                         </h2>
                         
                     </a>
@@ -484,6 +486,21 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
+                     <a href="/article/kubernetes/kubernetes-pod-introduction/">
+                        <h2 class="post-title">
+                            [Kubernetes] Kubernetes之Pod详解
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
                      <a href="/article/kubernetes/kubernetes-troubleshooting/">
                         <h2 class="post-title">
                             [Kubernetes] Kubernetes集群问题排查
@@ -544,9 +561,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">
+                     <a href="/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/">
                         <h2 class="post-title">
-                            [Kubernetes] Kubernetes核心原理（四）之kubelet
+                            [Kubernetes] Kubernetes核心原理（三）之Scheduler
                         </h2>
                         
                     </a>
@@ -559,9 +576,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/">
+                     <a href="/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">
                         <h2 class="post-title">
-                            [Kubernetes] Kubernetes核心原理（三）之Scheduler
+                            [Kubernetes] Kubernetes核心原理（四）之kubelet
                         </h2>
                         
                     </a>
@@ -589,9 +606,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/kubernetes/monitoring/influxdb-introduction/">
+                     <a href="/article/kubernetes/monitoring/heapster-introduction/">
                         <h2 class="post-title">
-                            [Kubernetes] Influxdb介绍
+                            [Kubernetes] Heapster介绍
                         </h2>
                         
                     </a>
@@ -604,9 +621,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/kubernetes/monitoring/heapster-introduction/">
+                     <a href="/article/kubernetes/monitoring/influxdb-introduction/">
                         <h2 class="post-title">
-                            [Kubernetes] Heapster介绍
+                            [Kubernetes] Influxdb介绍
                         </h2>
                         
                     </a>
@@ -701,9 +718,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/golang/golang-pointer/">
+                     <a href="/article/golang/golang-packages/">
                         <h2 class="post-title">
-                            [Golang] Go语言指针详解
+                            [Golang] Golang常用包
                         </h2>
                         
                     </a>
@@ -716,9 +733,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/article/golang/golang-packages/">
+                     <a href="/article/golang/golang-pointer/">
                         <h2 class="post-title">
-                            [Golang] Golang常用包
+                            [Golang] Go语言指针详解
                         </h2>
                         
                     </a>
@@ -816,6 +833,28 @@
                      <a href="/article/nginx/nginx-deploy&config/">
                         <h2 class="post-title">
                             [Nginx] Nginx的部署与配置
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="Python">
+                    <span class="tag-text">Python</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/article/python/basics/python-basics/">
+                        <h2 class="post-title">
+                            [Python] Python系列（一）之基础篇
                         </h2>
                         
                     </a>

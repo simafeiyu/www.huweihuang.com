@@ -240,7 +240,7 @@
 <li>默认不启动HTTPS安全访问控制。</li>
 </ol>
 <h3><span id="23-访问方式">2.3. 访问方式</span></h3>
-<p>Kubernetes REST API可参考<a href="https://kubernetes.io/docs/api-reference/v1.6/" target="_blank" rel="external">https://kubernetes.io/docs/api-reference/v1.6/</a></p>
+<p>Kubernetes REST API可参考<a href="https://kubernetes.io/docs/api-reference/v1.6/" target="_blank" rel="noopener">https://kubernetes.io/docs/api-reference/v1.6/</a></p>
 <h4><span id="231-curl">2.3.1. curl</span></h4>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:8080/api</span><br><span class="line">curl localhost:8080/api/v1/pods</span><br><span class="line">curl localhost:8080/api/v1/services</span><br><span class="line">curl localhost:8080/api/v1/replicationcontrollers</span><br></pre></td></tr></table></figure>
 <h4><span id="232-kubectl-proxy">2.3.2. Kubectl Proxy</span></h4>
@@ -251,12 +251,12 @@
 <h4><span id="233-kubectl客户端">2.3.3. kubectl客户端</span></h4>
 <p>命令行工具kubectl客户端，通过命令行参数转换为对API Server的REST API调用，并将调用结果输出。</p>
 <p>命令格式：kubectl [command] [options]</p>
-<p>具体可参考<a href="http://wiki.haplat.net/pages/viewpage.action?pageId=11899446" target="_blank" rel="external">k8s常用命令</a></p>
+<p>具体可参考<a href="http://wiki.haplat.net/pages/viewpage.action?pageId=11899446" target="_blank" rel="noopener">k8s常用命令</a></p>
 <h4><span id="234-编程方式调用">2.3.4. 编程方式调用</span></h4>
 <p>使用场景：</p>
 <p>1、运行在Pod里的用户进程调用kubernetes API,通常用来实现分布式集群搭建的目标。</p>
 <p>2、开发基于kubernetes的管理平台，比如调用kubernetes API来完成Pod、Service、RC等资源对象的图形化创建和管理界面。可以使用kubernetes提供的Client Library。</p>
-<p>具体可参考<a href="https://github.com/kubernetes/client-go" target="_blank" rel="external">https://github.com/kubernetes/client-go</a>。</p>
+<p>具体可参考<a href="https://github.com/kubernetes/client-go" target="_blank" rel="noopener">https://github.com/kubernetes/client-go</a>。</p>
 <h2><span id="3-通过api-server访问node-pod和service">3. 通过API Server访问Node、Pod和Service</span></h2>
 <p>k8s API Server最主要的REST接口是资源对象的增删改查，另外还有一类特殊的REST接口—k8s Proxy API接口，这类接口的作用是代理REST请求，即kubernetes API Server把收到的REST请求转发到某个Node上的kubelet守护进程的REST端口上，由该kubelet进程负责响应。</p>
 <h3><span id="31-node相关接口">3.1. Node相关接口</span></h3>
@@ -319,7 +319,7 @@
                     
                     
                         <li class="next">
-                            <a href="/article/golang/golang-packages/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang常用包">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/kubernetes-pod-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes之Pod详解">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

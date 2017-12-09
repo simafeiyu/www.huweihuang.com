@@ -289,7 +289,7 @@
 <ol>
 <li>Pod的缩放可以通过以下命令实现：kubectl scale rc redis-slave --replicas=3</li>
 <li>删除RC并不会删除该RC创建的Pod，可以将副本数设置为0，即可删除对应Pod。或者通过kubectl stop /delete命令来一次性删除RC和其创建的Pod。</li>
-<li>改变RC中Pod模板的镜像版本可以实现滚动升级（Rolling Update）。具体操作见<a href="https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/" target="_blank" rel="external">https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/</a></li>
+<li>改变RC中Pod模板的镜像版本可以实现滚动升级（Rolling Update）。具体操作见<a href="https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/run-application/rolling-update-replication-controller/</a></li>
 <li>Kubernetes1.2以上版本将RC升级为Replica Set，它与当前RC的唯一区别在于Replica Set支持基于集合的Label Selector(Set-based selector)，而旧版本RC只支持基于等式的Label Selector(equality-based selector)。</li>
 <li>Kubernetes1.2以上版本通过Deployment来维护Replica Set而不是单独使用Replica Set。即控制流为：Delpoyment→Replica Set→Pod。即新版本的Deployment+Replica Set替代了RC的作用。</li>
 </ol>
@@ -435,12 +435,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes核心原理（三）之Scheduler">&larr; Previous Post</a>
+                            <a href="/article/kubernetes/monitoring/influxdb-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Influxdb介绍">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/kubernetes-commands/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes常用命令">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/monitoring/heapster-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Heapster介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

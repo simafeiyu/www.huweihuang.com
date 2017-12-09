@@ -316,7 +316,7 @@
 <li>将服务启动方式设置为后台运行</li>
 </ul>
 <p>解决方法：</p>
-<p>1、将命令改为阻塞式命令（前台运行），例如：<strong><a href="http://zkServer.sh" target="_blank" rel="external">zkServer.sh</a> start-foreground</strong></p>
+<p>1、将命令改为阻塞式命令（前台运行），例如：<strong><a href="http://zkServer.sh" target="_blank" rel="noopener">zkServer.sh</a> start-foreground</strong></p>
 <p>2、java运行程序的启动脚本将 nohup xxx &amp;的nobup和&amp;去掉，例如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup JAVA_HOME/bin/java JAVA_OPTS -cp $CLASSPATH com.cnc.open.processor.Main &amp;</span><br></pre></td></tr></table></figure>
 <p>改为：</p>
@@ -329,9 +329,13 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/article/kubernetes/kubernetes-architecture/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes总架构图">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/article/kubernetes/kubernetes-architecture/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes总架构图">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/paas-based-on-docker&kubernetes/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] 基于Docker及Kubernetes技术构建容器云（PaaS）平台">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

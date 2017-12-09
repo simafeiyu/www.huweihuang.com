@@ -212,9 +212,9 @@
 
                 <h2><span id="1-概述">1. 概述</span></h2>
 <h3><span id="11-cadvisor">1.1. cAdvisor</span></h3>
-<p>cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor对外提供服务的端口，默认为4194。可以通过浏览器<code>Node_IP:port</code>访问。项目主页：<a href="http://github.com/google/cadvisor%E3%80%82" target="_blank" rel="external">http://github.com/google/cadvisor。</a></p>
+<p>cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor对外提供服务的端口，默认为4194。可以通过浏览器<code>Node_IP:port</code>访问。项目主页：<a href="http://github.com/google/cadvisor%E3%80%82" target="_blank" rel="noopener">http://github.com/google/cadvisor。</a></p>
 <h3><span id="12-heapster">1.2. Heapster</span></h3>
-<p>是对集群中的各个Node、Pod的资源使用数据进行采集，通过访问每个Node上Kubelet的API，再通过Kubelet调用cAdvisor的API来采集该节点上所有容器的性能数据。由Heapster进行数据汇聚，保存到后端存储系统中，例如InfluxDB，Google Cloud Logging等。项目主页为：<a href="https://github.com/kubernetes/heapster%E3%80%82" target="_blank" rel="external">https://github.com/kubernetes/heapster。</a></p>
+<p>是对集群中的各个Node、Pod的资源使用数据进行采集，通过访问每个Node上Kubelet的API，再通过Kubelet调用cAdvisor的API来采集该节点上所有容器的性能数据。由Heapster进行数据汇聚，保存到后端存储系统中，例如InfluxDB，Google Cloud Logging等。项目主页为：<a href="https://github.com/kubernetes/heapster%E3%80%82" target="_blank" rel="noopener">https://github.com/kubernetes/heapster。</a></p>
 <h3><span id="13-influxdb">1.3. InfluxDB</span></h3>
 <p>是分布式时序数据库（每条记录带有时间戳属性），主要用于实时数据采集、事件跟踪记录、存储时间图表、原始数据等。提供REST API用于数据的存储和查询。项目主页为http://InfluxDB.com。</p>
 <h3><span id="14-grafana">1.4. Grafana</span></h3>
@@ -225,7 +225,7 @@
 <h2><span id="2-部署与使用">2. 部署与使用</span></h2>
 <h3><span id="21-cadvisor">2.1. cAdvisor</span></h3>
 <p>kubelet的启动参数–cadvisor-port可以定义cAdvisor对外提供服务的端口，默认为4194。可以通过浏览器<code>Node_IP:port</code>访问。也提供了REST API供客户端远程调用，API返回的格式为JSON，可以采用URL访问：http://<code>hostname</code>:<code>port</code>/api/<code>version</code>/<code>request</code>/</p>
-<p>例如：<a href="http://14.152.49.100:4194/api/v1.3/machine" target="_blank" rel="external">http://14.152.49.100:4194/api/v1.3/machine</a> 获取主机信息。</p>
+<p>例如：<a href="http://14.152.49.100:4194/api/v1.3/machine" target="_blank" rel="noopener">http://14.152.49.100:4194/api/v1.3/machine</a> 获取主机信息。</p>
 <h3><span id="22-service">2.2. Service</span></h3>
 <h4><span id="221-heapster-service">2.2.1. heapster-service</span></h4>
 <p><strong>heapster-service.yaml</strong></p>
@@ -280,12 +280,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/monitoring/cadvisor-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] cAdvisor介绍">&larr; Previous Post</a>
+                            <a href="/article/database/mysql-commonds/" data-toggle="tooltip" data-placement="top" title="[Database] Mysql常用命令">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/database/mysql-commonds/" data-toggle="tooltip" data-placement="top" title="[Database] Mysql常用命令">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/monitoring/influxdb-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Influxdb介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

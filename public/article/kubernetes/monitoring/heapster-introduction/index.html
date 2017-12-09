@@ -215,14 +215,14 @@
 Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。</p>
 <h2><span id="2-heapster部署与配置">2. heapster部署与配置</span></h2>
 <h3><span id="21-注意事项">2.1. 注意事项</span></h3>
-<p>需同步部署机器和被采集机器的时间：ntpdate <a href="http://time.windows.com" target="_blank" rel="external">time.windows.com</a></p>
+<p>需同步部署机器和被采集机器的时间：ntpdate <a href="http://time.windows.com" target="_blank" rel="noopener">time.windows.com</a></p>
 <p>加入定时任务，定期同步时间</p>
 <p>crontab –e</p>
-<p>30 5 * * *          /usr/sbin/ntpdate <a href="http://time.windows.com" target="_blank" rel="external">time.windows.com</a>          //每天早晨5点半执行</p>
+<p>30 5 * * *          /usr/sbin/ntpdate <a href="http://time.windows.com" target="_blank" rel="noopener">time.windows.com</a>          //每天早晨5点半执行</p>
 <h3><span id="22-容器式部署">2.2. 容器式部署</span></h3>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>拉取镜像</span><br><span class="line">docker pull registry.wae.haplat.net/test/heapster:v1.3.0</span><br><span class="line"><span class="meta">#</span>运行容器</span><br><span class="line">docker run -d -p 8082:8082 --net=host registry.wae.haplat.net/test/heapster:latest --source=kubernetes:http://&lt;k8s-server-ip&gt;:8080?inClusterConfig=false\&amp;useServiceAccount=false --sink=influxdb:http://&lt;influxdb-ip&gt;:8086?db=&lt;k8s_env_zone&gt;</span><br></pre></td></tr></table></figure>
 <h3><span id="23-配置说明">2.3. 配置说明</span></h3>
-<p>可以参考<a href="https://github.com/kubernetes/heapster/tree/master/docs" target="_blank" rel="external">官方文档</a></p>
+<p>可以参考<a href="https://github.com/kubernetes/heapster/tree/master/docs" target="_blank" rel="noopener">官方文档</a></p>
 <h4><span id="231-source">2.3.1. –source</span></h4>
 <p>–source: 指定数据获取源。这里指定kube-apiserver即可。<br>
 后缀参数：<br>
@@ -522,7 +522,7 @@ withfields： 使用InfluxDB fields(默认：false)。</p>
 </tbody>
 </table>
 <h2><span id="5-heapster-api">5. heapster API</span></h2>
-<p>见官方文档：<a href="https://github.com/kubernetes/heapster/blob/master/docs/model.md" target="_blank" rel="external">https://github.com/kubernetes/heapster/blob/master/docs/model.md</a></p>
+<p>见官方文档：<a href="https://github.com/kubernetes/heapster/blob/master/docs/model.md" target="_blank" rel="noopener">https://github.com/kubernetes/heapster/blob/master/docs/model.md</a></p>
 
                 
 
@@ -531,12 +531,12 @@ withfields： 使用InfluxDB fields(默认：false)。</p>
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/database/mysql-commonds/" data-toggle="tooltip" data-placement="top" title="[Database] Mysql常用命令">&larr; Previous Post</a>
+                            <a href="/article/kubernetes/kubernetes-basic-concepts/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes基本概念">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/monitoring/influxdb-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Influxdb介绍">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/kubernetes-commands/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes常用命令">Next Post &rarr;</a>
                         </li>
                     
                 </ul>

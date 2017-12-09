@@ -15,7 +15,7 @@ catagories:
 
 ​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
 Docker Client运行流程图如下：
-![docker client流程图](/img/article/docker/docker源码之docker-client/docker-client流程图.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578124/article/docker/dockerClient/docker-client-flow.jpg" width="60%"/>
 
 说明：本文分析的代码为Docker 1.2.0版本。
 

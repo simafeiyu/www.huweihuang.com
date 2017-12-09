@@ -25,11 +25,11 @@ catagories:
 
 1. PaaS(Platform as a service)，平台即服务，指将软件研发的平台（或业务基础平台）作为一种服务，以SaaS的模式提交给用户。
 2. PaaS是云计算服务的其中一种模式，云计算是一种按使用量付费的模式的服务，类似一种租赁服务，服务可以是基础设施计算资源（IaaS），平台（PaaS），软件（SaaS）。租用IT资源的方式来实现业务需要，如同水力、电力资源一样，计算、存储、网络将成为企业IT运行的一种被使用的资源，无需自己建设，可按需获得。
-3. PaaS的实质是将互联网的资源服务化为可编程接口，为第三方开发者提供有商业价值的资源和服务平台。简而言之，IaaS就是卖硬件及计算资源，PaaS就是卖开发、运行环境，SaaS就是卖软件。
+3. PaaS的实质是将互联网的资源服务化为可编程接口，为第三方开发者提供有商业价值的资源和服务平台。简而言之，**IaaS就是卖硬件及计算资源，PaaS就是卖开发、运行环境，SaaS就是卖软件**。
 
 ### 1.2. IaaS/PaaS/SaaS说明
 
- ![云计算三个层次](/img/article/CaaS/云计算三个层次.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577867/article/caas/cloud-computing.jpg" width="40%">
 
 | 类型                                       | 说明                     | 比喻          | 例子                   |
 | ---------------------------------------- | ---------------------- | ----------- | -------------------- |
@@ -37,7 +37,7 @@ catagories:
 | PaaS: Platform-as-a-Service(平台即服务)       | 提供的服务是软件研发的平台或业务基础平台   | 商品房，需要自己装修  | GAE（谷歌开发者平台）         |
 | SaaS: Software-as-a-Service(软件即服务)       | 提供的服务是运行在云计算基础设施上的应用程序 | 酒店套房，可以直接入住 | 谷歌的Gmail邮箱           |
 
-![PaaS](/img/article/CaaS/PaaS.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577869/article/caas/paas.jpg" width="70%">
 
 ### 1.3. PaaS的特点（三种层次）
 
@@ -55,11 +55,11 @@ App Engine是PaaS模式的一种实现方式，App Engine将应用运行所需�
 
 App Engine利用虚拟化与自动化技术实现快速搭建部署应用运行环境和动态调整应用运行时环境资源这两个目标。一方面实现即时部署以及快速回收，降低了环境搭建时间，避免了手工配置错误，快速重复搭建环境，及时回收资源， 减少了低利用率硬件资源的空置。另一方面，根据应用运行时的需求对应用环境进行动态调整，实现了应用平台的弹性扩展和自优化，减少了非高峰时硬件资源的空置。
 
-简而言之，App Engine主要目标是：Easy to maintain(维护), Easy to scale(扩容), Easy to build(构建)。
+简而言之，**App Engine主要目标是：Easy to maintain(维护), Easy to scale(扩容), Easy to build(构建)**。
 
 ### 2.2. 架构设计
 
- ![App Engine](/img/article/CaaS/AppEngine.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/AppEngine.jpg" width="80%">
 
 ### 2.3. 组成模块说明
 
@@ -80,7 +80,7 @@ App Engine利用虚拟化与自动化技术实现快速搭建部署应用运行�
 | ------ | ------------------------------------- |
 | 应用载体   | Docker                                |
 | 编排工具   | Kubernetes                            |
-| 配置管理   | Etcd                                  |
+| 配置数据   | Etcd                                  |
 | 网络管理   | Flannel                               |
 | 存储管理   | Ceph                                  |
 | 底层实现   | Linux内核的Namespace[资源隔离]和CGroups[资源控制] |
@@ -92,18 +92,18 @@ App Engine利用虚拟化与自动化技术实现快速搭建部署应用运行�
 
 ## 4. Docker概述
 
-更多详情请参考：[Docker整体架构图](http://wiki.haplat.net/pages/viewpage.action?pageId=11176501)
+更多详情请参考：[Docker整体架构图](http://www.huweihuang.com/article/docker/docker-architecture/)
 
 ### 4.1. Docker介绍
 
 1. Docker - Build, Ship, and Run Any App, Anywhere
 2. Docker是一种Linux容器工具集，它是为“构建（Build）、交付（Ship）和运行（Run）”分布式应用而设计的。
 3. Docker相当于把应用以及应用所依赖的环境完完整整地打成了一个包，这个包拿到哪里都能原生运行。因此可以在开发、测试、运维中保证环境的一致性。
-4. Docker的本质：Docker=LXC(Namespace+CGroups)+Docker Images，即在Linux内核的Namespace[资源隔离]和CGroups[资源控制]技术的基础上通过镜像管理机制来实现轻量化设计。
+4. **Docker的本质：Docker=LXC(Namespace+CGroups)+Docker Images，即在Linux内核的Namespace[资源隔离]和CGroups[资源控制]技术的基础上通过镜像管理机制来实现轻量化设计。**
 
 ### 4.2. Docker的基本概念
 
-![image2016-3-15 15-48-30](/img/article/CaaS/docker.png)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/docker.png" width="70%">
 
 #### 4.2.1. 镜像
 
@@ -121,7 +121,7 @@ Docker 利用容器来运行应用。容器是从镜像创建的运行实例。�
 
 ### 4.3. Docker的优势
 
- ![Container VS VMs](/img/article/CaaS/ContainerVSVMs.jpg)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577868/article/caas/ContainerVSVMs.jpg" width="80%">
 
 1. 容器的快速轻量
 
@@ -137,7 +137,7 @@ Docker 利用容器来运行应用。容器是从镜像创建的运行实例。�
 
 ## 5. Kubernetes概述
 
-更多详情请参考：[Kubernetes总架构图](http://wiki.haplat.net/pages/viewpage.action?pageId=11896198)
+更多详情请参考：[Kubernetes总架构图](http://www.huweihuang.com/article/kubernetes/kubernetes-architecture/)
 
 ### 5.1. Kubernetes介绍
 
@@ -167,6 +167,6 @@ Kubernets属于主从的分布式集群架构，Kubernets Node（简称为Node�
 
 ### 5.3. Kubernetes架构
 
-![k8s架构](/img/article/CaaS/k8s架构.png)
+<img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1512807966/article/caas/architecture.png" width="100%">
 
  

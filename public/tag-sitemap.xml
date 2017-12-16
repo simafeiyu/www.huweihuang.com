@@ -2,50 +2,57 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://www.huweihuang.com/tags/Database/</loc>
-        <lastmod>2017-11-20T10:58:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.huweihuang.com/tags/Etcd/</loc>
-        <lastmod>2017-11-20T10:58:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://www.huweihuang.com/tags/Golang/</loc>
-        <lastmod>2017-11-20T10:58:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.huweihuang.com/tags/Nginx/</loc>
-        <lastmod>2017-11-20T10:58:35.000Z</lastmod>
+        <lastmod>2017-12-16T14:09:05.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/Database/</loc>
+        <lastmod>2017-12-16T14:11:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.huweihuang.com/tags/Docker/</loc>
-        <lastmod>2017-12-09T08:09:17.000Z</lastmod>
+        <lastmod>2017-12-16T14:15:48.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.huweihuang.com/tags/Python/</loc>
-        <lastmod>2017-12-09T09:19:12.000Z</lastmod>
+        <loc>http://www.huweihuang.com/tags/Etcd/</loc>
+        <lastmod>2017-12-16T14:16:21.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/Golang/</loc>
+        <lastmod>2017-12-16T14:18:43.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://www.huweihuang.com/tags/Kubernetes/</loc>
-        <lastmod>2017-12-09T10:05:21.000Z</lastmod>
+        <lastmod>2017-12-16T14:22:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/SourceAnalysis/</loc>
+        <lastmod>2017-12-16T14:36:18.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/Python/</loc>
+        <lastmod>2017-12-16T14:38:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

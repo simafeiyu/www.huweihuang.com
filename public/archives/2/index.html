@@ -209,6 +209,65 @@
 
 <div class="post-preview">
 
+    <a href="/article/golang/golang-concurrent-programming/">
+        <h2 class="post-title">
+            [Golang] Golang系列（三）之并发编程
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            （一）并发基础
+1.概念
+并发意味着程序在运行时有多个执行上下文，对应多个调用栈。
+并发与并行的区别：
+并发的主流实现模型：
+
+
+
+实现模型
+说明
+特点
+
+
+
+
+多进程
+操作系统层面的并发模式
+处理简单，互不影响，但开销大
+
+
+多线程
+系统层面的并发模式
+有效，开销较大，高并发时影响效率
+
+
+基于回调的非阻塞/异步IO
+多用于高并发服务器开发中
+编程复杂，开销小
+
+
+协程
+用户态线程，不需要......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/nginx/nginx-deploy&config/">
         <h2 class="post-title">
             [Nginx] Nginx的部署与配置
@@ -235,6 +294,58 @@ rpm -ivh nginx-xxx.rpm
         <div class="tags">
             
               <a href="/tags/#Nginx" title="Nginx">Nginx</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/python/basics/python-function/">
+        <h2 class="post-title">
+            [Python] Python系列（二）之Python函数
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 内置函数
+python的内置参数详见以下链接，也可以通过help(function_name)来查看具体函数的使用帮助。
+http://docs.python.org/3/library/functions.html#abs
+
+
+
+
+Built-in Functions
+
+
+
+
+
+
+
+abs()
+dict()
+help()
+min()
+setattr()
+
+
+all()
+dir()
+h......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Python" title="Python">Python</a>
             
         </div>
     
@@ -409,35 +520,6 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/article/golang/web-programming/golang-http-execution-flow/">
-        <h2 class="post-title">
-            [Golang] GO HTTP执行流程
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. http包建立web服务器
-1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Golang" title="Golang">Golang</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/golang/beego/beego-introduction/">
         <h2 class="post-title">
             [Golang] beego介绍
@@ -473,55 +555,26 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">
+    <a href="/article/golang/web-programming/golang-http-execution-flow/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes核心原理（四）之kubelet
+            [Golang] GO HTTP执行流程
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. kubelet简介
-在kubernetes集群中，每个Node节点都会启动kubelet进程，用来处理Master节点下发到本节点的任务，管理Pod和其中的容器。kubelet会在API Server上注册节点信息，定期向Master汇报节点资源使用情况，并通过cAdvisor监控容器和节点资源。可以把kubelet理解成【Server-Agent】架构中的agent，是Node上的p......
+            1. http包建立web服务器
+1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by 胡伟煌 on
-            2017-08-16
+            2017-09-01
         </p>
         <div class="tags">
             
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/kubernetes/core-principle/kubernetes-core-principle-controller-manager/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes核心原理（二）之Controller Manager
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. Controller Manager简介
-Controller Manager作为集群内部的管理控制中心，负责集群内的Node、Pod副本、服务端点（Endpoint）、命名空间（Namespace）、服务账号（ServiceAccount）、资源定额（ResourceQuota）的管理，当某个Node意外宕机时，Controller Manager会及时发现并执行自动化修复流程，确保......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-15
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+              <a href="/tags/#Golang" title="Golang">Golang</a>
             
         </div>
     
@@ -569,15 +622,11 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
     <div class="tags">
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
-            
-        
-            
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
-            
-        
-            
             <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            
+        
+            
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
@@ -589,7 +638,15 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
             
         
             
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            
         
+            
+        
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="2">Python</a>
             
         
     </div>
@@ -653,11 +710,15 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go源码分析</a>
         </li>
       
         <li>
           <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+        </li>
+      
+        <li>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
@@ -666,10 +727,6 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
       
         <li>
           <a href="/article/kubernetes/core-principle/kubernetes-core-principle-api-server/">[Kubernetes] Kubernetes核心原理（一）之API Server</a>
-        </li>
-      
-        <li>
-          <a href="/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a>
         </li>
       
     </ul>
@@ -696,7 +753,7 @@ Controller Manager作为集群内部的管理控制中心，负责集群内的No
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

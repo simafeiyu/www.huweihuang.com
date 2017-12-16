@@ -209,29 +209,59 @@
 
 <div class="post-preview">
 
-    <a href="/article/etcd/etcd-auth&security/">
+    <a href="/article/kubernetes/monitoring/heapster-introduction/">
         <h2 class="post-title">
-            [Etcd] Etcd访问控制
+            [Kubernetes] Heapster介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. ETCD资源类型
-There are three types of resources in etcd
-permission resources: users and roles in the user store
-key-value resources: key-value pairs in the key-value store
-settings resources: securi......
+            1. heapster简介
+Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
+Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
+2. heapster部署与配置
+......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by 胡伟煌 on
-            2017-07-10
+            2017-08-13
         </p>
         <div class="tags">
             
-              <a href="/tags/#Etcd" title="Etcd">Etcd</a>
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/database/redis-introduction/">
+        <h2 class="post-title">
+            [Database] Redis介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            一、redis是什么？（what）
+Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本、LRU收回、事务以及不同级别磁盘持久化功能，同时通过Redis Sentinel提供高可用，通过Redis Cluster提供自动分区。
+Redis是......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-15
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Database" title="Database">Database</a>
             
         </div>
     
@@ -253,6 +283,38 @@ settings resources: securi......
 etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。
 用法：etcdctl [global options] command [command options][args…]
 二、Etcd常用命......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Etcd" title="Etcd">Etcd</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/etcd/etcd-auth&security/">
+        <h2 class="post-title">
+            [Etcd] Etcd访问控制
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. ETCD资源类型
+There are three types of resources in etcd
+permission resources: users and roles in the user store
+key-value resources: key-value pairs in the key-value store
+settings resources: securi......
         </div>
     </a>
     
@@ -304,72 +366,6 @@ Secure: automatic TLS with optional client cert authe......
 
 <div class="post-preview">
 
-    <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/">
-        <h2 class="post-title">
-            [Docker] Docker源码分析（二）之Docker Daemon
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、Docker Daemon架构示意图
-
-Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
-Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
-运行过程的作用有以下几种可能：......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-09
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/docker/code-analysis/code-analysis-of-docker-client/">
-        <h2 class="post-title">
-            [Docker] Docker源码分析（一）之Docker Client
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、创建Docker Client
-​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
-Docker Client运行流程图如下：
-
-说明：本文分析的代码为Docker 1.2.0版本。
-（一）Docker命令flag参数解析
-Docker......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-09
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/docker/dockerfile-usage/">
         <h2 class="post-title">
             [Docker] Dockerfile使用说明
@@ -406,21 +402,19 @@ dockerfile指令分为构建指令和设置指令。
 
 <div class="post-preview">
 
-    <a href="/article/docker/docker-commands-principle/">
+    <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/">
         <h2 class="post-title">
-            [Docker] Docker常用命令原理图
+            [Docker] Docker源码分析（二）之Docker Daemon
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            docker常用命令原理图概览：
+            一、Docker Daemon架构示意图
 
-（一）image layer（镜像层）
-镜像可以看成是由多个镜像层叠加起来的一个文件系统，镜像层也可以简单理解为一个基本的镜像，而每个镜像层之间通过指针的形式进行叠加。
-
-根据上图，镜像层的主要组成部分包括镜像层id，镜像层指针【指向父层】，元数据【layer metadata】包含了docker构建和运行的信息还有父层的层次信息。
-只读层和读写层【top......
+Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
+Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
+运行过程的作用有以下几种可能：......
         </div>
     </a>
     
@@ -474,6 +468,40 @@ Engine执行Docker内部的一系列工作，每一项工作都是......
 
 <div class="post-preview">
 
+    <a href="/article/docker/code-analysis/code-analysis-of-docker-client/">
+        <h2 class="post-title">
+            [Docker] Docker源码分析（一）之Docker Client
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            一、创建Docker Client
+​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
+Docker Client运行流程图如下：
+
+说明：本文分析的代码为Docker 1.2.0版本。
+（一）Docker命令flag参数解析
+Docker......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-09
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/docker/code-analysis/code-analysis-of-docker-server/">
         <h2 class="post-title">
             [Docker] Docker源码分析（三）之Docker Server
@@ -502,40 +530,6 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/flannel/flannel-introduction/">
-        <h2 class="post-title">
-            [Kubernetes] Flannel介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、flannel是什么（what）
-（一）概述
-Flannel是CoreOS团队针对Kubernetes设计的一个网络规划服务，简单来说，它的功能是让集群中的不同节点主机创建的Docker容器都具有全集群唯一的虚拟IP地址。
-Flannel官网：https://github.com/coreos/flannel
-（二）补充知识点
-1、覆盖网络[overlay network]
-运行在一个网......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-08
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -546,6 +540,10 @@ Flannel官网：https://github.com/coreos/flannel
             <a href="/archives/3/">&larr; Newer Posts</a>
         </li>
     
+    
+        <li class="next">
+            <a href="/archives/5/">Older Posts &rarr;</a>
+        </li>
     
 </ul>
 
@@ -572,15 +570,11 @@ Flannel官网：https://github.com/coreos/flannel
     <div class="tags">
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
-            
-        
-            
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
-            
-        
-            
             <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            
+        
+            
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
@@ -592,7 +586,15 @@ Flannel官网：https://github.com/coreos/flannel
             
         
             
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            
         
+            
+        
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="2">Python</a>
             
         
     </div>
@@ -656,11 +658,15 @@ Flannel官网：https://github.com/coreos/flannel
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go源码分析</a>
         </li>
       
         <li>
           <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+        </li>
+      
+        <li>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
@@ -669,10 +675,6 @@ Flannel官网：https://github.com/coreos/flannel
       
         <li>
           <a href="/article/kubernetes/core-principle/kubernetes-core-principle-api-server/">[Kubernetes] Kubernetes核心原理（一）之API Server</a>
-        </li>
-      
-        <li>
-          <a href="/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a>
         </li>
       
     </ul>
@@ -699,7 +701,7 @@ Flannel官网：https://github.com/coreos/flannel
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

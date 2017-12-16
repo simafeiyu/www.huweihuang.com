@@ -4,7 +4,7 @@ catalog: true
 date: 2017-09-01 11:50:57
 type: "categories"
 subtitle:
-header-img: "/img/article_header_img/article_header.png"
+header-img: 
 tags:
 - Golang
 catagories:

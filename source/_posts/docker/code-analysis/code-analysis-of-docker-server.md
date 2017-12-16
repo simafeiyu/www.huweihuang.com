@@ -4,7 +4,6 @@ catalog: true
 date: 2017-07-09 10:50:57
 type: "categories"
 subtitle:
-header-img: "/img/article_header_img/article_header.png"
 tags:
 - Docker
 catagories:

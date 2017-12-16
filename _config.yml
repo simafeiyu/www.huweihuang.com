@@ -190,4 +190,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: New blog posts
+  message: Support post page header-img customization

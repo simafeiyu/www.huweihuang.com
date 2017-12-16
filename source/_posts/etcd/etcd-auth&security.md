@@ -4,7 +4,7 @@ catalog: true
 date: 2017-07-10 10:50:57
 type: "categories"
 subtitle:
-header-img: "/img/article_header_img/article_header.png"
+header-img: 
 tags:
 - Etcd
 catagories:

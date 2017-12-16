@@ -209,34 +209,27 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-architecture/">
+    <a href="/article/source-analysis/client-go-source-analysis/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes总架构图
+            [SourceAnalysis] client-go源码分析
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. Kubernetes的总架构图
-
-2. Kubernetes各个组件介绍
-2.1 kube-master[控制节点]
-master的工作流程图
-
-
-Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
-Kubernetes Client将请求发送给API server。
-API Server根据请求的类型，比如创建Pod时storage类型是pods，......
+            1. client-go简介
+1.1 client-go说明
+​	client-go是一个调用kubernetes集群资源对象API的客户端，即通过client-go实现对kubernetes集群中资源对象（包括deployment、service、ingress、replicaSet、pod、namespace、node等）的增删改查等操作。大部分对kubernetes进行前置API封装的......
         </div>
     </a>
     
         <p class="post-meta" style="margin: 10px 0;">
             Posted by 胡伟煌 on
-            2017-09-20
+            2017-12-16
         </p>
         <div class="tags">
             
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+              <a href="/tags/#SourceAnalysis" title="SourceAnalysis">SourceAnalysis</a>
             
         </div>
     
@@ -260,6 +253,43 @@ API Server根据请求的类型，比如创建Pod时storage类型是pods，.....
 
 没有可用的Node可调度
 开启了资源配额管理并......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-20
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/kubernetes/kubernetes-architecture/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes总架构图
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. Kubernetes的总架构图
+
+2. Kubernetes各个组件介绍
+2.1 kube-master[控制节点]
+master的工作流程图
+
+
+Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
+Kubernetes Client将请求发送给API server。
+API Server根据请求的类型，比如创建Pod时storage类型是pods，......
         </div>
     </a>
     
@@ -343,37 +373,6 @@ kubernetes API Server的功能：
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-pod-introduction/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes之Pod详解
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. Pod的基本用法
-1.1. 说明
-
-Pod实际上是容器的集合，在k8s中对运行容器的要求为：容器的主程序需要一直在前台运行，而不是后台运行。应用可以改造成前台运行的方式，例如Go语言的程序，直接运行二进制文件；java语言则运行主类；tomcat程序可以写个运行脚本。或者通过supervisor的进程管理工具，即supervisor在前台运行，应用程序由supervisor管理在后台运......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-17
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/golang/golang-packages/">
         <h2 class="post-title">
             [Golang] Golang常用包
@@ -415,6 +414,37 @@ bufio
         <div class="tags">
             
               <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/kubernetes/kubernetes-pod-introduction/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes之Pod详解
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. Pod的基本用法
+1.1. 说明
+
+Pod实际上是容器的集合，在k8s中对运行容器的要求为：容器的主程序需要一直在前台运行，而不是后台运行。应用可以改造成前台运行的方式，例如Go语言的程序，直接运行二进制文件；java语言则运行主类；tomcat程序可以写个运行脚本。或者通过supervisor的进程管理工具，即supervisor在前台运行，应用程序由supervisor管理在后台运......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-17
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
             
         </div>
     
@@ -576,65 +606,6 @@ interface
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/article/golang/golang-concurrent-programming/">
-        <h2 class="post-title">
-            [Golang] Golang系列（三）之并发编程
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            （一）并发基础
-1.概念
-并发意味着程序在运行时有多个执行上下文，对应多个调用栈。
-并发与并行的区别：
-并发的主流实现模型：
-
-
-
-实现模型
-说明
-特点
-
-
-
-
-多进程
-操作系统层面的并发模式
-处理简单，互不影响，但开销大
-
-
-多线程
-系统层面的并发模式
-有效，开销较大，高并发时影响效率
-
-
-基于回调的非阻塞/异步IO
-多用于高并发服务器开发中
-编程复杂，开销小
-
-
-协程
-用户态线程，不需要......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-14
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Golang" title="Golang">Golang</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -671,15 +642,11 @@ interface
     <div class="tags">
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
-            
-        
-            
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
-            
-        
-            
             <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            
+        
+            
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
@@ -691,7 +658,15 @@ interface
             
         
             
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            
         
+            
+        
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="2">Python</a>
             
         
     </div>
@@ -755,11 +730,15 @@ interface
     <ul>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go源码分析</a>
         </li>
       
         <li>
           <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+        </li>
+      
+        <li>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
@@ -768,10 +747,6 @@ interface
       
         <li>
           <a href="/article/kubernetes/core-principle/kubernetes-core-principle-api-server/">[Kubernetes] Kubernetes核心原理（一）之API Server</a>
-        </li>
-      
-        <li>
-          <a href="/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a>
         </li>
       
     </ul>
@@ -798,7 +773,7 @@ interface
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">11</span></li></ul>
     </div>
 
         <hr>

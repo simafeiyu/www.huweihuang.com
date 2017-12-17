@@ -210,9 +210,9 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-go中的测试框架">1. Go中的测试框架</span></h2>
+                <h2 id="1-go中的测试框架">1. Go中的测试框架</h2>
 <p>Go语言中自带有一个轻量级的测试框架<code>testing</code>和自带的<code>go test</code>命令来实现单元测试和性能测试，<code>testing</code>框架和其他语言中的测试框架类似，你可以基于这个框架写针对相应函数的测试用例，也可以基于该框架写相应的压力测试用例。</p>
-<h2><span id="2-单元测试原则">2. 单元测试原则</span></h2>
+<h2 id="2-单元测试原则">2. 单元测试原则</h2>
 <ul>
 <li>文件名必须是<code>_test.go</code>结尾的，这样在执行<code>go test</code>的时候才会执行到相应的代码</li>
 <li>你必须import <code>testing</code>这个包</li>
@@ -222,12 +222,12 @@
 <li>测试格式：<code>func TestXxx (t *testing.T)</code>,<code>Xxx</code>部分可以为任意的字母数字的组合，但是首字母不能是小写字母[a-z]，例如<code>Testintdiv</code>是错误的函数名。</li>
 <li>函数中通过调用<code>testing.T</code>的<code>Error</code>, <code>Errorf</code>, <code>FailNow</code>, <code>Fatal</code>, <code>FatalIf</code>方法，说明测试不通过，调用<code>Log</code>方法用来记录测试的信息。</li>
 </ul>
-<h2><span id="3-示例">3. 示例</span></h2>
-<h3><span id="31-源文件getestgo">3.1. 源文件getest.go</span></h3>
+<h2 id="3-示例">3. 示例</h2>
+<h3 id="31-源文件getestgo">3.1. 源文件getest.go</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> gotest</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"errors"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Division</span><span class="params">(a, b <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, errors.New(<span class="string">"除数不能为0"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a / b, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="32-测试文件gotest_testgo">3.2. 测试文件gotest_test.go</span></h3>
+<h3 id="32-测试文件gotest_testgo">3.2. 测试文件gotest_test.go</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Test_Division_2</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> _, e := Division(<span class="number">6</span>, <span class="number">0</span>); e == <span class="literal">nil</span> &#123; <span class="comment">//try a unit test on function</span></span><br><span class="line">        t.Error(<span class="string">"Division did not work as expected."</span>) <span class="comment">// 如果不是如预期的那么就报错</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        t.Log(<span class="string">"one test passed."</span>, e) <span class="comment">//记录一些你期望记录的信息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="4-压力测试">4. 压力测试</span></h2>
+<h2 id="4-压力测试">4. 压力测试</h2>
 <p>压力测试用来检测函数(方法）的性能，和编写单元功能测试的方法类似。</p>
 <ul>
 <li>压力测试用例必须遵循如下格式，其中XXX可以是任意字母数字的组合，但是首字母不能是小写字母</li>
@@ -238,7 +238,7 @@
 <li>在压力测试用例中,请记得在循环体内使用<code>testing.B.N</code>,以使测试可以正常的运行</li>
 <li>文件名也必须以<code>_test.go</code>结尾</li>
 </ul>
-<h3><span id="41-示例">4.1. 示例</span></h3>
+<h3 id="41-示例">4.1. 示例</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> gotest</span><br><span class="line">     </span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"testing"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Benchmark_Division</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123; <span class="comment">//use b.N for looping</span></span><br><span class="line">        Division(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Benchmark_TimeConsumingFunction</span><span class="params">(b *testing.B)</span></span> &#123;</span><br><span class="line">    b.StopTimer() <span class="comment">//调用该函数停止压力测试的时间计数</span></span><br><span class="line">    <span class="comment">//做一些初始化的工作,例如读取文件数据,数据库连接之类的,</span></span><br><span class="line">    <span class="comment">//这样这些时间不影响我们测试函数本身的性能</span></span><br><span class="line">    b.StartTimer() <span class="comment">//重新开始时间</span></span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">        Division(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行测试命令</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> test -file webbench_test.<span class="keyword">go</span> -test.bench=<span class="string">".*"</span></span><br></pre></td></tr></table></figure>
@@ -254,7 +254,7 @@
                     
                     
                         <li class="next">
-                            <a href="/article/golang/govendor-usage/" data-toggle="tooltip" data-placement="top" title="[Golang] govendor的使用">Next Post &rarr;</a>
+                            <a href="/article/golang/web-programming/golang-http-execution-flow/" data-toggle="tooltip" data-placement="top" title="[Golang] GO HTTP执行流程">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -280,7 +280,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Go中的测试框架</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 单元测试原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 示例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 源文件getest.go</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 测试文件gotest_test.go</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 压力测试</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 示例</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-go中的测试框架"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Go中的测试框架</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-单元测试原则"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 单元测试原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-示例"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 示例</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31-源文件getestgo"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 源文件getest.go</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32-测试文件gotest_testgo"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 测试文件gotest_test.go</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-压力测试"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 压力测试</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-示例"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 示例</span></a></li></ol></li></ol>
         
         </div>
       </aside>

@@ -210,47 +210,47 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-scheduler简介">1. Scheduler简介</span></h2>
+                <h2 id="1-scheduler简介">1. Scheduler简介</h2>
 <p>Scheduler负责Pod调度。在整个系统中起&quot;承上启下&quot;作用，承上：负责接收Controller Manager创建的新的Pod，为其选择一个合适的Node；启下：Node上的kubelet接管Pod的生命周期。</p>
 <p>Scheduler：</p>
 <p>1）通过调度算法为待调度Pod列表的每个Pod从Node列表中选择一个最适合的Node，并将信息写入etcd中</p>
 <p>2）kubelet通过API Server监听到kubernetes Scheduler产生的Pod绑定信息，然后获取对应的Pod清单，下载Image，并启动容器。</p>
 <p><img src="/img/article/kubernetes/kubernetes%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/scheduler.png" alt="scheduler"></p>
-<h2><span id="2-调度流程">2. 调度流程</span></h2>
+<h2 id="2-调度流程">2. 调度流程</h2>
 <p>1、预选调度过程，即遍历所有目标Node,筛选出符合要求的候选节点，kubernetes内置了多种预选策略（xxx Predicates）供用户选择</p>
 <p>2、确定最优节点，在第一步的基础上采用优选策略（xxx Priority）计算出每个候选节点的积分，取最高积分。</p>
 <p>调度流程通过插件式加载的“调度算法提供者”（AlgorithmProvider）具体实现，一个调度算法提供者就是包括一组预选策略与一组优选策略的结构体。</p>
-<h2><span id="3-预选策略">3. 预选策略</span></h2>
+<h2 id="3-预选策略">3. 预选策略</h2>
 <p>说明：返回true表示该节点满足该Pod的调度条件；返回false表示该节点不满足该Pod的调度条件。</p>
-<h3><span id="31-nodiskconflict">3.1. NoDiskConflict</span></h3>
+<h3 id="31-nodiskconflict">3.1. NoDiskConflict</h3>
 <p>判断备选Pod的数据卷是否与该Node上已存在Pod挂载的数据卷冲突，如果是则返回false，否则返回true。</p>
-<h3><span id="32-podfitsresources">3.2. PodFitsResources</span></h3>
+<h3 id="32-podfitsresources">3.2. PodFitsResources</h3>
 <p>判断备选节点的资源是否满足备选Pod的需求，即节点的剩余资源满不满足该Pod的资源使用。</p>
 <ol>
 <li>计算备选Pod和节点中已用资源（该节点所有Pod的使用资源）的总和。</li>
 <li>获取备选节点的状态信息，包括节点资源信息。</li>
 <li>如果（备选Pod+节点已用资源&gt;该节点总资源）则返回false，即剩余资源不满足该Pod使用；否则返回true。</li>
 </ol>
-<h3><span id="33-podselectormatches">3.3. PodSelectorMatches</span></h3>
+<h3 id="33-podselectormatches">3.3. PodSelectorMatches</h3>
 <p>判断节点是否包含备选Pod的标签选择器指定的标签，即通过标签来选择Node。</p>
 <ol>
 <li>如果Pod中没有指定spec.nodeSelector，则返回true。</li>
 <li>否则获得备选节点的标签信息，判断该节点的标签信息中是否包含该Pod的spec.nodeSelector中指定的标签，如果包含返回true，否则返回false。</li>
 </ol>
-<h3><span id="34-podfitshost">3.4. PodFitsHost</span></h3>
+<h3 id="34-podfitshost">3.4. PodFitsHost</h3>
 <p>判断备选Pod的spec.nodeName所指定的节点名称与备选节点名称是否一致，如果一致返回true，否则返回false。</p>
-<h3><span id="35-checknodelabelpresence">3.5. CheckNodeLabelPresence</span></h3>
+<h3 id="35-checknodelabelpresence">3.5. CheckNodeLabelPresence</h3>
 <p>检查备选节点中是否有Scheduler配置的标签，如果有返回true，否则返回false。</p>
-<h3><span id="36-checkserviceaffinity">3.6. CheckServiceAffinity</span></h3>
+<h3 id="36-checkserviceaffinity">3.6. CheckServiceAffinity</h3>
 <p>判断备选节点是否包含Scheduler配置的标签，如果有返回true，否则返回false。</p>
-<h3><span id="37-podfitsports">3.7. PodFitsPorts</span></h3>
+<h3 id="37-podfitsports">3.7. PodFitsPorts</h3>
 <p>判断备选Pod所用的端口列表中的端口是否在备选节点中已被占用，如果被占用返回false，否则返回true。</p>
-<h2><span id="4-优选策略">4. 优选策略</span></h2>
-<h3><span id="41-leastrequestedpriority">4.1. LeastRequestedPriority</span></h3>
+<h2 id="4-优选策略">4. 优选策略</h2>
+<h3 id="41-leastrequestedpriority">4.1. LeastRequestedPriority</h3>
 <p>优先从备选节点列表中选择资源消耗最小的节点（CPU+内存）。</p>
-<h3><span id="42-calculatenodelabelpriority">4.2. CalculateNodeLabelPriority</span></h3>
+<h3 id="42-calculatenodelabelpriority">4.2. CalculateNodeLabelPriority</h3>
 <p>优先选择含有指定Label的节点。</p>
-<h3><span id="43-balancedresourceallocation">4.3. BalancedResourceAllocation</span></h3>
+<h3 id="43-balancedresourceallocation">4.3. BalancedResourceAllocation</h3>
 <p>优先从备选节点列表中选择各项资源使用率最均衡的节点。</p>
 <p>参考《Kubernetes权威指南》</p>
 
@@ -266,7 +266,7 @@
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/kubernetes-network/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes网络原理">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/monitoring/heapster-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Heapster介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -292,7 +292,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Scheduler简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 调度流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 预选策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. NoDiskConflict</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. PodFitsResources</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3. PodSelectorMatches</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">3.4. PodFitsHost</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">3.5. CheckNodeLabelPresence</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">3.6. CheckServiceAffinity</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">3.7. PodFitsPorts</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 优选策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. LeastRequestedPriority</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. CalculateNodeLabelPriority</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. BalancedResourceAllocation</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-scheduler简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Scheduler简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-调度流程"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 调度流程</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-预选策略"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 预选策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31-nodiskconflict"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. NoDiskConflict</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32-podfitsresources"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. PodFitsResources</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#33-podselectormatches"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3. PodSelectorMatches</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#34-podfitshost"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">3.4. PodFitsHost</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#35-checknodelabelpresence"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">3.5. CheckNodeLabelPresence</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#36-checkserviceaffinity"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">3.6. CheckServiceAffinity</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#37-podfitsports"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">3.7. PodFitsPorts</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-优选策略"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 优选策略</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-leastrequestedpriority"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. LeastRequestedPriority</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#42-calculatenodelabelpriority"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. CalculateNodeLabelPriority</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#43-balancedresourceallocation"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. BalancedResourceAllocation</span></a></li></ol></li></ol>
         
         </div>
       </aside>

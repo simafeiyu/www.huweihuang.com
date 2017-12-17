@@ -210,93 +210,93 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="docker常用命令原理图概览">docker常用命令原理图概览：</span></h2>
+                <h2 id="docker常用命令原理图概览">docker常用命令原理图概览：</h2>
 <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578333/article/docker/commands/dockerCommands.jpg" width="70%">
-<h2><span id="一image-layer镜像层">（一）image layer（镜像层）</span></h2>
+<h2 id="一image-layer镜像层">（一）image layer（镜像层）</h2>
 <p>镜像可以看成是由多个镜像层叠加起来的一个文件系统，镜像层也可以简单理解为一个基本的镜像，而每个镜像层之间通过指针的形式进行叠加。</p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/1.png" alt="1"></p>
 <p>根据上图，镜像层的主要组成部分包括镜像层id，镜像层指针【指向父层】，元数据【layer metadata】包含了docker构建和运行的信息还有父层的层次信息。</p>
 <p>只读层和读写层【top layer】的组成部分基本一致。同时读写层可以转换成只读层【docker commit操作实现】</p>
-<h2><span id="二image镜像只读层的集合">（二）image（镜像）—【只读层的集合】</span></h2>
+<h2 id="二image镜像只读层的集合">（二）image（镜像）—【只读层的集合】</h2>
 <p>1、镜像是一堆只读层的统一视角，除了最底层没有指向外，每一层都指向它的父层，统一文件系统（union file system）技术能够将不同的层整合成一个文件系统，为这些层提供了一个统一的视角，这样就隐藏了多层的存在，在用户的角度看来，只存在一个文件系统。而每一层都是不可写的，就是只读层。</p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/2.1.png" alt="2.1"></p>
-<h2><span id="三container容器一层读写层多层只读层">（三）container（容器）—【一层读写层+多层只读层】</span></h2>
+<h2 id="三container容器一层读写层多层只读层">（三）container（容器）—【一层读写层+多层只读层】</h2>
 <p>1、容器和镜像的区别在于容器的最上面一层是读写层【top layer】，而这边并没有区分容器是否在运行。运行状态的容器【running container】即一个可读写的文件系统【静态容器】+隔离的进程空间和其中的进程。</p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/3.1.png" alt="3.1"></p>
 <p>隔离的进程空间中的进程可以对该读写层进行增删改，其运行状态容器的进程操作都作用在该读写层上。每个容器只能有一个进程隔离空间。</p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/3.2.png" alt="3.2"></p>
-<h2><span id="四docker常用命令说明">（四）docker常用命令说明</span></h2>
-<h3><span id="1-标识说明">1、标识说明</span></h3>
-<h4><span id="1image统一只读文件系统">1）image—（统一只读文件系统）</span></h4>
+<h2 id="四docker常用命令说明">（四）docker常用命令说明</h2>
+<h3 id="1-标识说明">1、标识说明</h3>
+<h4 id="1image统一只读文件系统">1）image—（统一只读文件系统）</h4>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.1.1.png" alt="4.1.1"></p>
-<h4><span id="2静态容器未运行的容器统一可读写文件系统">2）静态容器【未运行的容器】—（统一可读写文件系统）</span></h4>
+<h4 id="2静态容器未运行的容器统一可读写文件系统">2）静态容器【未运行的容器】—（统一可读写文件系统）</h4>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.1.2.png" alt="4.1.2"></p>
-<h4><span id="3动态容器running-container进程空间包括进程统一可读写文件系统">3）动态容器【running container】—（进程空间（包括进程）+统一可读写文件系统）</span></h4>
+<h4 id="3动态容器running-container进程空间包括进程统一可读写文件系统">3）动态容器【running container】—（进程空间（包括进程）+统一可读写文件系统）</h4>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.1.3.png" alt="4.1.3"></p>
-<h3><span id="2-命令说明">2、命令说明</span></h3>
-<h4><span id="adocker生命周期相关命令">a）docker生命周期相关命令:</span></h4>
-<h5><span id="1docker-create">1）docker create <image-id></image-id></span></h5>
+<h3 id="2-命令说明">2、命令说明</h3>
+<h4 id="adocker生命周期相关命令">a）docker生命周期相关命令:</h4>
+<h5 id="1docker-create">1）docker create <image-id></image-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.1.png" alt="4.2.1.1"></p>
 <p>即为只读文件系统添加一层可读写层【top layer】，生成可读写文件系统，该命令状态下容器为静态容器，并没有运行。</p>
-<h5><span id="2docker-startrestart-docker-stop即为docker-start的逆过程">2）docker start（restart） <container-id>        【docker stop即为docker start的逆过程】</container-id></span></h5>
+<h5 id="2docker-startrestart-docker-stop即为docker-start的逆过程">2）docker start（restart） <container-id>        【docker stop即为docker start的逆过程】</container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.2.png" alt="4.2.1.2"></p>
 <p>即为可读写文件系统添加一个进程空间【包括进程】，生成动态容器【running container】</p>
-<h5><span id="3docker-run">3）docker run <image-id></image-id></span></h5>
+<h5 id="3docker-run">3）docker run <image-id></image-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.3.png" alt="4.2.1.3"></p>
 <p>docker run=docker create+docker start</p>
 <p>类似流程如下 ：</p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.3.1.png" alt="4.2.1.3.1"></p>
-<h5><span id="4docker-stop">4）docker stop <container-id></container-id></span></h5>
+<h5 id="4docker-stop">4）docker stop <container-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.4.png" alt="4.2.1.4"></p>
 <p>向运行的容器中发一个SIGTERM的信号，然后停止所有的进程。即为docker start的逆过程。</p>
-<h5><span id="5docker-kill">5）docker kill <container-id></container-id></span></h5>
+<h5 id="5docker-kill">5）docker kill <container-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.5.png" alt="4.2.1.5"></p>
 <p>docker kill向容器发送不友好的SIGKILL的信号，相当于快速强制关闭容器，与docker stop的区别在于docker stop是正常关闭，先发SIGTERM信号，清理进程，再发SIGKILL信号退出。</p>
-<h5><span id="6docker-pause-docker-unpause为逆过程比较少使用">6）docker pause <container-id>    【docker unpause为逆过程】—比较少使用</container-id></span></h5>
+<h5 id="6docker-pause-docker-unpause为逆过程比较少使用">6）docker pause <container-id>    【docker unpause为逆过程】—比较少使用</container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.6.png" alt="4.2.1.6"></p>
 <p>暂停容器中的所有进程，使用cgroup的freezer顺序暂停容器里的所有进程，docker unpause为逆过程即恢复所有进程。比较少使用。</p>
-<h5><span id="7docker-commit">7）docker commit <container-id></container-id></span></h5>
+<h5 id="7docker-commit">7）docker commit <container-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.7.png" alt="4.2.1.7"></p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.7.2.png" alt="4.2.1.7.2"></p>
 <p>把容器的可读写层转化成只读层，即从容器状态【可读写文件系统】变为镜像状态【只读文件系统】，可理解为【固化】。</p>
-<h5><span id="8docker-build">8）docker build</span></h5>
+<h5 id="8docker-build">8）docker build</h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.8.1.png" alt="4.2.1.8.1"></p>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.1.8.2.png" alt="4.2.1.8.2"></p>
 <p><strong>docker build=docker run【运行容器】+【进程修改数据】+docker commit【固化数据】，不断循环直至生成所需镜像。</strong></p>
 <p>循环一次便会形成新的层（镜像）【原镜像层+已固化的可读写层】</p>
 <p>docker build 一般作用在dockerfile文件上。</p>
-<h4><span id="bdocker查询类命令查询对象1image2container3imagecontainer中的数据4系统信息容器数镜像数及其他">b）docker查询类命令：【查询对象：①image，②container，③image/container中的数据，④系统信息[容器数，镜像数及其他]】</span></h4>
-<h5><span id="11docker-images">1.1）docker images</span></h5>
+<h4 id="bdocker查询类命令查询对象1image2container3imagecontainer中的数据4系统信息容器数镜像数及其他">b）docker查询类命令：【查询对象：①image，②container，③image/container中的数据，④系统信息[容器数，镜像数及其他]】</h4>
+<h5 id="11docker-images">1.1）docker images</h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.1.1.png" alt="4.2.2.1.1"></p>
 <p>docker images 列出当前镜像【以顶层镜像id来表示整个完整镜像】，每个顶层镜像下面隐藏多个镜像层。</p>
-<h5><span id="12docker-images-a">1.2）docker images -a</span></h5>
+<h5 id="12docker-images-a">1.2）docker images -a</h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.1.2.png" alt="4.2.2.1.2"></p>
 <p>docker images -a列出所有镜像层【排序以每个顶层镜像id为首后接该镜像下的所有镜像层】，依次列出每个镜像的所有镜像层。</p>
-<h5><span id="13docker-history">1.3）docker history <image-id></image-id></span></h5>
+<h5 id="13docker-history">1.3）docker history <image-id></image-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.1.3.png" alt="4.2.2.1.3"></p>
 <p>docker history 列出该镜像id下的所有历史镜像。</p>
-<h5><span id="21docker-ps">2.1）docker ps</span></h5>
+<h5 id="21docker-ps">2.1）docker ps</h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.2.1.png" alt="4.2.2.2.1"></p>
 <p>列出所有运行的容器【running container】</p>
-<h5><span id="22docker-ps-a">2.2）docker ps -a</span></h5>
+<h5 id="22docker-ps-a">2.2）docker ps -a</h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.2.2.png" alt="4.2.2.2.2"></p>
 <p>列出所有容器，包括静态容器【未运行的容器】和动态容器【running container】</p>
-<h5><span id="31docker-inspect-or">3.1）docker inspect <container-id> or <image-id></image-id></container-id></span></h5>
+<h5 id="31docker-inspect-or">3.1）docker inspect <container-id> or <image-id></image-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.2.3.1.png" alt="4.2.2.3.1"></p>
 <p>提取出容器或镜像最顶层的元数据。</p>
-<h5><span id="32docker-info">3.2）docker info</span></h5>
+<h5 id="32docker-info">3.2）docker info</h5>
 <p>显示 Docker 系统信息，包括镜像和容器数。</p>
-<h4><span id="cdocker操作类命令">c）docker操作类命令：</span></h4>
-<h5><span id="1docker-rm">1）docker rm <container-id></container-id></span></h5>
+<h4 id="cdocker操作类命令">c）docker操作类命令：</h4>
+<h5 id="1docker-rm">1）docker rm <container-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.3.1.png" alt="4.2.3.1"></p>
 <p>docker rm会移除镜像，该命令只能对静态容器【非运行状态】进行操作。</p>
 <p>通过docker rm -f <container-id>的-f （force）参数可以强制删除运行状态的容器【running container】。</container-id></p>
-<h5><span id="2docker-rmi">2）docker rmi <image-id></image-id></span></h5>
+<h5 id="2docker-rmi">2）docker rmi <image-id></image-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.3.2.png" alt="4.2.3.2"></p>
-<h5><span id="3docker-exec">3）docker exec <running-container-id></running-container-id></span></h5>
+<h5 id="3docker-exec">3）docker exec <running-container-id></running-container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.3.3.png" alt="4.2.3.3"></p>
 <p>docker exec会在运行状态的容器中执行一个新的进程。</p>
-<h5><span id="4docker-export">4）docker export <container-id></container-id></span></h5>
+<h5 id="4docker-export">4）docker export <container-id></container-id></h5>
 <p><img src="/img/article/docker/docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86%E5%9B%BE/4.2.3.4.png" alt="4.2.3.4"></p>
 <p>docker export命令创建一个tar文件，并且移除了元数据和不必要的层，将多个层整合成了一个层，只保存了当前统一视角看到的内容。</p>
 <p>附：本文在<a href="http://dockone.io/article/783" target="_blank" rel="noopener">http://dockone.io/article/783</a>的基础上做整理和修改。</p>
@@ -308,12 +308,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/docker/code-analysis/code-analysis-of-docker-server/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（三）之Docker Server">&larr; Previous Post</a>
+                            <a href="/article/docker/dockerfile-usage/" data-toggle="tooltip" data-placement="top" title="[Docker] Dockerfile使用说明">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/flannel/flannel-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Flannel介绍">Next Post &rarr;</a>
+                            <a href="/article/docker/docker-architecture/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker整体架构图">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -339,7 +339,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">docker常用命令原理图概览：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">（一）image layer（镜像层）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">（二）image（镜像）—【只读层的集合】</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">（三）container（容器）—【一层读写层+多层只读层】</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">（四）docker常用命令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">1、标识说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.1.</span> <span class="toc-nav-text">1）image—（统一只读文件系统）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.2.</span> <span class="toc-nav-text">2）静态容器【未运行的容器】—（统一可读写文件系统）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.3.</span> <span class="toc-nav-text">3）动态容器【running container】—（进程空间（包括进程）+统一可读写文件系统）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">2、命令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.</span> <span class="toc-nav-text">a）docker生命周期相关命令:</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.1.</span> <span class="toc-nav-text">1）docker create </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.2.</span> <span class="toc-nav-text">2）docker start（restart）         【docker stop即为docker start的逆过程】</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.3.</span> <span class="toc-nav-text">3）docker run </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.4.</span> <span class="toc-nav-text">4）docker stop </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.5.</span> <span class="toc-nav-text">5）docker kill </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.6.</span> <span class="toc-nav-text">6）docker pause     【docker unpause为逆过程】—比较少使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.7.</span> <span class="toc-nav-text">7）docker commit </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.1.8.</span> <span class="toc-nav-text">8）docker build</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.</span> <span class="toc-nav-text">b）docker查询类命令：【查询对象：①image，②container，③image/container中的数据，④系统信息[容器数，镜像数及其他]】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.1.</span> <span class="toc-nav-text">1.1）docker images</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.2.</span> <span class="toc-nav-text">1.2）docker images -a</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.3.</span> <span class="toc-nav-text">1.3）docker history </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.4.</span> <span class="toc-nav-text">2.1）docker ps</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.5.</span> <span class="toc-nav-text">2.2）docker ps -a</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.6.</span> <span class="toc-nav-text">3.1）docker inspect  or </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.2.7.</span> <span class="toc-nav-text">3.2）docker info</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.3.</span> <span class="toc-nav-text">c）docker操作类命令：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.3.1.</span> <span class="toc-nav-text">1）docker rm </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.3.2.</span> <span class="toc-nav-text">2）docker rmi </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.3.3.</span> <span class="toc-nav-text">3）docker exec </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.3.4.</span> <span class="toc-nav-text">4）docker export </span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#docker常用命令原理图概览"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">docker常用命令原理图概览：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一image-layer镜像层"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">（一）image layer（镜像层）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二image镜像只读层的集合"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">（二）image（镜像）—【只读层的集合】</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三container容器一层读写层多层只读层"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">（三）container（容器）—【一层读写层+多层只读层】</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#四docker常用命令说明"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">（四）docker常用命令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-标识说明"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">1、标识说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1image统一只读文件系统"><span class="toc-nav-number">5.1.1.</span> <span class="toc-nav-text">1）image—（统一只读文件系统）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2静态容器未运行的容器统一可读写文件系统"><span class="toc-nav-number">5.1.2.</span> <span class="toc-nav-text">2）静态容器【未运行的容器】—（统一可读写文件系统）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3动态容器running-container进程空间包括进程统一可读写文件系统"><span class="toc-nav-number">5.1.3.</span> <span class="toc-nav-text">3）动态容器【running container】—（进程空间（包括进程）+统一可读写文件系统）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-命令说明"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">2、命令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#adocker生命周期相关命令"><span class="toc-nav-number">5.2.1.</span> <span class="toc-nav-text">a）docker生命周期相关命令:</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1docker-create"><span class="toc-nav-number">5.2.1.1.</span> <span class="toc-nav-text">1）docker create </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2docker-startrestart-docker-stop即为docker-start的逆过程"><span class="toc-nav-number">5.2.1.2.</span> <span class="toc-nav-text">2）docker start（restart）         【docker stop即为docker start的逆过程】</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#3docker-run"><span class="toc-nav-number">5.2.1.3.</span> <span class="toc-nav-text">3）docker run </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#4docker-stop"><span class="toc-nav-number">5.2.1.4.</span> <span class="toc-nav-text">4）docker stop </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#5docker-kill"><span class="toc-nav-number">5.2.1.5.</span> <span class="toc-nav-text">5）docker kill </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#6docker-pause-docker-unpause为逆过程比较少使用"><span class="toc-nav-number">5.2.1.6.</span> <span class="toc-nav-text">6）docker pause     【docker unpause为逆过程】—比较少使用</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#7docker-commit"><span class="toc-nav-number">5.2.1.7.</span> <span class="toc-nav-text">7）docker commit </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#8docker-build"><span class="toc-nav-number">5.2.1.8.</span> <span class="toc-nav-text">8）docker build</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#bdocker查询类命令查询对象1image2container3imagecontainer中的数据4系统信息容器数镜像数及其他"><span class="toc-nav-number">5.2.2.</span> <span class="toc-nav-text">b）docker查询类命令：【查询对象：①image，②container，③image/container中的数据，④系统信息[容器数，镜像数及其他]】</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#11docker-images"><span class="toc-nav-number">5.2.2.1.</span> <span class="toc-nav-text">1.1）docker images</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#12docker-images-a"><span class="toc-nav-number">5.2.2.2.</span> <span class="toc-nav-text">1.2）docker images -a</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#13docker-history"><span class="toc-nav-number">5.2.2.3.</span> <span class="toc-nav-text">1.3）docker history </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#21docker-ps"><span class="toc-nav-number">5.2.2.4.</span> <span class="toc-nav-text">2.1）docker ps</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#22docker-ps-a"><span class="toc-nav-number">5.2.2.5.</span> <span class="toc-nav-text">2.2）docker ps -a</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#31docker-inspect-or"><span class="toc-nav-number">5.2.2.6.</span> <span class="toc-nav-text">3.1）docker inspect  or </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#32docker-info"><span class="toc-nav-number">5.2.2.7.</span> <span class="toc-nav-text">3.2）docker info</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#cdocker操作类命令"><span class="toc-nav-number">5.2.3.</span> <span class="toc-nav-text">c）docker操作类命令：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1docker-rm"><span class="toc-nav-number">5.2.3.1.</span> <span class="toc-nav-text">1）docker rm </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#2docker-rmi"><span class="toc-nav-number">5.2.3.2.</span> <span class="toc-nav-text">2）docker rmi </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#3docker-exec"><span class="toc-nav-number">5.2.3.3.</span> <span class="toc-nav-text">3）docker exec </span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#4docker-export"><span class="toc-nav-number">5.2.3.4.</span> <span class="toc-nav-text">4）docker export </span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

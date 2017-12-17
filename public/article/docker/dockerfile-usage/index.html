@@ -210,25 +210,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="一-dockerfile的说明">一、Dockerfile的说明</span></h2>
+                <h2 id="一-dockerfile的说明">一、Dockerfile的说明</h2>
 <p>dockerfile指令忽略大小写，建议大写，#作为注释，每行只支持一条指令，指令可以带多个参数。</p>
 <p>dockerfile指令分为构建指令和设置指令。</p>
 <ol>
 <li>构建指令：用于构建image，其指定的操作不会在运行image的容器中执行。</li>
 <li>设置指令：用于设置image的属性，其指定的操作会在运行image的容器中执行。</li>
 </ol>
-<h2><span id="二-dockerfile指令说明">二、Dockerfile指令说明</span></h2>
-<h3><span id="1-from指定基础镜像构建指令">1、FROM（指定基础镜像）[构建指令]</span></h3>
+<h2 id="二-dockerfile指令说明">二、Dockerfile指令说明</h2>
+<h3 id="1-from指定基础镜像构建指令">1、FROM（指定基础镜像）[构建指令]</h3>
 <p>该命令用来指定基础镜像，在基础镜像的基础上修改数据从而构建新的镜像。基础镜像可以是本地仓库也可以是远程仓库。</p>
 <p>指令有两种格式：</p>
 <ol>
 <li>FROM <code>image</code>   【默认为latest版本】</li>
 <li>FROM <code>image</code>:<code>tag</code>     【指定版本】</li>
 </ol>
-<h3><span id="2-maintainer镜像创建者信息构建指令">2、MAINTAINER（镜像创建者信息）[构建指令]</span></h3>
+<h3 id="2-maintainer镜像创建者信息构建指令">2、MAINTAINER（镜像创建者信息）[构建指令]</h3>
 <p>将镜像制作者（维护者）的信息写入image中，执行docker inspect时会输出该信息。</p>
 <p>格式：MAINTAINER <code>name</code></p>
-<h3><span id="3-run安装软件用构建指令">3、RUN（安装软件用）[构建指令]</span></h3>
+<h3 id="3-run安装软件用构建指令">3、RUN（安装软件用）[构建指令]</h3>
 <p>RUN可以运行任何被基础镜像支持的命令（即在基础镜像上执行一个进程），可以使用多条RUN指令，指令较长可以使用\来换行。</p>
 <p>指令有两种格式：</p>
 <ol>
@@ -240,7 +240,7 @@
 </ul>
 </li>
 </ol>
-<h3><span id="4-cmd设置container启动时执行的操作设置指令">4、CMD（设置container启动时执行的操作）[设置指令]</span></h3>
+<h3 id="4-cmd设置container启动时执行的操作设置指令">4、CMD（设置container启动时执行的操作）[设置指令]</h3>
 <p>用于容器启动时的指定操作，可以是自定义脚本或命令，只执行一次，多个默认执行最后一个。</p>
 <p>指令有三种格式：</p>
 <ol>
@@ -260,7 +260,7 @@
 </ul>
 </li>
 </ol>
-<h3><span id="5-entrypoint设置container启动时执行的操作设置指令">5、ENTRYPOINT（设置container启动时执行的操作）[设置指令]</span></h3>
+<h3 id="5-entrypoint设置container启动时执行的操作设置指令">5、ENTRYPOINT（设置container启动时执行的操作）[设置指令]</h3>
 <p>指定容器启动时执行的命令，若多次设置只执行最后一次。</p>
 <p>ENTRYPOINT翻译为“进入点”，它的功能可以让容器表现得像一个可执行程序一样。</p>
 <p>例子：ENTRYPOINT [&quot;/bin/echo&quot;] ，那么docker build出来的镜像以后的容器功能就像一个/bin/echo程序，docker run -it imageecho “this is a test”，就会输出对应的字符串。这个imageecho镜像对应的容器表现出来的功能就像一个echo程序一样。</p>
@@ -287,17 +287,17 @@
 </ul>
 </li>
 </ol>
-<h3><span id="6-user设置container容器启动的登录用户设置指令">6、USER（设置container容器启动的登录用户）[设置指令]</span></h3>
+<h3 id="6-user设置container容器启动的登录用户设置指令">6、USER（设置container容器启动的登录用户）[设置指令]</h3>
 <p>设置启动容器的用户，默认为root用户。</p>
 <p>格式：USER daemon</p>
-<h3><span id="7-expose指定容器需要映射到宿主机的端口设置指令">7、EXPOSE（指定容器需要映射到宿主机的端口）[设置指令]</span></h3>
+<h3 id="7-expose指定容器需要映射到宿主机的端口设置指令">7、EXPOSE（指定容器需要映射到宿主机的端口）[设置指令]</h3>
 <p>该指令会将容器中的端口映射为宿主机中的端口[确保宿主机的端口号没有被使用]。通过宿主机IP和映射后的端口即可访问容器[避免每次运行容器时IP随机生成不固定的问题]。前提是EXPOSE设置映射端口，运行容器时加上-p参数指定EXPOSE设置的端口。EXPOSE可以设置多个端口号，相应地运行容器配套多次使用-p参数。可以通过docker port +容器需要映射的端口号和容器ID来参考宿主机的映射端口。</p>
 <p>格式：EXPOSE <code>port</code> [<code>port</code>…]</p>
-<h3><span id="8-env用于设置环境变量构建指令">8、ENV（用于设置环境变量）[构建指令]</span></h3>
+<h3 id="8-env用于设置环境变量构建指令">8、ENV（用于设置环境变量）[构建指令]</h3>
 <p>在image中设置环境变量[以键值对的形式]，设置之后RUN命令可以使用该环境变量，在容器启动后也可以通过docker inspect查看环境变量或者通过 docker run --env key=value设置或修改环境变量。</p>
 <p>格式：ENV <code>key</code> <code>value</code></p>
 <p>例子：ENV JAVA_HOME /path/to/java/dirent</p>
-<h3><span id="9-add从src复制文件到container的dest路径构建指令">9、ADD（从src复制文件到container的dest路径）[构建指令]</span></h3>
+<h3 id="9-add从src复制文件到container的dest路径构建指令">9、ADD（从src复制文件到container的dest路径）[构建指令]</h3>
 <p>复制指定的src到容器中的dest，其中src是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件url。<code>dest</code> 是container中的绝对路径。所有拷贝到container中的文件和文件夹权限为0755，uid和gid为0。</p>
 <ul>
 <li>如果src是一个目录，那么会将该目录下的所有文件添加到container中，不包括目录；</li>
@@ -306,20 +306,20 @@
 <li>如果<code>src</code>是文件且<code>dest</code>中使用斜杠结束，则会<code>src</code>文件拷贝到<code>dest</code>目录下。</li>
 </ul>
 <p>格式：ADD <code>src</code> <code>dest</code></p>
-<h3><span id="10-copy复制文件">10、COPY（复制文件）</span></h3>
+<h3 id="10-copy复制文件">10、COPY（复制文件）</h3>
 <p>复制本地主机的src为容器中的dest，目标路径不存在时会自动创建。</p>
 <p>格式：COPY <code>src</code> <code>dest</code></p>
-<h3><span id="11-volume指定挂载点设置指令">11、VOLUME（指定挂载点）[设置指令]</span></h3>
+<h3 id="11-volume指定挂载点设置指令">11、VOLUME（指定挂载点）[设置指令]</h3>
 <p>创建一个可以从本地主机或其他容器挂载的挂载点，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用也可以被其他容器使用。</p>
 <p>格式：VOLUME [&quot;<code>mountpoint</code>&quot;]</p>
 <p>其他容器使用共享数据卷：docker run -t -i -rm -volumes-from container1 image2 bash [container1为第一个容器的ID，image2为第二个容器运行image的名字。]</p>
-<h3><span id="12-workdir切换目录设置指令">12、WORKDIR（切换目录）[设置指令]</span></h3>
+<h3 id="12-workdir切换目录设置指令">12、WORKDIR（切换目录）[设置指令]</h3>
 <p>相当于cd命令，可以多次切换目录，为RUN,CMD,ENTRYPOINT配置工作目录。可以使用多个WORKDIR的命令，后续命令如果是相对路径则是在上一级路径的基础上执行[类似cd的功能]。</p>
 <p>格式：WORKDIR /path/to/workdir</p>
-<h3><span id="13-onbuild在子镜像中执行">13、ONBUILD（在子镜像中执行）</span></h3>
+<h3 id="13-onbuild在子镜像中执行">13、ONBUILD（在子镜像中执行）</h3>
 <p>当所创建的镜像作为其他新创建镜像的基础镜像时执行的操作命令，即在创建本镜像时不运行，当作为别人的基础镜像时再在构建时运行（可认为基础镜像为父镜像，而该命令即在它的子镜像构建时运行，相当于在子镜像构建时多加了一些命令）。</p>
 <p>格式：ONBUILD <code>Dockerfile关键字</code></p>
-<h2><span id="三-docker-build">三、docker build</span></h2>
+<h2 id="三-docker-build">三、docker build</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">Usage: docker build [OPTIONS] PATH | URL | -</span><br><span class="line"></span><br><span class="line">Build a new image from the source code at PATH</span><br><span class="line"></span><br><span class="line">-c, --cpu-shares=0                      CPU shares (relative weight)</span><br><span class="line"></span><br><span class="line">--cgroup-parent=                       Optional parent cgroup for the container</span><br><span class="line"></span><br><span class="line">--cpu-period=0                           Limit the CPU CFS (Completely Fair Scheduler) period</span><br><span class="line"></span><br><span class="line">--cpu-quota=0                            Limit the CPU CFS (Completely Fair Scheduler) quota</span><br><span class="line"></span><br><span class="line">--cpuset-cpus=                           CPUs in which to allow execution (0-3, 0,1)</span><br><span class="line"></span><br><span class="line">--cpuset-mems=                         MEMs in which to allow execution (0-3, 0,1)</span><br><span class="line"></span><br><span class="line">--disable-content-trust=true       Skip image verification</span><br><span class="line"></span><br><span class="line">-f, --file=                                     Name of the Dockerfile (Default is 'PATH/Dockerfile')</span><br><span class="line"></span><br><span class="line">--force-rm=false                          Always remove intermediate containers</span><br><span class="line"></span><br><span class="line">--help=false                                 Print usage</span><br><span class="line"></span><br><span class="line">-m, --memory=                          Memory limit</span><br><span class="line"></span><br><span class="line">--memory-swap=                       Total memory (memory + swap), '-1' to disable swap</span><br><span class="line"></span><br><span class="line">--no-cache=false                        Do not use cache when building the image</span><br><span class="line"></span><br><span class="line">--pull=false                                 Always attempt to pull a newer version of the image</span><br><span class="line"></span><br><span class="line">-q, --quiet=false                         Suppress the verbose output generated by the containers</span><br><span class="line"></span><br><span class="line">--rm=true                                  Remove intermediate containers after a successful build</span><br><span class="line"></span><br><span class="line">-t, --tag=                                   Repository name (and optionally a tag) for the image</span><br><span class="line"></span><br><span class="line">--ulimit=[] Ulimit options</span><br></pre></td></tr></table></figure>
                 
 
@@ -328,12 +328,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/etcd/etcd-introduction/" data-toggle="tooltip" data-placement="top" title="[Etcd] Etcd介绍">&larr; Previous Post</a>
+                            <a href="/article/docker/code-analysis/code-analysis-of-docker-client/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（一）之Docker Client">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（二）之Docker Daemon">Next Post &rarr;</a>
+                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -359,7 +359,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、Dockerfile的说明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Dockerfile指令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">1、FROM（指定基础镜像）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2、MAINTAINER（镜像创建者信息）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">3、RUN（安装软件用）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">4、CMD（设置container启动时执行的操作）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">5、ENTRYPOINT（设置container启动时执行的操作）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">6、USER（设置container容器启动的登录用户）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">7、EXPOSE（指定容器需要映射到宿主机的端口）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">8、ENV（用于设置环境变量）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">9、ADD（从src复制文件到container的dest路径）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">10、COPY（复制文件）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">11、VOLUME（指定挂载点）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.12.</span> <span class="toc-nav-text">12、WORKDIR（切换目录）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.13.</span> <span class="toc-nav-text">13、ONBUILD（在子镜像中执行）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、docker build</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-dockerfile的说明"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、Dockerfile的说明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-dockerfile指令说明"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Dockerfile指令说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-from指定基础镜像构建指令"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">1、FROM（指定基础镜像）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-maintainer镜像创建者信息构建指令"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2、MAINTAINER（镜像创建者信息）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-run安装软件用构建指令"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">3、RUN（安装软件用）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-cmd设置container启动时执行的操作设置指令"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">4、CMD（设置container启动时执行的操作）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-entrypoint设置container启动时执行的操作设置指令"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">5、ENTRYPOINT（设置container启动时执行的操作）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-user设置container容器启动的登录用户设置指令"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">6、USER（设置container容器启动的登录用户）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#7-expose指定容器需要映射到宿主机的端口设置指令"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">7、EXPOSE（指定容器需要映射到宿主机的端口）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#8-env用于设置环境变量构建指令"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">8、ENV（用于设置环境变量）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#9-add从src复制文件到container的dest路径构建指令"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">9、ADD（从src复制文件到container的dest路径）[构建指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#10-copy复制文件"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">10、COPY（复制文件）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-volume指定挂载点设置指令"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">11、VOLUME（指定挂载点）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-workdir切换目录设置指令"><span class="toc-nav-number">2.12.</span> <span class="toc-nav-text">12、WORKDIR（切换目录）[设置指令]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#13-onbuild在子镜像中执行"><span class="toc-nav-number">2.13.</span> <span class="toc-nav-text">13、ONBUILD（在子镜像中执行）</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三-docker-build"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、docker build</span></a></li></ol>
         
         </div>
       </aside>

@@ -210,7 +210,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-gdb简介">1. GDB简介</span></h2>
+                <h2 id="1-gdb简介">1. GDB简介</h2>
 <p>GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：</p>
 <ol>
 <li>启动程序，可以按照开发者的自定义要求运行程序。</li>
@@ -224,19 +224,19 @@
 <li>传递参数-ldflags “-s”，忽略debug的打印信息</li>
 <li>传递-gcflags “-N -l” 参数，这样可以忽略Go内部做的一些优化，聚合变量和函数等优化，这样对于GDB调试来说非常困难，所以在编译的时候加入这两个参数避免这些优化。</li>
 </ol>
-<h2><span id="2-常用命令">2. 常用命令</span></h2>
-<h3><span id="21-list">2.1. list</span></h3>
+<h2 id="2-常用命令">2. 常用命令</h2>
+<h3 id="21-list">2.1. list</h3>
 <p>简写命令<code>l</code>，用来显示源代码，默认显示十行代码，后面可以带上参数显示的具体行，例如：<code>list 15</code>，显示十行代码，其中第15行在显示的十行里面的中间，如下所示。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">10	        time.Sleep(2 * time.Second)</span><br><span class="line">11	        c &lt;- i</span><br><span class="line">12	    &#125;</span><br><span class="line">13	    close(c)</span><br><span class="line">14	&#125;</span><br><span class="line">15	</span><br><span class="line">16	func main() &#123;</span><br><span class="line">17	    msg := &quot;Starting main&quot;</span><br><span class="line">18	    fmt.Println(msg)</span><br><span class="line">19	    bus := make(chan int)</span><br></pre></td></tr></table></figure>
-<h3><span id="22-break">2.2. break</span></h3>
+<h3 id="22-break">2.2. break</h3>
 <p>简写命令 <code>b</code>,用来设置断点，后面跟上参数设置断点的行数，例如<code>b 10</code>在第十行设置断点。</p>
-<h3><span id="23-delete">2.3. delete</span></h3>
+<h3 id="23-delete">2.3. delete</h3>
 <p>简写命令 <code>d</code>,用来删除断点，后面跟上断点设置的序号，这个序号可以通过<code>info breakpoints</code>获取相应的设置的断点序号，如下是显示的设置断点序号。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Num     Type           Disp Enb Address            What</span><br><span class="line">2       breakpoint     keep y   0x0000000000400dc3 in main.main at /home/xiemengjun/gdb.go:23</span><br><span class="line">breakpoint already hit 1 time</span><br></pre></td></tr></table></figure>
-<h3><span id="24-backtrace">2.4. backtrace</span></h3>
+<h3 id="24-backtrace">2.4. backtrace</h3>
 <p>简写命令 <code>bt</code>,用来打印执行的代码过程，如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#0  main.main () at /home/xiemengjun/gdb.go:23</span><br><span class="line">#1  0x000000000040d61e in runtime.main () at /home/xiemengjun/go/src/pkg/runtime/proc.c:244</span><br><span class="line">#2  0x000000000040d6c1 in schedunlock () at /home/xiemengjun/go/src/pkg/runtime/proc.c:267</span><br><span class="line">#3  0x0000000000000000 in ?? ()</span><br></pre></td></tr></table></figure>
-<h3><span id="25-info">2.5. info</span></h3>
+<h3 id="25-info">2.5. info</h3>
 <p>info命令用来显示信息，后面有几种参数，我们常用的有如下几种：</p>
 <ul>
 <li>
@@ -258,21 +258,21 @@
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3><span id="26-print">2.6. print</span></h3>
+<h3 id="26-print">2.6. print</h3>
 <p>简写命令<code>p</code>，用来打印变量或者其他信息，后面跟上需要打印的变量名，当然还有一些很有用的函数$len()和$cap()，用来返回当前string、slices或者maps的长度和容量。</p>
-<h3><span id="27-whatis">2.7. whatis</span></h3>
+<h3 id="27-whatis">2.7. whatis</h3>
 <p>用来显示当前变量的类型，后面跟上变量名，例如<code>whatis msg</code>,显示如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type = struct string</span><br></pre></td></tr></table></figure>
-<h3><span id="28-next">2.8. next</span></h3>
+<h3 id="28-next">2.8. next</h3>
 <p>简写命令 <code>n</code>,用来单步调试，跳到下一步，当有断点之后，可以输入<code>n</code>跳转到下一步继续执行</p>
-<h3><span id="29-coutinue">2.9. coutinue</span></h3>
+<h3 id="29-coutinue">2.9. coutinue</h3>
 <p>简称命令 <code>c</code>，用来跳出当前断点处，后面可以跟参数N，跳过多少次断点</p>
-<h3><span id="210-set-variable">2.10. set variable</span></h3>
+<h3 id="210-set-variable">2.10. set variable</h3>
 <p>该命令用来改变运行过程中的变量值，格式如：<code>set variable &lt;var&gt;=&lt;value&gt;</code></p>
-<h2><span id="3-调试过程">3. 调试过程</span></h2>
-<h3><span id="31-示例代码">3.1. 示例代码</span></h3>
+<h2 id="3-调试过程">3. 调试过程</h2>
+<h3 id="31-示例代码">3.1. 示例代码</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"time"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">counting</span><span class="params">(c <span class="keyword">chan</span>&lt;- <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">        time.Sleep(<span class="number">2</span> * time.Second)</span><br><span class="line">        c &lt;- i</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">close</span>(c)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    msg := <span class="string">"Starting main"</span></span><br><span class="line">    fmt.Println(msg)</span><br><span class="line">    bus := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line">    msg = <span class="string">"starting a gofunc"</span></span><br><span class="line">    <span class="keyword">go</span> counting(bus)</span><br><span class="line">    <span class="keyword">for</span> count := <span class="keyword">range</span> bus &#123;</span><br><span class="line">        fmt.Println(<span class="string">"count:"</span>, count)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="32-调试步骤">3.2. 调试步骤</span></h3>
+<h3 id="32-调试步骤">3.2. 调试步骤</h3>
 <p>编译文件，生成可执行文件gdbfile:</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> build -gcflags <span class="string">"-N -l"</span> gdbfile.<span class="keyword">go</span></span><br></pre></td></tr></table></figure>
 <p>通过gdb命令启动调试：</p>
@@ -301,7 +301,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/golang/golang-text-process/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang文本处理">&larr; Previous Post</a>
+                            <a href="/article/golang/govendor-usage/" data-toggle="tooltip" data-placement="top" title="[Golang] govendor的使用">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -332,7 +332,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. GDB简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. list</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2. break</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3. delete</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">2.4. backtrace</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">2.5. info</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">2.6. print</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">2.7. whatis</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">2.8. next</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">2.9. coutinue</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">2.10. set variable</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 调试过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 示例代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 调试步骤</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-gdb简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. GDB简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-常用命令"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#21-list"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. list</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#22-break"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2. break</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#23-delete"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">2.3. delete</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#24-backtrace"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">2.4. backtrace</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#25-info"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">2.5. info</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#26-print"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">2.6. print</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#27-whatis"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">2.7. whatis</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#28-next"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">2.8. next</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#29-coutinue"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">2.9. coutinue</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#210-set-variable"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">2.10. set variable</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-调试过程"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 调试过程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31-示例代码"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 示例代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32-调试步骤"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 调试步骤</span></a></li></ol></li></ol>
         
         </div>
       </aside>

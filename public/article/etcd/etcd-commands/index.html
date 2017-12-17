@@ -210,72 +210,72 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="一-etcdctl介绍">一、etcdctl介绍</span></h2>
+                <h2 id="一-etcdctl介绍">一、etcdctl介绍</h2>
 <p>etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。</p>
 <p>用法：etcdctl [global options] command [command options][args…]</p>
-<h2><span id="二-etcd常用命令">二、Etcd常用命令</span></h2>
-<h3><span id="一数据库操作命令">（一）数据库操作命令</span></h3>
+<h2 id="二-etcd常用命令">二、Etcd常用命令</h2>
+<h3 id="一数据库操作命令">（一）数据库操作命令</h3>
 <p>etcd 在键的组织上采用了层次化的空间结构（类似于文件系统中目录的概念），数据库操作围绕对键值和目录的 CRUD [增删改查]（符合 REST 风格的一套操作：Create, Read, Update, Delete）完整生命周期的管理。</p>
 <p>具体的命令选项参数可以通过 etcdctl command --help来获取相关帮助。</p>
-<h4><span id="1对象为键值">1）对象为键值</span></h4>
+<h4 id="1对象为键值">1）对象为键值</h4>
 <ol>
 <li>
-<h5><span id="set增无论是否存在etcdctl-set-key-value">set[增:无论是否存在]:etcdctl set key value</span></h5>
+<h5 id="set增无论是否存在etcdctl-set-key-value">set[增:无论是否存在]:etcdctl set key value</h5>
 </li>
 <li>
-<h5><span id="mk增必须不存在etcdctl-mk-key-value">mk[增:必须不存在]:etcdctl mk key value</span></h5>
+<h5 id="mk增必须不存在etcdctl-mk-key-value">mk[增:必须不存在]:etcdctl mk key value</h5>
 </li>
 <li>
-<h5><span id="rm删etcdctl-rm-key">rm[删]:etcdctl rm key</span></h5>
+<h5 id="rm删etcdctl-rm-key">rm[删]:etcdctl rm key</h5>
 </li>
 <li>
-<h5><span id="update改etcdctl-update-key-value">update[改]:etcdctl update key value</span></h5>
+<h5 id="update改etcdctl-update-key-value">update[改]:etcdctl update key value</h5>
 </li>
 <li>
-<h5><span id="get查etcdctl-get-key">get[查]:etcdctl get key</span></h5>
+<h5 id="get查etcdctl-get-key">get[查]:etcdctl get key</h5>
 </li>
 </ol>
-<h4><span id="2对象为目录">2）对象为目录</span></h4>
+<h4 id="2对象为目录">2）对象为目录</h4>
 <ol>
 <li>
-<h5><span id="setdir增无论是否存在etcdctl-setdir-dir">setdir[增:无论是否存在]:etcdctl setdir dir</span></h5>
+<h5 id="setdir增无论是否存在etcdctl-setdir-dir">setdir[增:无论是否存在]:etcdctl setdir dir</h5>
 </li>
 <li>
-<h5><span id="mkdir增必须不存在-etcdctl-mkdir-dir">mkdir[增:必须不存在]: etcdctl mkdir dir</span></h5>
+<h5 id="mkdir增必须不存在-etcdctl-mkdir-dir">mkdir[增:必须不存在]: etcdctl mkdir dir</h5>
 </li>
 <li>
-<h5><span id="rmdir删etcdctl-rmdir-dir">rmdir[删]:etcdctl rmdir dir</span></h5>
+<h5 id="rmdir删etcdctl-rmdir-dir">rmdir[删]:etcdctl rmdir dir</h5>
 </li>
 <li>
-<h5><span id="updatedir改etcdctl-updatedir-dir">updatedir[改]:etcdctl updatedir dir</span></h5>
+<h5 id="updatedir改etcdctl-updatedir-dir">updatedir[改]:etcdctl updatedir dir</h5>
 </li>
 <li>
-<h5><span id="ls查etcdclt-ls">ls[查]:etcdclt ls</span></h5>
+<h5 id="ls查etcdclt-ls">ls[查]:etcdclt ls</h5>
 </li>
 </ol>
-<h3><span id="二非数据库操作命令">（二）非数据库操作命令</span></h3>
+<h3 id="二非数据库操作命令">（二）非数据库操作命令</h3>
 <ol>
 <li>
-<h5><span id="backup备份-etcd-的数据">backup[备份 etcd 的数据]</span></h5>
+<h5 id="backup备份-etcd-的数据">backup[备份 etcd 的数据]</h5>
 <p>etcdctl backup</p>
 </li>
 <li>
-<h5><span id="watch监测一个键值的变化一旦键值发生更新就会输出最新的值并退出">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</span></h5>
+<h5 id="watch监测一个键值的变化一旦键值发生更新就会输出最新的值并退出">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</h5>
 <p>etcdctl watch key</p>
 </li>
 <li>
-<h5><span id="exec-watch监测一个键值的变化一旦键值发生更新就执行给定命令">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</span></h5>
+<h5 id="exec-watch监测一个键值的变化一旦键值发生更新就执行给定命令">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</h5>
 <p>etcdctl exec-watch key --sh -c “ls”</p>
 </li>
 <li>
-<h5><span id="member通过-list-add-remove-update-命令列出-添加-删除-更新etcd-实例到-etcd-集群中">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</span></h5>
+<h5 id="member通过-list-add-remove-update-命令列出-添加-删除-更新etcd-实例到-etcd-集群中">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</h5>
 <p>etcdctl member list；etcdctl member add 实例；etcdctl member remove 实例；etcdctl member update 实例。</p>
 </li>
 <li>
-<h5><span id="etcdctl-cluster-health检查集群健康状态">etcdctl cluster-health[检查集群健康状态]</span></h5>
+<h5 id="etcdctl-cluster-health检查集群健康状态">etcdctl cluster-health[检查集群健康状态]</h5>
 </li>
 </ol>
-<h3><span id="三常用配置参数">（三）常用配置参数</span></h3>
+<h3 id="三常用配置参数">（三）常用配置参数</h3>
 <p>设置配置文件，默认为/etc/etcd/etcd.conf。</p>
 <table>
 <thead>
@@ -398,7 +398,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、etcdctl介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Etcd常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">（一）数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">1）对象为键值</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.1.</span> <span class="toc-nav-text">set[增:无论是否存在]:etcdctl set key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.2.</span> <span class="toc-nav-text">mk[增:必须不存在]:etcdctl mk key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.3.</span> <span class="toc-nav-text">rm[删]:etcdctl rm key</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.4.</span> <span class="toc-nav-text">update[改]:etcdctl update key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.5.</span> <span class="toc-nav-text">get[查]:etcdctl get key</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2）对象为目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.1.</span> <span class="toc-nav-text">setdir[增:无论是否存在]:etcdctl setdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.2.</span> <span class="toc-nav-text">mkdir[增:必须不存在]: etcdctl mkdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.3.</span> <span class="toc-nav-text">rmdir[删]:etcdctl rmdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.4.</span> <span class="toc-nav-text">updatedir[改]:etcdctl updatedir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.5.</span> <span class="toc-nav-text">ls[查]:etcdclt ls</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">（二）非数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.1.</span> <span class="toc-nav-text">backup[备份 etcd 的数据]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.2.</span> <span class="toc-nav-text">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.3.</span> <span class="toc-nav-text">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.4.</span> <span class="toc-nav-text">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.0.5.</span> <span class="toc-nav-text">etcdctl cluster-health[检查集群健康状态]</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">（三）常用配置参数</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-etcdctl介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、etcdctl介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-etcd常用命令"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Etcd常用命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一数据库操作命令"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">（一）数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1对象为键值"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">1）对象为键值</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#set增无论是否存在etcdctl-set-key-value"><span class="toc-nav-number">2.1.1.1.</span> <span class="toc-nav-text">set[增:无论是否存在]:etcdctl set key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#mk增必须不存在etcdctl-mk-key-value"><span class="toc-nav-number">2.1.1.2.</span> <span class="toc-nav-text">mk[增:必须不存在]:etcdctl mk key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#rm删etcdctl-rm-key"><span class="toc-nav-number">2.1.1.3.</span> <span class="toc-nav-text">rm[删]:etcdctl rm key</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#update改etcdctl-update-key-value"><span class="toc-nav-number">2.1.1.4.</span> <span class="toc-nav-text">update[改]:etcdctl update key value</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#get查etcdctl-get-key"><span class="toc-nav-number">2.1.1.5.</span> <span class="toc-nav-text">get[查]:etcdctl get key</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2对象为目录"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2）对象为目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#setdir增无论是否存在etcdctl-setdir-dir"><span class="toc-nav-number">2.1.2.1.</span> <span class="toc-nav-text">setdir[增:无论是否存在]:etcdctl setdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#mkdir增必须不存在-etcdctl-mkdir-dir"><span class="toc-nav-number">2.1.2.2.</span> <span class="toc-nav-text">mkdir[增:必须不存在]: etcdctl mkdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#rmdir删etcdctl-rmdir-dir"><span class="toc-nav-number">2.1.2.3.</span> <span class="toc-nav-text">rmdir[删]:etcdctl rmdir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#updatedir改etcdctl-updatedir-dir"><span class="toc-nav-number">2.1.2.4.</span> <span class="toc-nav-text">updatedir[改]:etcdctl updatedir dir</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ls查etcdclt-ls"><span class="toc-nav-number">2.1.2.5.</span> <span class="toc-nav-text">ls[查]:etcdclt ls</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二非数据库操作命令"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">（二）非数据库操作命令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#backup备份-etcd-的数据"><span class="toc-nav-number">2.2.0.1.</span> <span class="toc-nav-text">backup[备份 etcd 的数据]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#watch监测一个键值的变化一旦键值发生更新就会输出最新的值并退出"><span class="toc-nav-number">2.2.0.2.</span> <span class="toc-nav-text">watch[监测一个键值的变化，一旦键值发生更新，就会输出最新的值并退出]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#exec-watch监测一个键值的变化一旦键值发生更新就执行给定命令"><span class="toc-nav-number">2.2.0.3.</span> <span class="toc-nav-text">exec-watch[监测一个键值的变化，一旦键值发生更新，就执行给定命令]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#member通过-list-add-remove-update-命令列出-添加-删除-更新etcd-实例到-etcd-集群中"><span class="toc-nav-number">2.2.0.4.</span> <span class="toc-nav-text">member[通过 list、add、remove、update 命令列出、添加、删除 、更新etcd 实例到 etcd 集群中]</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#etcdctl-cluster-health检查集群健康状态"><span class="toc-nav-number">2.2.0.5.</span> <span class="toc-nav-text">etcdctl cluster-health[检查集群健康状态]</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三常用配置参数"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">（三）常用配置参数</span></a></li></ol></li></ol>
         
         </div>
       </aside>

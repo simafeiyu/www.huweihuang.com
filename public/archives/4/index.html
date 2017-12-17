@@ -209,19 +209,23 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/heapster-introduction/">
+    <a href="/article/kubernetes/monitoring/influxdb-introduction/">
         <h2 class="post-title">
-            [Kubernetes] Heapster介绍
+            [Kubernetes] Influxdb介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. heapster简介
-Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
-Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
-2. heapster部署与配置
-......
+            1. InfluxDB简介
+InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
+主要特色功能：
+1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
+2）可度量性：你可以实时对大量数据进行计算
+3）基于事件：它支持任意的事件数据
+2. InfluxDB安装
+1）安装
+wget ......
         </div>
     </a>
     
@@ -366,42 +370,6 @@ Secure: automatic TLS with optional client cert authe......
 
 <div class="post-preview">
 
-    <a href="/article/docker/dockerfile-usage/">
-        <h2 class="post-title">
-            [Docker] Dockerfile使用说明
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、Dockerfile的说明
-dockerfile指令忽略大小写，建议大写，#作为注释，每行只支持一条指令，指令可以带多个参数。
-dockerfile指令分为构建指令和设置指令。
-
-构建指令：用于构建image，其指定的操作不会在运行image的容器中执行。
-设置指令：用于设置image的属性，其指定的操作会在运行image的容器中执行。
-
-二、Dockerfile指令说明
-1、FROM（......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-09
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/">
         <h2 class="post-title">
             [Docker] Docker源码分析（二）之Docker Daemon
@@ -415,40 +383,6 @@ dockerfile指令分为构建指令和设置指令。
 Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
 Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
 运行过程的作用有以下几种可能：......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-09
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Docker" title="Docker">Docker</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/docker/docker-architecture/">
-        <h2 class="post-title">
-            [Docker] Docker整体架构图
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、Docker的总架构图
-
-docker是一个C/S模式的架构，后端是一个松耦合架构，模块各司其职。
-
-用户是使用Docker Client与Docker Daemon建立通信，并发送请求给后者。
-Docker Daemon作为Docker架构中的主体部分，首先提供Server的功能使其可以接受Docker Client的请求；
-Engine执行Docker内部的一系列工作，每一项工作都是......
         </div>
     </a>
     
@@ -502,17 +436,91 @@ Docker......
 
 <div class="post-preview">
 
-    <a href="/article/docker/code-analysis/code-analysis-of-docker-server/">
+    <a href="/article/docker/dockerfile-usage/">
         <h2 class="post-title">
-            [Docker] Docker源码分析（三）之Docker Server
+            [Docker] Dockerfile使用说明
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Docker Server创建流程
-Docker Server是Daemon Server的重要组成部分，功能：接收Docker Client发送的请求，并按照相应的路由规则实现请求的路由分发，最终将请求处理的结果返回给Docker Client。
-Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的Job，让Docker Daemon提供A......
+            一、Dockerfile的说明
+dockerfile指令忽略大小写，建议大写，#作为注释，每行只支持一条指令，指令可以带多个参数。
+dockerfile指令分为构建指令和设置指令。
+
+构建指令：用于构建image，其指定的操作不会在运行image的容器中执行。
+设置指令：用于设置image的属性，其指定的操作会在运行image的容器中执行。
+
+二、Dockerfile指令说明
+1、FROM（......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-09
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/docker/docker-commands-principle/">
+        <h2 class="post-title">
+            [Docker] Docker常用命令原理图
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            docker常用命令原理图概览：
+
+（一）image layer（镜像层）
+镜像可以看成是由多个镜像层叠加起来的一个文件系统，镜像层也可以简单理解为一个基本的镜像，而每个镜像层之间通过指针的形式进行叠加。
+
+根据上图，镜像层的主要组成部分包括镜像层id，镜像层指针【指向父层】，元数据【layer metadata】包含了docker构建和运行的信息还有父层的层次信息。
+只读层和读写层【top......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-09
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Docker" title="Docker">Docker</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/docker/docker-architecture/">
+        <h2 class="post-title">
+            [Docker] Docker整体架构图
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            一、Docker的总架构图
+
+docker是一个C/S模式的架构，后端是一个松耦合架构，模块各司其职。
+
+用户是使用Docker Client与Docker Daemon建立通信，并发送请求给后者。
+Docker Daemon作为Docker架构中的主体部分，首先提供Server的功能使其可以接受Docker Client的请求；
+Engine执行Docker内部的一系列工作，每一项工作都是......
         </div>
     </a>
     
@@ -570,11 +578,15 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
     <div class="tags">
         
             
-            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            
+        
+            
+            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
             
         
             
@@ -583,10 +595,6 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
         
             
             <a href="/tags/#Golang" title="Golang" rel="11">Golang</a>
-            
-        
-            
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -658,7 +666,7 @@ Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的J
     <ul>
       
         <li>
-          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go源码分析</a>
+          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go的使用及源码分析</a>
         </li>
       
         <li>

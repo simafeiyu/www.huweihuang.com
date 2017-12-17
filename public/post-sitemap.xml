@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.huweihuang.com/article/source-analysis/client-go-source-analysis/</loc>
+        <lastmod>2017-12-17T12:09:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.huweihuang.com/article/python/basics/python-function/</loc>
         <lastmod>2017-12-16T14:38:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -17,14 +25,6 @@
     <url>
         <loc>http://www.huweihuang.com/article/python/basics/python-basics/</loc>
         <lastmod>2017-12-16T14:38:35.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.huweihuang.com/article/source-analysis/client-go-source-analysis/</loc>
-        <lastmod>2017-12-16T14:36:18.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

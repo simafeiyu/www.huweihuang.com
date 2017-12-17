@@ -210,10 +210,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-kubelet简介">1. kubelet简介</span></h2>
+                <h2 id="1-kubelet简介">1. kubelet简介</h2>
 <p>在kubernetes集群中，每个Node节点都会启动kubelet进程，用来处理Master节点下发到本节点的任务，管理Pod和其中的容器。kubelet会在API Server上注册节点信息，定期向Master汇报节点资源使用情况，并通过cAdvisor监控容器和节点资源。可以把kubelet理解成【Server-Agent】架构中的agent，是Node上的pod管家。</p>
 <p>更多kubelet配置参数信息可参考kubelet --help</p>
-<h2><span id="2-节点管理">2. 节点管理</span></h2>
+<h2 id="2-节点管理">2. 节点管理</h2>
 <p>节点通过设置kubelet的启动参数“–register-node”，来决定是否向API Server注册自己，默认为true。可以通过kubelet --help或者查看kubernetes源码【cmd/kubelet/app/server.go中】来查看该参数。</p>
 <p><strong>kubelet的配置文件</strong></p>
 <p>默认配置文件在/etc/kubernetes/kubelet中，其中</p>
@@ -223,7 +223,7 @@
 <li>–hostname-override：用来配置该节点在集群中显示的主机名。</li>
 <li>–node-status-update-frequency：配置kubelet向Master心跳上报的频率，默认为10s。</li>
 </ul>
-<h2><span id="3-pod管理">3. Pod管理</span></h2>
+<h2 id="3-pod管理">3. Pod管理</h2>
 <p>kubelet有几种方式获取自身Node上所需要运行的Pod清单。但本文只讨论通过API Server监听etcd目录，同步Pod列表的方式。</p>
 <p>kubelet通过API Server Client使用WatchAndList的方式监听etcd中/registry/nodes/${当前节点名称}和/registry/pods的目录，将获取的信息同步到本地缓存中。</p>
 <p>kubelet监听etcd，执行对Pod的操作，对容器的操作则是通过Docker Client执行，例如启动删除容器等。</p>
@@ -240,9 +240,9 @@
 2）如果容器被终止了且没有指定重启策略，则不做任何处理。<br>
 3）调用Docker Client下载容器镜像，调用Docker Client运行容器。</li>
 </ol>
-<h2><span id="4-容器健康检查">4. 容器健康检查</span></h2>
+<h2 id="4-容器健康检查">4. 容器健康检查</h2>
 <p>Pod通过探针的方式来检查容器的健康状态，具体可参考<a href="http://wiki.haplat.net/pages/viewpage.action?pageId=18233849#Pod%E8%AF%A6%E8%A7%A3-Pod%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5" target="_blank" rel="noopener">Pod详解#Pod健康检查</a>。</p>
-<h2><span id="5-cadvisor资源监控">5. cAdvisor资源监控</span></h2>
+<h2 id="5-cadvisor资源监控">5. cAdvisor资源监控</h2>
 <p>kubelet通过cAdvisor获取本节点信息及容器的数据。cAdvisor为谷歌开源的容器资源分析工具，默认集成到kubernetes中。</p>
 <p>cAdvisor自动采集CPU,内存，文件系统，网络使用情况，容器中运行的进程，默认端口为4194。可以通过Node IP+Port访问。</p>
 <p>更多参考：<a href="http://github.com/google/cadvisor" target="_blank" rel="noopener">http://github.com/google/cadvisor</a></p>
@@ -255,7 +255,7 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/golang/web-programming/golang-http-execution-flow/" data-toggle="tooltip" data-placement="top" title="[Golang] GO HTTP执行流程">&larr; Previous Post</a>
+                            <a href="/article/golang/golang-text-process/" data-toggle="tooltip" data-placement="top" title="[Golang] Golang文本处理">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -286,7 +286,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. kubelet简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 节点管理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Pod管理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 容器健康检查</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. cAdvisor资源监控</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-kubelet简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. kubelet简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-节点管理"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 节点管理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-pod管理"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Pod管理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-容器健康检查"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 容器健康检查</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-cadvisor资源监控"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. cAdvisor资源监控</span></a></li></ol>
         
         </div>
       </aside>

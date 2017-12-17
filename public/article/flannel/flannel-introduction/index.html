@@ -210,53 +210,53 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="一-flannel是什么what">一、flannel是什么（what）</span></h2>
-<h3><span id="一概述">（一）概述</span></h3>
+                <h2 id="一-flannel是什么what">一、flannel是什么（what）</h2>
+<h3 id="一概述">（一）概述</h3>
 <p>Flannel是CoreOS团队针对Kubernetes设计的一个网络规划服务，简单来说，它的功能是让集群中的不同节点主机创建的Docker容器都具有全集群唯一的虚拟IP地址。<br>
 Flannel官网：<a href="https://github.com/coreos/flannel" target="_blank" rel="noopener">https://github.com/coreos/flannel</a></p>
-<h3><span id="二补充知识点">（二）补充知识点</span></h3>
-<h4><span id="1-覆盖网络overlay-network"><strong>1、覆盖网络[overlay network]</strong></span></h4>
+<h3 id="二补充知识点">（二）补充知识点</h3>
+<h4 id="1-覆盖网络overlay-network"><strong>1、覆盖网络[overlay network]</strong></h4>
 <p>运行在一个网上的网（应用层网络），并不依靠ip地址来传递消息，而是采用一种映射机制，把ip地址和identifiers做映射来资源定位。</p>
-<h4><span id="2-路由"><strong>2、路由</strong></span></h4>
+<h4 id="2-路由"><strong>2、路由</strong></h4>
 <p>互联网是由路由器连接的网络组合而成，路由器按照路由表、路由协议等机制实现对数据包正确地转发，从而到达目标主机。路由器根据数据包中目标主机的IP地址和路由控制表比较得出下一个接收数据的路由器。</p>
 <p><strong>1）静态路由：事先设置好路由器和主机中的路由表信息。</strong></p>
 <p><img src="/img/article/flannel/%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1.png" alt="静态路由"></p>
 <p><strong>2）动态路由：让路由协议在运行中自动修改并设置路由表信息。</strong></p>
 <p><img src="/img/article/flannel/%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1.png" alt="动态路由"></p>
-<h2><span id="二-为什么使用flannelwhy">二、为什么使用flannel（why）</span></h2>
+<h2 id="二-为什么使用flannelwhy">二、为什么使用flannel（why）</h2>
 <p>在默认的Docker配置中，每个节点上的Docker服务会分别负责所在节点容器的IP分配。这样导致的一个问题是，不同节点上容器可能获得相同的内外IP地址。</p>
 <p>Flannel的设计目的就是为集群中的所有节点重新规划IP地址的使用规则，从而使得不同节点上的容器能够获得“同属一个内网”且”不重复的”IP地址，并让属于不同节点上的容器能够直接通过内网IP通信。</p>
-<h2><span id="三-如何实现flannelhow">三、如何实现flannel（how）</span></h2>
+<h2 id="三-如何实现flannelhow">三、如何实现flannel（how）</h2>
 <p>Flannel实质上是一种“覆盖网络(overlay network)”，也就是将TCP数据包装在另一种网络包里面进行路由转发和通信，目前已经支持UDP、VxLAN、AWS VPC和GCE路由等数据转发方式，默认的节点间数据通信方式是UDP转发。</p>
-<h3><span id="一flannel原理图">（一）flannel原理图</span></h3>
+<h3 id="一flannel原理图">（一）flannel原理图</h3>
 <p><img src="/img/article%5Cflannel%5Cflannel.png" alt="flannel"></p>
 <ol>
 <li>数据从源容器中发出后，经由所在主机的docker0虚拟网卡转发到flannel0虚拟网卡，这是个P2P的虚拟网卡，flanneld服务监听在网卡的另外一端。</li>
 <li>Flannel通过Etcd服务维护了一张节点间的路由表。</li>
 <li>源主机的flanneld服务将原本的数据内容UDP封装后根据自己的路由表投递给目的节点的flanneld服务，数据到达以后被解包，然后直 接进入目的节点的flannel0虚拟网卡，然后被转发到目的主机的docker0虚拟网卡，最后就像本机容器通信一下的有docker0路由到达目标容 器。</li>
 </ol>
-<h3><span id="二实现说明">（二）实现说明</span></h3>
-<h4><span id="1-udp封装"><strong>1、UDP封装</strong></span></h4>
+<h3 id="二实现说明">（二）实现说明</h3>
+<h4 id="1-udp封装"><strong>1、UDP封装</strong></h4>
 <p>原始数据是在起始节点的Flannel服务上进行UDP封装的，投递到目的节点后就被另一端的Flannel服务还原成了原始的数据包，两边的Docker服务都感觉不到这个过程的存在。 UDP的数据内容部分其实是另一个ICMP（也就是ping命令）的数据包。</p>
 <p><img src="/img/article/flannel/UDP%E5%B0%81%E8%A3%85.png" alt="UDP封装"></p>
-<h4><span id="2-为docker分配不同的ip段"><strong>2、为docker分配不同的IP段</strong></span></h4>
+<h4 id="2-为docker分配不同的ip段"><strong>2、为docker分配不同的IP段</strong></h4>
 <p>Flannel通过Etcd分配了每个节点可用的IP地址段后，偷偷的修改了Docker的启动参数。</p>
 <p><img src="/img/article/flannel/docker%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0.png" alt="docker启动参数"></p>
 <p>注意其中的“–bip=172.17.18.1/24”这个参数，它限制了所在节点容器获得的IP范围。</p>
 <p>这个IP范围是由Flannel自动分配的，由Flannel通过保存在Etcd服务中的记录确保它们不会重复。</p>
-<h4><span id="3-路由规则"><strong>3、路由规则</strong></span></h4>
+<h4 id="3-路由规则"><strong>3、路由规则</strong></h4>
 <p>1）数据发送节点的路由表</p>
 <p><img src="/img/article/flannel/%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81%E8%8A%82%E7%82%B9%E8%B7%AF%E7%94%B1%E8%A1%A8.png" alt="数据发送节点路由表"></p>
 <p>2）数据接收节点的路由表</p>
 <p><img src="/img/article/flannel/%E6%95%B0%E6%8D%AE%E6%8E%A5%E6%94%B6%E8%8A%82%E7%82%B9%E8%B7%AF%E7%94%B1%E8%A1%A8.png" alt="数据接收节点路由表"></p>
 <p>例如现在有一个数据包要从IP为172.17.18.2的容器发到IP为172.17.46.2的容器。根据数据发送节点的路由表，它只与 172.17.0.0/16匹配这条记录匹配，因此数据从docker0出来以后就被投递到了flannel0。同理在目标节点，由于投递的地址是一个容 器，因此目的地址一定会落在docker0对于的172.17.46.0/24这个记录上，自然的被投递到了docker0网卡。</p>
-<h3><span id="三flannel的安装与配置">（三）flannel的安装与配置</span></h3>
-<h4><span id="1-安装"><strong>1、安装</strong></span></h4>
+<h3 id="三flannel的安装与配置">（三）flannel的安装与配置</h3>
+<h4 id="1-安装"><strong>1、安装</strong></h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://&lt;官网&gt;/flannel/flannel-0.2.0-10.el7.x86_64.rpm</span><br><span class="line">yum localinstall -y flannel-0.2.0-10.el7.x86_64.rpm</span><br></pre></td></tr></table></figure>
-<h4><span id="2-配置"><strong>2、配置</strong></span></h4>
+<h4 id="2-配置"><strong>2、配置</strong></h4>
 <p>vi /etc/sysconfig/flanneld</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Flanneld configuration options</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span> etcd url location. Point this to the server where etcd runs</span><br><span class="line">FLANNEL_ETCD="http://127.0.0.1:4001"</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span> etcd config key. This is the configuration key that flannel queries</span><br><span class="line"><span class="meta">#</span> For address range assignment</span><br><span class="line">FLANNEL_ETCD_KEY="/wae/flannel/product/network"</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span> Any additional options that you want to pass</span><br><span class="line">FLANNEL_OPTIONS=" -iface=eth0"</span><br></pre></td></tr></table></figure>
-<h4><span id="3-初始化flannel的etcd配置"><strong>3、初始化flannel的etcd配置</strong></span></h4>
+<h4 id="3-初始化flannel的etcd配置"><strong>3、初始化flannel的etcd配置</strong></h4>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">etcdctl set /wae/flannel/network/config &apos;&#123;</span><br><span class="line">   &quot;Network&quot;: &quot;10.0.0.0/16&quot;,</span><br><span class="line">   &quot;Backend&quot;: &#123;</span><br><span class="line">       &quot;Type&quot;: &quot;vxlan&quot;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;&apos;</span><br></pre></td></tr></table></figure>
 
                 
@@ -266,7 +266,7 @@ Flannel官网：<a href="https://github.com/coreos/flannel" target="_blank" rel=
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">&larr; Previous Post</a>
+                            <a href="/article/docker/code-analysis/code-analysis-of-docker-server/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（三）之Docker Server">&larr; Previous Post</a>
                         </li>
                     
                     
@@ -293,7 +293,7 @@ Flannel官网：<a href="https://github.com/coreos/flannel" target="_blank" rel=
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、flannel是什么（what）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">（一）概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">（二）补充知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1、覆盖网络[overlay network]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2、路由</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、为什么使用flannel（why）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、如何实现flannel（how）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">（一）flannel原理图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">（二）实现说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">1、UDP封装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">2、为docker分配不同的IP段</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">3、路由规则</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">（三）flannel的安装与配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">1、安装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">2、配置</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">3、初始化flannel的etcd配置</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-flannel是什么what"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、flannel是什么（what）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一概述"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">（一）概述</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二补充知识点"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">（二）补充知识点</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-覆盖网络overlay-network"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">1、覆盖网络[overlay network]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-路由"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">2、路由</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-为什么使用flannelwhy"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、为什么使用flannel（why）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三-如何实现flannelhow"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、如何实现flannel（how）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一flannel原理图"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">（一）flannel原理图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二实现说明"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">（二）实现说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-udp封装"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">1、UDP封装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-为docker分配不同的ip段"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">2、为docker分配不同的IP段</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-路由规则"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">3、路由规则</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三flannel的安装与配置"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">（三）flannel的安装与配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-安装"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">1、安装</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-配置"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">2、配置</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-初始化flannel的etcd配置"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">3、初始化flannel的etcd配置</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

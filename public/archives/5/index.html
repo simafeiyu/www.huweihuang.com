@@ -209,21 +209,17 @@
 
 <div class="post-preview">
 
-    <a href="/article/docker/docker-commands-principle/">
+    <a href="/article/docker/code-analysis/code-analysis-of-docker-server/">
         <h2 class="post-title">
-            [Docker] Docker常用命令原理图
+            [Docker] Docker源码分析（三）之Docker Server
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            docker常用命令原理图概览：
-
-（一）image layer（镜像层）
-镜像可以看成是由多个镜像层叠加起来的一个文件系统，镜像层也可以简单理解为一个基本的镜像，而每个镜像层之间通过指针的形式进行叠加。
-
-根据上图，镜像层的主要组成部分包括镜像层id，镜像层指针【指向父层】，元数据【layer metadata】包含了docker构建和运行的信息还有父层的层次信息。
-只读层和读写层【top......
+            一、Docker Server创建流程
+Docker Server是Daemon Server的重要组成部分，功能：接收Docker Client发送的请求，并按照相应的路由规则实现请求的路由分发，最终将请求处理的结果返回给Docker Client。
+Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的Job，让Docker Daemon提供A......
         </div>
     </a>
     
@@ -311,11 +307,15 @@ Flannel官网：https://github.com/coreos/flannel
     <div class="tags">
         
             
-            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            <a href="/tags/#Database" title="Database" rel="2">Database</a>
             
         
             
-            <a href="/tags/#Database" title="Database" rel="2">Database</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            
+        
+            
+            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
             
         
             
@@ -324,10 +324,6 @@ Flannel官网：https://github.com/coreos/flannel
         
             
             <a href="/tags/#Golang" title="Golang" rel="11">Golang</a>
-            
-        
-            
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -399,7 +395,7 @@ Flannel官网：https://github.com/coreos/flannel
     <ul>
       
         <li>
-          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go源码分析</a>
+          <a href="/article/source-analysis/client-go-source-analysis/">[SourceAnalysis] client-go的使用及源码分析</a>
         </li>
       
         <li>

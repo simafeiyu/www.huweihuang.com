@@ -210,25 +210,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-influxdb简介">1. InfluxDB简介</span></h2>
+                <h2 id="1-influxdb简介">1. InfluxDB简介</h2>
 <p>InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。</p>
 <p>主要特色功能：</p>
 <p>1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）</p>
 <p>2）可度量性：你可以实时对大量数据进行计算</p>
 <p>3）基于事件：它支持任意的事件数据</p>
-<h2><span id="2-influxdb安装">2. InfluxDB安装</span></h2>
-<h3><span id="1安装">1）安装</span></h3>
+<h2 id="2-influxdb安装">2. InfluxDB安装</h2>
+<h3 id="1安装">1）安装</h3>
 <p>wget <a href="https://dl.influxdata.com/influxdb/releases/influxdb-0.13.0.x86_64.rpm" target="_blank" rel="noopener">https://dl.influxdata.com/influxdb/releases/influxdb-0.13.0.x86_64.rpm</a></p>
 <p>yum localinstall influxdb-0.13.0.armhf.rpm</p>
-<h3><span id="2启动">2）启动</span></h3>
+<h3 id="2启动">2）启动</h3>
 <p>service influxdb start</p>
-<h3><span id="3访问">3）访问</span></h3>
+<h3 id="3访问">3）访问</h3>
 <p><a href="http://xn--IP-fr5c86lx7z:8083" target="_blank" rel="noopener">http://服务器IP:8083</a></p>
-<h3><span id="4docker-image方式安装">4）docker image方式安装</span></h3>
+<h3 id="4docker-image方式安装">4）docker image方式安装</h3>
 <p>docker pull influxdb</p>
 <p>docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv <a href="http://registry.wae.haplat.net/test/influxdb:1.0.0" target="_blank" rel="noopener">registry.wae.haplat.net/test/influxdb:1.0.0</a></p>
-<h2><span id="3-influxdb的基本概念">3. InfluxDB的基本概念</span></h2>
-<h3><span id="31-与传统数据库中的名词做比较">3.1. 与传统数据库中的名词做比较</span></h3>
+<h2 id="3-influxdb的基本概念">3. InfluxDB的基本概念</h2>
+<h3 id="31-与传统数据库中的名词做比较">3.1. 与传统数据库中的名词做比较</h3>
 <table>
 <thead>
 <tr>
@@ -251,8 +251,8 @@
 </tr>
 </tbody>
 </table>
-<h3><span id="32-influxdb中独有的概念">3.2. InfluxDB中独有的概念</span></h3>
-<h4><span id="321-point">3.2.1. Point</span></h4>
+<h3 id="32-influxdb中独有的概念">3.2. InfluxDB中独有的概念</h3>
+<h4 id="321-point">3.2.1. Point</h4>
 <p>Point由时间戳（time）、数据（field）、标签（tags）组成。</p>
 <p>Point相当于传统数据库里的一行数据，如下表所示：</p>
 <table>
@@ -277,15 +277,15 @@
 </tr>
 </tbody>
 </table>
-<h4><span id="322-series">3.2.2. series</span></h4>
+<h4 id="322-series">3.2.2. series</h4>
 <p>所有在数据库中的数据，都需要通过图表来展示，而这个series表示这个表里面的数据，可以在图表上画成几条线：通过tags排列组合算出来</p>
 <p>show series from cpu</p>
-<h2><span id="4-influxdb的基本操作">4. InfluxDB的基本操作</span></h2>
+<h2 id="4-influxdb的基本操作">4. InfluxDB的基本操作</h2>
 <p>InfluxDB提供三种操作方式：</p>
 <p>1）客户端命令行方式</p>
 <p>2）HTTP API接口</p>
 <p>3）各语言API库</p>
-<h3><span id="41-influxdb数据库操作">4.1. InfluxDB数据库操作</span></h3>
+<h3 id="41-influxdb数据库操作">4.1. InfluxDB数据库操作</h3>
 <table>
 <thead>
 <tr>
@@ -312,7 +312,7 @@
 </tr>
 </tbody>
 </table>
-<h3><span id="42-influxdb数据表操作">4.2. InfluxDB数据表操作</span></h3>
+<h3 id="42-influxdb数据表操作">4.2. InfluxDB数据表操作</h3>
 <table>
 <thead>
 <tr>
@@ -357,12 +357,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/monitoring/kubernetes-cluster-monitoring/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes集群监控">&larr; Previous Post</a>
+                            <a href="/article/database/mysql-commonds/" data-toggle="tooltip" data-placement="top" title="[Database] Mysql常用命令">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/kubernetes-commands/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes常用命令">Next Post &rarr;</a>
+                            <a href="/article/database/redis-introduction/" data-toggle="tooltip" data-placement="top" title="[Database] Redis介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -388,7 +388,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. InfluxDB简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. InfluxDB安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">1）安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2）启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">3）访问</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">4）docker image方式安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. InfluxDB的基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 与传统数据库中的名词做比较</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. InfluxDB中独有的概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">3.2.1. Point</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">3.2.2. series</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. InfluxDB的基本操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. InfluxDB数据库操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. InfluxDB数据表操作</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-influxdb简介"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. InfluxDB简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-influxdb安装"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. InfluxDB安装</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1安装"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">1）安装</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2启动"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2）启动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3访问"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">3）访问</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4docker-image方式安装"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">4）docker image方式安装</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-influxdb的基本概念"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. InfluxDB的基本概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31-与传统数据库中的名词做比较"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 与传统数据库中的名词做比较</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32-influxdb中独有的概念"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. InfluxDB中独有的概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#321-point"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">3.2.1. Point</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#322-series"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">3.2.2. series</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-influxdb的基本操作"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. InfluxDB的基本操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-influxdb数据库操作"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. InfluxDB数据库操作</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#42-influxdb数据表操作"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. InfluxDB数据表操作</span></a></li></ol></li></ol>
         
         </div>
       </aside>

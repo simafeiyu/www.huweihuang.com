@@ -210,7 +210,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="一-docker的总架构图">一、Docker的总架构图</span></h2>
+                <h2 id="一-docker的总架构图">一、Docker的总架构图</h2>
 <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510577966/article/docker/dockerArch/docker-architecture.jpg" width="60%">
 <p>docker是一个C/S模式的架构，后端是一个松耦合架构，模块各司其职。</p>
 <ol>
@@ -222,14 +222,14 @@
 <li>当需要限制Docker容器运行资源或执行用户指令等操作时，则通过execdriver来完成。</li>
 <li>libcontainer是一项独立的容器管理包，networkdriver以及execdriver都是通过libcontainer来实现具体对容器进行的操作。</li>
 </ol>
-<h2><span id="二-docker各模块组件分析">二、Docker各模块组件分析</span></h2>
-<h3><span id="一docker-client发起请求">（一）Docker Client[发起请求]</span></h3>
+<h2 id="二-docker各模块组件分析">二、Docker各模块组件分析</h2>
+<h3 id="一docker-client发起请求">（一）Docker Client[发起请求]</h3>
 <ol>
 <li>Docker Client是和Docker Daemon建立通信的客户端。用户使用的可执行文件为docker（类似可执行脚本的命令），docker命令后接参数的形式来实现一个完整的请求命令（例如docker images，docker为命令不可变，images为参数可变）。</li>
 <li>Docker Client可以通过以下三种方式和Docker Daemon建立通信：<a href="">tcp://host:port，unix://path_to_socket和fd://socketfd。</a></li>
 <li>Docker Client发送容器管理请求后，由Docker Daemon接受并处理请求，当Docker Client接收到返回的请求相应并简单处理后，Docker Client一次完整的生命周期就结束了。[一次完整的请求：发送请求→处理请求→返回结果]，与传统的C/S架构请求流程并无不同。</li>
 </ol>
-<h3><span id="二docker-daemon后台守护进程">（二）Docker Daemon[后台守护进程]</span></h3>
+<h3 id="二docker-daemon后台守护进程">（二）Docker Daemon[后台守护进程]</h3>
 <ul>
 <li>
 <p>Docker Daemon的架构图</p>
@@ -238,7 +238,7 @@
 </ul>
 <ol>
 <li>
-<h4><span id="docker-server调度分发请求">Docker Server[调度分发请求]</span></h4>
+<h4 id="docker-server调度分发请求">Docker Server[调度分发请求]</h4>
 <ul>
 <li>Docker Server的架构图</li>
 </ul>
@@ -251,27 +251,27 @@
 </ol>
 </li>
 <li>
-<h4><span id="engine">Engine</span></h4>
+<h4 id="engine">Engine</h4>
 <ol>
 <li>Engine是Docker架构中的运行引擎，同时也Docker运行的核心模块。它扮演Docker container存储仓库的角色，并且通过执行job的方式来操纵管理这些容器。</li>
 <li>在Engine数据结构的设计与实现过程中，有一个handler对象。该handler对象存储的都是关于众多特定job的handler处理访问。举例说明，Engine的handler对象中有一项为：{“create”: daemon.ContainerCreate,}，则说明当名为&quot;create&quot;的job在运行时，执行的是daemon.ContainerCreate的handler。</li>
 </ol>
 </li>
 <li>
-<h4><span id="job">job</span></h4>
+<h4 id="job">job</h4>
 <ol>
 <li>一个Job可以认为是Docker架构中Engine内部最基本的工作执行单元。Docker可以做的每一项工作，都可以抽象为一个job。例如：在容器内部运行一个进程，这是一个job；创建一个新的容器，这是一个job。Docker Server的运行过程也是一个job，名为serveapi。</li>
 <li>Job的设计者，把Job设计得与Unix进程相仿。比如说：Job有一个名称，有参数，有环境变量，有标准的输入输出，有错误处理，有返回状态等。</li>
 </ol>
 </li>
 </ol>
-<h3><span id="三docker-registry镜像注册中心">（三）Docker Registry[镜像注册中心]</span></h3>
+<h3 id="三docker-registry镜像注册中心">（三）Docker Registry[镜像注册中心]</h3>
 <ol>
 <li>Docker Registry是一个存储容器镜像的仓库（注册中心），可理解为云端镜像仓库，按repository来分类，docker pull 按照[repository]:[tag]来精确定义一个image。</li>
 <li>在Docker的运行过程中，Docker Daemon会与Docker Registry通信，并实现搜索镜像、下载镜像、上传镜像三个功能，这三个功能对应的job名称分别为&quot;search&quot;，“pull” 与 “push”。</li>
 <li>可分为公有仓库（docker hub）和私有仓库。</li>
 </ol>
-<h3><span id="四graphdocker内部数据库">（四）Graph[docker内部数据库]</span></h3>
+<h3 id="四graphdocker内部数据库">（四）Graph[docker内部数据库]</h3>
 <ul>
 <li>
 <p>Graph的架构图</p>
@@ -280,7 +280,7 @@
 </ul>
 <ol>
 <li>
-<h4><span id="repository">Repository</span></h4>
+<h4 id="repository">Repository</h4>
 <ol>
 <li>已下载镜像的保管者（包括下载镜像和dockerfile构建的镜像）。</li>
 <li>一个repository表示某类镜像的仓库（例如Ubuntu），同一个repository内的镜像用tag来区分（表示同一类镜像的不同标签或版本）。一个registry包含多个repository，一个repository包含同类型的多个image。</li>
@@ -289,18 +289,18 @@
 </ol>
 </li>
 <li>
-<h4><span id="graphdb">GraphDB</span></h4>
+<h4 id="graphdb">GraphDB</h4>
 <ol>
 <li>已下载容器镜像之间关系的记录者。</li>
 <li>GraphDB是一个构建在SQLite之上的小型图数据库，实现了节点的命名以及节点之间关联关系的记录</li>
 </ol>
 </li>
 </ol>
-<h3><span id="五driver执行部分">（五）Driver[执行部分]</span></h3>
+<h3 id="五driver执行部分">（五）Driver[执行部分]</h3>
 <p>Driver是Docker架构中的驱动模块。通过Driver驱动，Docker可以实现对Docker容器执行环境的定制。即Graph负责镜像的存储，Driver负责容器的执行。</p>
 <ol>
 <li>
-<h4><span id="graphdriver">graphdriver</span></h4>
+<h4 id="graphdriver">graphdriver</h4>
 <ul>
 <li>
 <p>graphdriver架构图</p>
@@ -316,7 +316,7 @@
 </ol>
 <ol>
 <li>
-<h4><span id="networkdriver">networkdriver</span></h4>
+<h4 id="networkdriver">networkdriver</h4>
 <ul>
 <li>
 <p>networkdriver的架构图</p>
@@ -334,7 +334,7 @@
 </ol>
 </li>
 <li>
-<h4><span id="execdriver">execdriver</span></h4>
+<h4 id="execdriver">execdriver</h4>
 <ul>
 <li>
 <p>execdriver的架构图</p>
@@ -347,7 +347,7 @@
 </ol>
 </li>
 </ol>
-<h3><span id="六libcontainer函数库">（六）libcontainer[函数库]</span></h3>
+<h3 id="六libcontainer函数库">（六）libcontainer[函数库]</h3>
 <ul>
 <li>
 <p>libcontainer的架构图</p>
@@ -359,7 +359,7 @@
 <li>Docker可以直接调用libcontainer，而最终操纵容器的namespace、cgroups、apparmor、网络设备以及防火墙规则等。</li>
 <li>libcontainer提供了一整套标准的接口来满足上层对容器管理的需求。或者说，libcontainer屏蔽了Docker上层对容器的直接管理。</li>
 </ol>
-<h3><span id="七docker-container服务交付的最终形式">（七）docker container[服务交付的最终形式]</span></h3>
+<h3 id="七docker-container服务交付的最终形式">（七）docker container[服务交付的最终形式]</h3>
 <ul>
 <li>
 <p>container架构</p>
@@ -391,12 +391,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（二）之Docker Daemon">&larr; Previous Post</a>
+                            <a href="/article/docker/docker-commands-principle/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker常用命令原理图">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/docker/code-analysis/code-analysis-of-docker-client/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（一）之Docker Client">Next Post &rarr;</a>
+                            <a href="/article/docker/code-analysis/code-analysis-of-docker-server/" data-toggle="tooltip" data-placement="top" title="[Docker] Docker源码分析（三）之Docker Server">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -422,7 +422,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、Docker的总架构图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Docker各模块组件分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">（一）Docker Client[发起请求]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">（二）Docker Daemon[后台守护进程]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Docker Server[调度分发请求]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Engine</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">job</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">（三）Docker Registry[镜像注册中心]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">（四）Graph[docker内部数据库]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.1.</span> <span class="toc-nav-text">Repository</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.2.</span> <span class="toc-nav-text">GraphDB</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">（五）Driver[执行部分]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.1.</span> <span class="toc-nav-text">graphdriver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.2.</span> <span class="toc-nav-text">networkdriver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.3.</span> <span class="toc-nav-text">execdriver</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">（六）libcontainer[函数库]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">（七）docker container[服务交付的最终形式]</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-docker的总架构图"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、Docker的总架构图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-docker各模块组件分析"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、Docker各模块组件分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一docker-client发起请求"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">（一）Docker Client[发起请求]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二docker-daemon后台守护进程"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">（二）Docker Daemon[后台守护进程]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#docker-server调度分发请求"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Docker Server[调度分发请求]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#engine"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Engine</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#job"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">job</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三docker-registry镜像注册中心"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">（三）Docker Registry[镜像注册中心]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#四graphdocker内部数据库"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">（四）Graph[docker内部数据库]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#repository"><span class="toc-nav-number">2.4.1.</span> <span class="toc-nav-text">Repository</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#graphdb"><span class="toc-nav-number">2.4.2.</span> <span class="toc-nav-text">GraphDB</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#五driver执行部分"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">（五）Driver[执行部分]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#graphdriver"><span class="toc-nav-number">2.5.1.</span> <span class="toc-nav-text">graphdriver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#networkdriver"><span class="toc-nav-number">2.5.2.</span> <span class="toc-nav-text">networkdriver</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#execdriver"><span class="toc-nav-number">2.5.3.</span> <span class="toc-nav-text">execdriver</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#六libcontainer函数库"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">（六）libcontainer[函数库]</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#七docker-container服务交付的最终形式"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">（七）docker container[服务交付的最终形式]</span></a></li></ol></li></ol>
         
         </div>
       </aside>

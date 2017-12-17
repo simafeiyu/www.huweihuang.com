@@ -210,10 +210,10 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-kubernetes的总架构图">1. Kubernetes的总架构图</span></h2>
+                <h2 id="1-kubernetes的总架构图">1. Kubernetes的总架构图</h2>
 <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1512807164/article/kubernetes/arch/k8s-arch.jpg" width="90%">
-<h2><span id="2-kubernetes各个组件介绍">2. Kubernetes各个组件介绍</span></h2>
-<h3><span id="21-kube-master控制节点">2.1 kube-master[控制节点]</span></h3>
+<h2 id="2-kubernetes各个组件介绍">2. Kubernetes各个组件介绍</h2>
+<h3 id="21-kube-master控制节点">2.1 kube-master[控制节点]</h3>
 <p><strong>master的工作流程图</strong></p>
 <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578888/article/kubernetes/arch/master.png" width="100%">
 <ol>
@@ -225,7 +225,7 @@
 <li>在API Server响应Kubecfg的请求后，Scheduler会根据Kubernetes Client获取集群中运行Pod及Minion/Node信息。</li>
 <li>依据从Kubernetes Client获取的信息，Scheduler将未分发的Pod分发到可用的Minion/Node节点上。</li>
 </ol>
-<h4><span id="211-api-server资源操作入口">2.1.1 API Server[资源操作入口]</span></h4>
+<h4 id="211-api-server资源操作入口">2.1.1 API Server[资源操作入口]</h4>
 <ol>
 <li>
 <p>提供了资源对象的唯一操作入口，其他所有组件都必须通过它提供的API来操作资源数据，只有API Server与存储通信，其他模块通过API Server访问集群状态。</p>
@@ -237,7 +237,7 @@
 </li>
 </ol>
 <p>更多API Server信息请参考：<a href="http://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-api-server/">Kubernetes核心原理（一）之API Server</a></p>
-<h4><span id="212-controller-manager内部管理控制中心">2.1.2 Controller Manager[内部管理控制中心]</span></h4>
+<h4 id="212-controller-manager内部管理控制中心">2.1.2 Controller Manager[内部管理控制中心]</h4>
 <ol>
 <li>实现集群故障检测和恢复的自动化工作，负责执行各种控制器，主要有：
 <ul>
@@ -247,7 +247,7 @@
 </li>
 </ol>
 <p>更多Controller Manager信息请参考：<a href="http://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-controller-manager/">Kubernetes核心原理（二）之Controller Manager</a></p>
-<h4><span id="213-scheduler集群分发调度器">2.1.3 Scheduler[集群分发调度器]</span></h4>
+<h4 id="213-scheduler集群分发调度器">2.1.3 Scheduler[集群分发调度器]</h4>
 <ol>
 <li>Scheduler收集和分析当前Kubernetes集群中所有Minion/Node节点的资源(内存、CPU)负载情况，然后依此分发新建的Pod到Kubernetes集群中可用的节点。</li>
 <li>实时监测Kubernetes集群中未分发和已分发的所有运行的Pod。</li>
@@ -255,10 +255,10 @@
 <li>最后，Scheduler在分发Pod到指定的Minion/Node节点后，会把Pod相关的信息Binding写回API Server。</li>
 </ol>
 <p>更多Scheduler信息请参考：<a href="http://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/">Kubernetes核心原理（三）之Scheduler</a></p>
-<h3><span id="22-kube-node服务节点">2.2 kube-node[服务节点]</span></h3>
+<h3 id="22-kube-node服务节点">2.2 kube-node[服务节点]</h3>
 <p><strong>kubelet结构图</strong></p>
 <img src="http://res.cloudinary.com/dqxtn0ick/image/upload/v1510578888/article/kubernetes/arch/kubelet.png" width="60%">
-<h4><span id="221-kubelet节点上的pod管家">2.2.1 Kubelet[节点上的Pod管家]</span></h4>
+<h4 id="221-kubelet节点上的pod管家">2.2.1 Kubelet[节点上的Pod管家]</h4>
 <ol>
 <li>
 <p>负责Node节点上pod的创建、修改、监控、删除等全生命周期的管理</p>
@@ -285,12 +285,12 @@
 </li>
 </ol>
 <p>更多Kubelet信息请参考：<a href="http://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">Kubernetes核心原理（四）之Kubelet</a></p>
-<h4><span id="222-proxy负载均衡-路由转发">2.2.2 Proxy[负载均衡、路由转发]</span></h4>
+<h4 id="222-proxy负载均衡-路由转发">2.2.2 Proxy[负载均衡、路由转发]</h4>
 <ol>
 <li>Proxy是为了解决外部网络能够访问跨机器集群中容器提供的应用服务而设计的，运行在每个Minion/Node上。Proxy提供TCP/UDP sockets的proxy，每创建一种Service，Proxy主要从etcd获取Services和Endpoints的配置信息（也可以从file获取），然后根据配置信息在Minion/Node上启动一个Proxy的进程并监听相应的服务端口，当外部请求发生时，Proxy会根据Load Balancer将请求分发到后端正确的容器处理。</li>
 <li>Proxy不但解决了同一主宿机相同服务端口冲突的问题，还提供了Service转发服务端口对外提供服务的能力，Proxy后端使用了随机、轮循负载均衡算法。</li>
 </ol>
-<h4><span id="223-kubectlkubelet-client集群管理命令行工具集">2.2.3 kubectl（kubelet client）[集群管理命令行工具集]</span></h4>
+<h4 id="223-kubectlkubelet-client集群管理命令行工具集">2.2.3 kubectl（kubelet client）[集群管理命令行工具集]</h4>
 <ol>
 <li>通过客户端的kubectl命令集操作，API Server响应对应的命令结果，从而达到对kubernetes集群的管理。</li>
 </ol>
@@ -335,7 +335,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Kubernetes的总架构图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Kubernetes各个组件介绍</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1 kube-master[控制节点]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">2.1.1 API Server[资源操作入口]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2.1.2 Controller Manager[内部管理控制中心]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">2.1.3 Scheduler[集群分发调度器]</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2 kube-node[服务节点]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">2.2.1 Kubelet[节点上的Pod管家]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">2.2.2 Proxy[负载均衡、路由转发]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">2.2.3 kubectl（kubelet client）[集群管理命令行工具集]</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-kubernetes的总架构图"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. Kubernetes的总架构图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-kubernetes各个组件介绍"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Kubernetes各个组件介绍</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#21-kube-master控制节点"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1 kube-master[控制节点]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#211-api-server资源操作入口"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">2.1.1 API Server[资源操作入口]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#212-controller-manager内部管理控制中心"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2.1.2 Controller Manager[内部管理控制中心]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#213-scheduler集群分发调度器"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">2.1.3 Scheduler[集群分发调度器]</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#22-kube-node服务节点"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2 kube-node[服务节点]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#221-kubelet节点上的pod管家"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">2.2.1 Kubelet[节点上的Pod管家]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#222-proxy负载均衡-路由转发"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">2.2.2 Proxy[负载均衡、路由转发]</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#223-kubectlkubelet-client集群管理命令行工具集"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">2.2.3 kubectl（kubelet client）[集群管理命令行工具集]</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

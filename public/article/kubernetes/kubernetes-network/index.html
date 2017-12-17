@@ -210,24 +210,24 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-kubernetes网络模型">1. kubernetes网络模型</span></h2>
-<h3><span id="11-基础原则">1.1. 基础原则</span></h3>
+                <h2 id="1-kubernetes网络模型">1. kubernetes网络模型</h2>
+<h3 id="11-基础原则">1.1. 基础原则</h3>
 <ol>
 <li>每个Pod都拥有一个独立的IP地址，而且假定所有Pod都在一个可以直接连通的、扁平的网络空间中，不管是否运行在同一Node上都可以通过Pod的IP来访问。</li>
 <li>k8s中Pod的IP是最小粒度IP。同一个Pod内所有的容器共享一个网络堆栈，该模型称为IP-per-Pod模型。</li>
 <li>Pod由docker0实际分配的IP，Pod内部看到的IP地址和端口与外部保持一致。同一个Pod内的不同容器共享网络，可以通过localhost来访问对方的端口，类似同一个VM内的不同进程。</li>
 <li>IP-per-Pod模型从端口分配、域名解析、服务发现、负载均衡、应用配置等角度看，Pod可以看作是一台独立的VM或物理机。</li>
 </ol>
-<h3><span id="12-k8s对集群的网络要求">1.2. k8s对集群的网络要求</span></h3>
+<h3 id="12-k8s对集群的网络要求">1.2. k8s对集群的网络要求</h3>
 <ol>
 <li>所有容器都可以不用NAT的方式同别的容器通信。</li>
 <li>所有节点都可以在不同NAT的方式下同所有容器通信，反之亦然。</li>
 <li>容器的地址和别人看到的地址是同一个地址。</li>
 </ol>
 <p>以上的集群网络要求可以通过第三方开源方案实现，例如flannel。</p>
-<h3><span id="13-网络架构图">1.3. 网络架构图</span></h3>
+<h3 id="13-网络架构图">1.3. 网络架构图</h3>
 <p><img src="/img/article/kubernetes/k8s%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="网络架构图"></p>
-<h3><span id="14-k8s集群ip概念汇总">1.4. k8s集群IP概念汇总</span></h3>
+<h3 id="14-k8s集群ip概念汇总">1.4. k8s集群IP概念汇总</h3>
 <p>由集群外部到集群内部：</p>
 <table>
 <thead>
@@ -263,24 +263,24 @@
 </tr>
 </tbody>
 </table>
-<h2><span id="2-docker的网络基础">2. Docker的网络基础</span></h2>
-<h3><span id="21-network-namespace">2.1. Network Namespace</span></h3>
+<h2 id="2-docker的网络基础">2. Docker的网络基础</h2>
+<h3 id="21-network-namespace">2.1. Network Namespace</h3>
 <p>不同的网络命名空间中，协议栈是独立的，完全隔离，彼此之间无法通信。同一个网络命名空间有独立的路由表和独立的Iptables/Netfilter来提供包的转发、NAT、IP包过滤等功能。</p>
-<h4><span id="211-网络命名空间的实现">2.1.1. 网络命名空间的实现</span></h4>
+<h4 id="211-网络命名空间的实现">2.1.1. 网络命名空间的实现</h4>
 <p>将与网络协议栈相关的全局变量变成一个Net Namespace变量的成员，然后在调用协议栈函数中加入一个Namepace参数。</p>
-<h4><span id="212-网络命名空间的操作">2.1.2. 网络命名空间的操作</span></h4>
+<h4 id="212-网络命名空间的操作">2.1.2. 网络命名空间的操作</h4>
 <p>1、创建网络命名空间</p>
 <p>ip netns add</p>
 <p>2、在命名空间内执行命令</p>
 <p>ip netns exec</p>
 <p>3、进入命名空间</p>
 <p>ip netns exec bash</p>
-<h2><span id="3-docker的网络实现">3. Docker的网络实现</span></h2>
-<h3><span id="31-容器网络">3.1. 容器网络</span></h3>
+<h2 id="3-docker的网络实现">3. Docker的网络实现</h2>
+<h3 id="31-容器网络">3.1. 容器网络</h3>
 <p>Docker使用Linux桥接，在宿主机虚拟一个Docker容器网桥(docker0)，Docker启动一个容器时会根据Docker网桥的网段分配给容器一个IP地址，称为Container-IP，同时Docker网桥是每个容器的默认网关。因为在同一宿主机内的容器都接入同一个网桥，这样容器之间就能够通过容器的Container-IP直接通信。</p>
 <p>Docker网桥是宿主机虚拟出来的，并不是真实存在的网络设备，外部网络是无法寻址到的，这也意味着外部网络无法通过直接Container-IP访问到容器。如果容器希望外部访问能够访问到，可以通过映射容器端口到宿主主机（端口映射），即docker run创建容器时候通过 -p 或 -P 参数来启用，访问容器的时候就通过[宿主机IP]:[容器端口]访问容器。</p>
 <p><img src="/img/article/kubernetes/k8s%E7%BD%91%E7%BB%9C/%E5%AE%B9%E5%99%A8%E7%BD%91%E7%BB%9C.png" alt="容器网络"></p>
-<h3><span id="32-4类网络模式">3.2. 4类网络模式</span></h3>
+<h3 id="32-4类网络模式">3.2. 4类网络模式</h3>
 <table>
 <thead>
 <tr>
@@ -312,12 +312,12 @@
 </tr>
 </tbody>
 </table>
-<h3><span id="33-bridge模式">3.3. bridge模式</span></h3>
+<h3 id="33-bridge模式">3.3. bridge模式</h3>
 <p>k8s只使用bridge模式。</p>
 <p>在bridge模式下，Docker Daemon首次启动时会创建一个虚拟网桥docker0，地址通常为172.x.x.x开头，在私有的网络空间中给这个网络分配一个子网。由Docker创建处理的每个容器，都会创建一个虚拟以太设备（Veth设备对），一端关联到网桥，另一端使用Namespace技术映射到容器内的eth0设备，然后从网桥的地址段内给eth0接口分配一个IP地址。</p>
 <p>![image2017-5-4 20-51-53](/img/article/kubernetes/k8s网络/image2017-5-4 20-51-53.png)</p>
 <p>一般情况，宿主机IP与docker0 IP、容器IP是不同的IP段，默认情况，外部看不到docker0和容器IP，对于外部来说相当于docker0和容器的IP为内网IP。</p>
-<h2><span id="4-kubernetes的网络实现">4. kubernetes的网络实现</span></h2>
+<h2 id="4-kubernetes的网络实现">4. kubernetes的网络实现</h2>
 <p>k8s网络场景</p>
 <ol>
 <li>容器与容器之间的直接通信。</li>
@@ -325,15 +325,15 @@
 <li>Pod到Service之间的通信。</li>
 <li>集群外部与内部组件之间的通信。</li>
 </ol>
-<h3><span id="41-pod网络">4.1. Pod网络</span></h3>
+<h3 id="41-pod网络">4.1. Pod网络</h3>
 <p>Pod作为kubernetes的最小调度单元，Pod是容器的集合，是一个逻辑概念，Pod包含的容器都运行在同一个宿主机上，这些容器将拥有同样的网络空间，容器之间能够互相通信，它们能够在本地访问其它容器的端口。 实际上Pod都包含一个网络容器，它不做任何事情，只是用来接管Pod的网络，业务容器通过加入网络容器的网络从而实现网络共享。Pod网络本质上还是容器网络，所以Pod-IP就是网络容器的Container-IP。</p>
 <p>一般将容器云平台的网络模型打造成一个扁平化网络平面，在这个网络平面内，Pod作为一个网络单元同Kubernetes Node的网络处于同一层级</p>
-<h3><span id="42-容器之间的通信">4.2. 容器之间的通信</span></h3>
+<h3 id="42-容器之间的通信">4.2. 容器之间的通信</h3>
 <p>同一个Pod之间的不同容器因为共享同一个网络命名空间，所以可以直接通过localhost直接通信。</p>
-<h3><span id="43-pod之间的通信">4.3. Pod之间的通信</span></h3>
-<h4><span id="431-同node的pod之间的通信"><strong>4.3.1. 同Node的Pod之间的通信</strong></span></h4>
+<h3 id="43-pod之间的通信">4.3. Pod之间的通信</h3>
+<h4 id="431-同node的pod之间的通信"><strong>4.3.1. 同Node的Pod之间的通信</strong></h4>
 <p>同一个Node内，不同的Pod都有一个全局IP，可以直接通过Pod的IP进行通信。Pod地址和docker0在同一个网段。</p>
-<h4><span id="432-不同node的pod之间的通信"><strong>4.3.2. 不同Node的Pod之间的通信</strong></span></h4>
+<h4 id="432-不同node的pod之间的通信"><strong>4.3.2. 不同Node的Pod之间的通信</strong></h4>
 <p>不同的Node之间，Node的IP相当于外网IP，可以直接访问，而Node内的docker0和Pod的IP则是内网IP，无法直接跨Node访问。需要通过Node的网卡进行转发。</p>
 <p>所以不同Node之间的通信需要达到两个条件：</p>
 <ol>
@@ -347,7 +347,7 @@
 <p><strong>2. Node与Pod间实现通信</strong></p>
 <p>例如：Node1和Pod1/ Pod2(同主机)，Pod3(跨主机)能够通信</p>
 <p>实现：在容器集群中创建一个覆盖网络(Overlay Network)，联通各个节点，目前可以通过第三方网络插件来创建覆盖网络，比如Flannel和Open vSwitch等。</p>
-<h3><span id="44-service网络">4.4. Service网络</span></h3>
+<h3 id="44-service网络">4.4. Service网络</h3>
 <p>Service的就是在Pod之间起到服务代理的作用，对外表现为一个单一访问接口，将请求转发给Pod，Service的网络转发是Kubernetes实现服务编排的关键一环。Service都会生成一个虚拟IP，称为Service-IP， Kuberenetes Porxy组件负责实现Service-IP路由和转发，在容器覆盖网络之上又实现了虚拟转发网络。</p>
 <p>Kubernetes Porxy实现了以下功能：</p>
 <ol>
@@ -355,8 +355,8 @@
 <li>监控Service和Endpoints的变化，实时刷新转发规则。</li>
 <li>负载均衡能力。</li>
 </ol>
-<h2><span id="5-开源的网络组件">5. 开源的网络组件</span></h2>
-<h3><span id="51-flannel">5.1. Flannel</span></h3>
+<h2 id="5-开源的网络组件">5. 开源的网络组件</h2>
+<h3 id="51-flannel">5.1. Flannel</h3>
 <p>具体参考<a href="http://blog.csdn.net/huwh_/article/details/77899108" target="_blank" rel="noopener">Flannel介绍</a></p>
 <p>参考《Kubernetes权威指南》</p>
 
@@ -367,12 +367,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/core-principle/kubernetes-core-principle-scheduler/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes核心原理（三）之Scheduler">&larr; Previous Post</a>
+                            <a href="/article/kubernetes/monitoring/cadvisor-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] cAdvisor介绍">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/monitoring/cadvisor-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] cAdvisor介绍">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/monitoring/kubernetes-cluster-monitoring/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes集群监控">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -398,7 +398,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. kubernetes网络模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1. 基础原则</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2. k8s对集群的网络要求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">1.3. 网络架构图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">1.4. k8s集群IP概念汇总</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Docker的网络基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. Network Namespace</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">2.1.1. 网络命名空间的实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2.1.2. 网络命名空间的操作</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Docker的网络实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 容器网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 4类网络模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3. bridge模式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. kubernetes的网络实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. Pod网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. 容器之间的通信</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. Pod之间的通信</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">4.3.1. 同Node的Pod之间的通信</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text">4.3.2. 不同Node的Pod之间的通信</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">4.4. Service网络</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. 开源的网络组件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">5.1. Flannel</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-kubernetes网络模型"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. kubernetes网络模型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-基础原则"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1. 基础原则</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-k8s对集群的网络要求"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2. k8s对集群的网络要求</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#13-网络架构图"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">1.3. 网络架构图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#14-k8s集群ip概念汇总"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">1.4. k8s集群IP概念汇总</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-docker的网络基础"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. Docker的网络基础</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#21-network-namespace"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. Network Namespace</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#211-网络命名空间的实现"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">2.1.1. 网络命名空间的实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#212-网络命名空间的操作"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">2.1.2. 网络命名空间的操作</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-docker的网络实现"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. Docker的网络实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31-容器网络"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1. 容器网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32-4类网络模式"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2. 4类网络模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#33-bridge模式"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3. bridge模式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-kubernetes的网络实现"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. kubernetes的网络实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-pod网络"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. Pod网络</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#42-容器之间的通信"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. 容器之间的通信</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#43-pod之间的通信"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. Pod之间的通信</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#431-同node的pod之间的通信"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">4.3.1. 同Node的Pod之间的通信</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#432-不同node的pod之间的通信"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text">4.3.2. 不同Node的Pod之间的通信</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#44-service网络"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">4.4. Service网络</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-开源的网络组件"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. 开源的网络组件</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#51-flannel"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">5.1. Flannel</span></a></li></ol></li></ol>
         
         </div>
       </aside>

@@ -210,13 +210,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-系统管理">1. 系统管理</span></h2>
-<h3><span id="11-连接mysql">1.1. 连接mysql</span></h3>
+                <h2 id="1-系统管理">1. 系统管理</h2>
+<h3 id="11-连接mysql">1.1. 连接mysql</h3>
 <p>格式： mysql -h主机地址 -u用户名 －p用户密码</p>
 <p>连接本地：mysql -h<code>localhost/127.0.0.1</code> -u用户名 －p用户密码</p>
 <p>连接远程：mysql -h<code>主机地址</code> -u用户名 －p用户密码<br>
 退出连接：exit</p>
-<h3><span id="12-备份数据库">1.2. 备份数据库</span></h3>
+<h3 id="12-备份数据库">1.2. 备份数据库</h3>
 <p><strong>1.导出整个数据库</strong></p>
 <p>导出文件默认是存在mysql\bin目录下</p>
 <p>mysqldump -u 用户名 -p 数据库名 ` 导出的文件名</p>
@@ -231,7 +231,7 @@
 <p>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt database_name ` outfile_name.sql</p>
 <p><strong>5、导入数据库</strong></p>
 <p>mysql -u root –p ` [备份文件的保存路径] 或者source [备份文件的保存路径]</p>
-<h3><span id="13-用户管理">1.3. 用户管理</span></h3>
+<h3 id="13-用户管理">1.3. 用户管理</h3>
 <p><strong>1、创建用户</strong></p>
 <p>​    create user ‘用户名’@‘IP地址’ identified by ‘密码’;</p>
 <p><strong>2、删除用户</strong></p>
@@ -242,41 +242,41 @@
 <p><strong>4、修改密码</strong></p>
 <p>​    set password for ‘用户名’@‘IP地址’ = Password(‘新密码’)</p>
 <p>​    mysqladmin -u用户名 -p旧密码 password 新密码</p>
-<h3><span id="14-权限管理">1.4. 权限管理</span></h3>
-<h4><span id="141-grant">1.4.1. grant</span></h4>
+<h3 id="14-权限管理">1.4. 权限管理</h3>
+<h4 id="141-grant">1.4.1. grant</h4>
 <p><strong>1、grant 权限 on 数据库对象 to 用户</strong></p>
 <p>数据库对象的格式为<code>database</code>.<code>table</code>。<code>database</code>.<em>：表示授权数据库对象该数据库的所有表；</em>.*：表示授权数据库对象为所有数据库的所有表。</p>
 <p>grant all privileges on <em>.</em> to <code>user</code>@’<code>ip</code>’ identified by ‘<code>passwd</code>’;如果<code>ip</code>为’%'表示不限制IP。</p>
 <p><strong>2、撤销权限</strong>：</p>
 <p>revoke all on <em>.</em> from <code>user</code>@<code>ip</code>;</p>
-<h4><span id="142-普通数据库用户">1.4.2. 普通数据库用户</span></h4>
+<h4 id="142-普通数据库用户">1.4.2. 普通数据库用户</h4>
 <p>查询、插入、更新、删除 数据库中所有表数据的权利</p>
 <p>grant select, insert, update, delete on testdb.* to <code>user</code>@’<code>ip</code>’;</p>
-<h4><span id="143-dba-用户">1.4.3. DBA 用户</span></h4>
+<h4 id="143-dba-用户">1.4.3. DBA 用户</h4>
 <p><strong>1、授权</strong></p>
 <p>grant all privileges on <em>.</em> to <code>dba</code>@’<code>ip</code>’ identified by ‘<code>passwd</code>’;</p>
 <p><strong>2、刷新系统权限</strong></p>
 <p>flush privileges;</p>
-<h4><span id="144-查看用户权限">1.4.4. 查看用户权限</span></h4>
+<h4 id="144-查看用户权限">1.4.4. 查看用户权限</h4>
 <p>1、查看当前用户（自己）权限</p>
 <p>show grants;</p>
 <p>2、查看指定MySQL 用户权限</p>
 <p>show grants for <code>user</code>@<code>localhost</code>;</p>
 <p>3、查看user和host</p>
 <p>select user,host from mysql.user order by user;</p>
-<h4><span id="145-权限列表">1.4.5. 权限列表</span></h4>
+<h4 id="145-权限列表">1.4.5. 权限列表</h4>
 <p><img src="/img/article/database/%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8.jpg" alt="img"></p>
-<h4><span id="146-查看主从关系">1.4.6. 查看主从关系</span></h4>
+<h4 id="146-查看主从关系">1.4.6. 查看主从关系</h4>
 <p>登录主机：show slave hosts;</p>
 <p>登录从机：show slave status;</p>
-<h2><span id="2-数据库操作">2. 数据库操作</span></h2>
+<h2 id="2-数据库操作">2. 数据库操作</h2>
 <p><strong>1、创建数据库</strong></p>
 <p>create database <code>数据库名</code></p>
 <p><strong>2、显示数据库</strong></p>
 <p>show databases</p>
 <p><strong>3、删除数据</strong></p>
 <p>drop database <code>数据库名</code></p>
-<h2><span id="3-数据表操作">3. 数据表操作</span></h2>
+<h2 id="3-数据表操作">3. 数据表操作</h2>
 <p><strong>1、创建表</strong></p>
 <blockquote>
 <p>create table 表名(</p>
@@ -316,8 +316,8 @@
 <p>修改默认值：ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</p>
 <p>删除默认值：ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</p>
 </blockquote>
-<h2><span id="4-表内容操作">4. 表内容操作</span></h2>
-<h3><span id="41-增">4.1. 增</span></h3>
+<h2 id="4-表内容操作">4. 表内容操作</h2>
+<h3 id="41-增">4.1. 增</h3>
 <blockquote>
 <p>insert into 表 (列名,列名…) values (值,值,…)</p>
 <p>insert into 表 (列名,列名…) values (值,值,…),(值,值,值…)</p>
@@ -325,31 +325,31 @@
 <p>例：</p>
 <p>​    insert into tab1(name,email) values(‘zhangyanlin’,‘zhangyanlin8851@<a href="http://163.com/" target="_blank" rel="noopener">163.com</a>’)</p>
 </blockquote>
-<h3><span id="42-删">4.2. 删</span></h3>
+<h3 id="42-删">4.2. 删</h3>
 <blockquote>
 <p>delete from 表                                      # 删除表里全部数据</p>
 <p>delete from 表 where id＝1 and name＝’zhangyanlin’   # 删除ID =1 和name=‘zhangyanlin’ 那一行数据</p>
 </blockquote>
-<h3><span id="43-改">4.3. 改</span></h3>
+<h3 id="43-改">4.3. 改</h3>
 <blockquote>
 <p>update 表 set name ＝ ‘zhangyanlin’ where id`1</p>
 </blockquote>
-<h3><span id="44-查">4.4. 查</span></h3>
+<h3 id="44-查">4.4. 查</h3>
 <blockquote>
 <p>select * from 表</p>
 <p>select * from 表 where id ` 1</p>
 <p>select nid,name,gender as gg from 表 where id ` 1</p>
 </blockquote>
-<h3><span id="45-条件判断">4.5. 条件判断</span></h3>
-<h4><span id="451-where">4.5.1. where</span></h4>
+<h3 id="45-条件判断">4.5. 条件判断</h3>
+<h4 id="451-where">4.5.1. where</h4>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> where id <span class="string">`1 and name!='huwh' and num =12;</span></span><br><span class="line"><span class="string">select * from `</span>table<span class="string">` where id between 5 and 6;</span></span><br><span class="line"><span class="string">select * from `</span>table<span class="string">` where id in (11,22,33);</span></span><br><span class="line"><span class="string">select * from `</span>table<span class="string">` where id not in (11,22,33);</span></span><br><span class="line"><span class="string">select * from `</span>table<span class="string">` where id in (select nid from `</span>table<span class="string">`)</span></span><br></pre></td></tr></table></figure>
-<h4><span id="452-通配符like">4.5.2. 通配符like</span></h4>
+<h4 id="452-通配符like">4.5.2. 通配符like</h4>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> where name like <span class="string">'hu%'</span>;   #hu开头</span><br><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> where name like <span class="string">'hu_'</span>    #hu开头后接一个字符</span><br></pre></td></tr></table></figure>
-<h4><span id="453-限制limit">4.5.3. 限制limit</span></h4>
+<h4 id="453-限制limit">4.5.3. 限制limit</h4>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> limit <span class="number">5</span>;   #前<span class="number">5</span>行</span><br><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> limit <span class="number">4</span>,<span class="number">5</span>  #从第四行开始的<span class="number">5</span>行</span><br><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> limit <span class="number">5</span> offset <span class="number">4</span>;#从第四行开始的<span class="number">5</span>行</span><br></pre></td></tr></table></figure>
-<h4><span id="454-排序ascdesc">4.5.4. 排序asc，desc</span></h4>
+<h4 id="454-排序ascdesc">4.5.4. 排序asc，desc</h4>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> order by 列 asc;            #跟据“列”从小到大排序（不指定默认为从小到大排序）</span><br><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> order by 列 desc;           #根据“列”从大到小排序</span><br><span class="line"><span class="keyword">select</span> * from <span class="string">`table`</span> order by 列<span class="number">1</span> desc,列<span class="number">2</span> asc;  #根据“列<span class="number">1</span>”从大到小排序，如果相同则按“列<span class="number">2</span>”从小到大排序</span><br></pre></td></tr></table></figure>
-<h4><span id="455-分组group-by">4.5.5. 分组group by</span></h4>
+<h4 id="455-分组group-by">4.5.5. 分组group by</h4>
 <p>group by 必须在where之后，order by之前。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> num,from <span class="string">`table`</span> group by num;     </span><br><span class="line"><span class="keyword">select</span> num,nid from <span class="string">`table`</span> group by num,nid;</span><br><span class="line"><span class="keyword">select</span> num from <span class="string">`table`</span> where nid <span class="string">` 10 group by num,nid order nid desc;</span></span><br><span class="line"><span class="string">select num,nid,count(*),sum(score),max(score) from `</span>table<span class="string">` group by num;</span></span><br><span class="line"><span class="string">select num from `</span>table<span class="string">` group by num having max(id) `</span> <span class="number">10</span>;</span><br><span class="line"><span class="keyword">select</span> num from <span class="string">`table`</span> group by num;</span><br></pre></td></tr></table></figure>
 
@@ -365,7 +365,7 @@
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/monitoring/heapster-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Heapster介绍">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/monitoring/influxdb-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Influxdb介绍">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -391,7 +391,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 系统管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1. 连接mysql</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2. 备份数据库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">1.3. 用户管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">1.4. 权限管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">1.4.1. grant</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">1.4.2. 普通数据库用户</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">1.4.3. DBA 用户</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">1.4.4. 查看用户权限</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">1.4.5. 权限列表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">1.4.6. 查看主从关系</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 数据库操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 数据表操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 表内容操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. 删</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. 改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">4.4. 查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">4.5. 条件判断</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text">4.5.1. where</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text">4.5.2. 通配符like</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.3.</span> <span class="toc-nav-text">4.5.3. 限制limit</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.4.</span> <span class="toc-nav-text">4.5.4. 排序asc，desc</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.5.</span> <span class="toc-nav-text">4.5.5. 分组group by</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-系统管理"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 系统管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#11-连接mysql"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">1.1. 连接mysql</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#12-备份数据库"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">1.2. 备份数据库</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#13-用户管理"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">1.3. 用户管理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#14-权限管理"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">1.4. 权限管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#141-grant"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">1.4.1. grant</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#142-普通数据库用户"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">1.4.2. 普通数据库用户</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#143-dba-用户"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">1.4.3. DBA 用户</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#144-查看用户权限"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">1.4.4. 查看用户权限</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#145-权限列表"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">1.4.5. 权限列表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#146-查看主从关系"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">1.4.6. 查看主从关系</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-数据库操作"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 数据库操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-数据表操作"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3. 数据表操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-表内容操作"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 表内容操作</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-增"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#42-删"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">4.2. 删</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#43-改"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">4.3. 改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#44-查"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">4.4. 查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#45-条件判断"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">4.5. 条件判断</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#451-where"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text">4.5.1. where</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#452-通配符like"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text">4.5.2. 通配符like</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#453-限制limit"><span class="toc-nav-number">4.5.3.</span> <span class="toc-nav-text">4.5.3. 限制limit</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#454-排序ascdesc"><span class="toc-nav-number">4.5.4.</span> <span class="toc-nav-text">4.5.4. 排序asc，desc</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#455-分组group-by"><span class="toc-nav-number">4.5.5.</span> <span class="toc-nav-text">4.5.5. 分组group by</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

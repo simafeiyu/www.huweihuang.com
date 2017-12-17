@@ -210,7 +210,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2><span id="1-指针的概念">1. 指针的概念</span></h2>
+                <h2 id="1-指针的概念">1. 指针的概念</h2>
 <table>
 <thead>
 <tr>
@@ -237,8 +237,8 @@
 </tr>
 </tbody>
 </table>
-<h2><span id="2-内存地址说明">2. 内存地址说明</span></h2>
-<h3><span id="21-内存定义">2.1. 内存定义</span></h3>
+<h2 id="2-内存地址说明">2. 内存地址说明</h2>
+<h3 id="21-内存定义">2.1. 内存定义</h3>
 <p>计算机的内存 RAM 可以把它想象成一些有序的盒子，一个接一个的排成一排，每一个盒子或者单元格都被一个唯一的数字标记依次递增，这个数字就是该单元格的地址，也就是内存的地址。<br>
 <img src="/img/article/golang/go%E6%8C%87%E9%92%88/%E4%BB%80%E4%B9%88%E6%98%AF%E5%86%85%E5%AD%98.png" alt="什么是内存"></p>
 <p><strong>硬件角度</strong>：内存是CPU沟通的桥梁，程序运行在内存中。</p>
@@ -277,8 +277,8 @@
 </tr>
 </tbody>
 </table>
-<h3><span id="22-内存单位和编址">2.2. 内存单位和编址</span></h3>
-<h4><span id="221-内存单位">2.2.1. 内存单位</span></h4>
+<h3 id="22-内存单位和编址">2.2. 内存单位和编址</h3>
+<h4 id="221-内存单位">2.2.1. 内存单位</h4>
 <table>
 <thead>
 <tr>
@@ -313,20 +313,20 @@
 </tr>
 </tbody>
 </table>
-<h4><span id="222-内存编址">2.2.2. 内存编址</span></h4>
+<h4 id="222-内存编址">2.2.2. 内存编址</h4>
 <p>计算机中的内存按字节编址，每个地址的存储单元可以存放一个字节的数据，CPU通过内存地址获取指令和数据，并不关心这个地址所代表的空间在什么位置，内存地址和地址指向的空间共同构成了一个内存单元。</p>
-<h4><span id="223-内存地址">2.2.3. 内存地址</span></h4>
+<h4 id="223-内存地址">2.2.3. 内存地址</h4>
 <p>内存地址通常用16进制的数据表示，例如0x0ffc1。</p>
-<h2><span id="3变量与指针运算理解">3.变量与指针运算理解</span></h2>
+<h2 id="3变量与指针运算理解">3.变量与指针运算理解</h2>
 <p>编写一段程序，检索出值并存储在地址为 200 的一个块内存中，将其乘以 3，并将结果存储在地址为 201 的另一块内存中</p>
-<h3><span id="31本质">3.1.本质</span></h3>
+<h3 id="31本质">3.1.本质</h3>
 <ol>
 <li>检索出内存地址为 200 的值，并将其存储在 CPU 中</li>
 <li>将存储在 CPU 中的值乘以 3</li>
 <li>将 CPU 中存储的结果，写入地址为 201 的内存块中</li>
 </ol>
 <p><img src="/img/article/golang/go%E6%8C%87%E9%92%88/%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F.png" alt="什么是变量"></p>
-<h3><span id="32基于变量的理解">3.2.基于变量的理解</span></h3>
+<h3 id="32基于变量的理解">3.2.基于变量的理解</h3>
 <ol>
 <li>获取变量 a 中存储的值，并将其存储在 CPU 中</li>
 <li>将其乘以 3</li>
@@ -334,7 +334,7 @@
 </ol>
 <p><img src="/img/article/golang/go%E6%8C%87%E9%92%88/%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F2.png" alt="什么是变量2"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a = 6 </span><br><span class="line">var b = a * 3</span><br></pre></td></tr></table></figure>
-<h3><span id="33基于指针的理解">3.3.基于指针的理解</span></h3>
+<h3 id="33基于指针的理解">3.3.基于指针的理解</h3>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    a := <span class="number">200</span></span><br><span class="line">    b := &amp;a</span><br><span class="line">    *b++</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以上函数对a进行+1操作，具体理解如下：</p>
 <p><strong>1.a:=200</strong></p>
@@ -344,8 +344,8 @@
 <p>*<em>3. <em>b++</em></em></p>
 <p><img src="/img/article/golang/go%E6%8C%87%E9%92%88/%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E9%92%883.png" alt="什么是指针3"></p>
 <p><img src="/img/article/golang/go%E6%8C%87%E9%92%88/%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%87%E9%92%884.png" alt="什么是指针4"></p>
-<h2><span id="4-指针的使用">4. 指针的使用</span></h2>
-<h3><span id="41-方法中的指针">4.1. 方法中的指针</span></h3>
+<h2 id="4-指针的使用">4. 指针的使用</h2>
+<h3 id="41-方法中的指针">4.1. 方法中的指针</h3>
 <p>方法即为有接受者的函数，接受者可以是类型的实例变量或者是类型的实例指针变量。但两种效果不同。</p>
 <p><strong>1、类型的实例变量</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    person := Person&#123;<span class="string">"vanyar"</span>, <span class="number">21</span>&#125;</span><br><span class="line">    fmt.Printf(<span class="string">"person&lt;%s:%d&gt;\n"</span>, person.name, person.age)</span><br><span class="line">    person.sayHi()</span><br><span class="line">    person.ModifyAge(<span class="number">210</span>)</span><br><span class="line">    person.sayHi()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">    age <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span> <span class="title">sayHi</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"SayHi -- This is %s, my age is %d\n"</span>,p.name, p.age)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p Person)</span> <span class="title">ModifyAge</span><span class="params">(age <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"ModifyAge"</span>)</span><br><span class="line">    p.age = age</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line">person&lt;vanyar:<span class="number">21</span>&gt;</span><br><span class="line">SayHi -- This is vanyar, my age is <span class="number">21</span></span><br><span class="line">ModifyAgeSayHi -- This is vanyar, my age is <span class="number">21</span></span><br></pre></td></tr></table></figure>
@@ -355,7 +355,7 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *Person)</span> <span class="title">ChangeAge</span><span class="params">(age <span class="keyword">int</span>)</span></span>  &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"ModifyAge"</span>)</span><br><span class="line">    p.age = age</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Go会根据Person的示例类型，转换成指针类型再拷贝，即 person.ChangeAge会变成 (&amp;person).ChangeAge。</p>
 <p>指针类型的接受者，如果实例对象是值，那么go会转换成指针，然后再拷贝，如果本身就是指针对象，那么就直接拷贝指针实例。因为指针都指向一处值，就能修改对象了。</p>
-<h2><span id="5-零值与nil空指针">5. 零值与nil(空指针)</span></h2>
+<h2 id="5-零值与nil空指针">5. 零值与nil(空指针)</h2>
 <p>变量声明而没有赋值，默认为零值，不同类型零值不同，例如字符串零值为空字符串；</p>
 <p>指针声明而没有赋值，默认为nil，即该指针没有任何指向。当指针没有指向的时候，不能对(*point)进行操作包括读取，否则会报空指针异常。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 声明一个指针变量 aPot 其类型也是 string</span></span><br><span class="line">    <span class="keyword">var</span> aPot *<span class="keyword">string</span></span><br><span class="line">    fmt.Printf(<span class="string">"aPot: %p %#v\n"</span>, &amp;aPot, aPot) <span class="comment">// 输出 aPot: 0xc42000c030 (*string)(nil)</span></span><br><span class="line">    *aPot = <span class="string">"This is a Pointer"</span>  <span class="comment">// 报错： panic: runtime error: invalid memory address or nil pointer dereference</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -363,7 +363,7 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个指针变量 aPot 其类型也是 string</span></span><br><span class="line">    <span class="keyword">var</span> aPot *<span class="keyword">string</span></span><br><span class="line">    fmt.Printf(<span class="string">"aPot: %p %#v\n"</span>, &amp;aPot, aPot) <span class="comment">// 输出 aPot: 0xc42000c030 (*string)(nil)</span></span><br><span class="line"> </span><br><span class="line">    aPot = &amp;aVar</span><br><span class="line">    *aPot = <span class="string">"This is a Pointer"</span></span><br><span class="line">    fmt.Printf(<span class="string">"aVar: %p %#v \n"</span>, &amp;aVar, aVar) <span class="comment">// 输出 aVar: 0xc42000e240 "This is a Pointer"</span></span><br><span class="line">    fmt.Printf(<span class="string">"aPot: %p %#v %#v \n"</span>, &amp;aPot, aPot, *aPot) <span class="comment">// 输出 aPot: 0xc42000c030 (*string)(0xc42000e240) "This is a Pointer"</span></span><br></pre></td></tr></table></figure>
 <p>或者通过new开辟一个内存，并返回这个内存的地址。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aNewPot *<span class="keyword">int</span></span><br><span class="line"> </span><br><span class="line">aNewPot = <span class="built_in">new</span>(<span class="keyword">int</span>)</span><br><span class="line">*aNewPot = <span class="number">217</span></span><br><span class="line">fmt.Printf(<span class="string">"aNewPot: %p %#v %#v \n"</span>, &amp;aNewPot, aNewPot, *aNewPot) <span class="comment">// 输出 aNewPot: 0xc42007a028 (*int)(0xc42006e1f0) 217</span></span><br></pre></td></tr></table></figure>
-<h2><span id="6-总结">6. 总结</span></h2>
+<h2 id="6-总结">6. 总结</h2>
 <ul>
 <li>Golang提供了指针用于操作数据内存，并通过引用来修改变量。</li>
 <li>只声明未赋值的变量，golang都会自动为其初始化为零值，基础数据类型的零值比较简单，引用类型和指针的零值都为nil，nil类型不能直接赋值，因此需要通过new开辟一个内存，或者通过make初始化数据类型，或者两者配合，然后才能赋值。</li>
@@ -412,7 +412,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 指针的概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 内存地址说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. 内存定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2. 内存单位和编址</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">2.2.1. 内存单位</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">2.2.2. 内存编址</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">2.2.3. 内存地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.变量与指针运算理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1.本质</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2.基于变量的理解</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3.基于指针的理解</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 指针的使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 方法中的指针</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. 零值与nil(空指针)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">6. 总结</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-指针的概念"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">1. 指针的概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-内存地址说明"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2. 内存地址说明</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#21-内存定义"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">2.1. 内存定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#22-内存单位和编址"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">2.2. 内存单位和编址</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#221-内存单位"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">2.2.1. 内存单位</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#222-内存编址"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">2.2.2. 内存编址</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#223-内存地址"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">2.2.3. 内存地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3变量与指针运算理解"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">3.变量与指针运算理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#31本质"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">3.1.本质</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#32基于变量的理解"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">3.2.基于变量的理解</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#33基于指针的理解"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">3.3.基于指针的理解</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-指针的使用"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">4. 指针的使用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#41-方法中的指针"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">4.1. 方法中的指针</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-零值与nil空指针"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">5. 零值与nil(空指针)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">6. 总结</span></a></li></ol>
         
         </div>
       </aside>

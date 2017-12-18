@@ -30,13 +30,6 @@
     </url>
 
     <url>
-        <loc>http://www.huweihuang.com/tags/Golang/</loc>
-        <lastmod>2017-12-16T14:18:43.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.huweihuang.com/tags/Kubernetes/</loc>
         <lastmod>2017-12-16T14:22:38.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -53,6 +46,13 @@
     <url>
         <loc>http://www.huweihuang.com/tags/SourceAnalysis/</loc>
         <lastmod>2017-12-17T12:09:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/Golang/</loc>
+        <lastmod>2017-12-18T02:31:37.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

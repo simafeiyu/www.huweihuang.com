@@ -239,20 +239,24 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-troubleshooting/">
+    <a href="/article/kubernetes/kubernetes-architecture/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes集群问题排查
+            [Kubernetes] Kubernetes总架构图
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. 查看系统Event事件
- 1kubectl describe pod &lt;PodName&gt; --namespace=&lt;NAMESPACE&gt;
-该命令可以显示Pod创建时的配置定义、状态等信息和最近的Event事件，事件信息可用于排错。例如当Pod状态为Pending，可通过查看Event事件确认原因，一般原因有几种：
+            1. Kubernetes的总架构图
 
-没有可用的Node可调度
-开启了资源配额管理并......
+2. Kubernetes各个组件介绍
+2.1 kube-master[控制节点]
+master的工作流程图
+
+
+Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
+Kubernetes Client将请求发送给API server。
+API Server根据请求的类型，比如创建Pod时storage类型是pods，......
         </div>
     </a>
     
@@ -272,24 +276,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-architecture/">
+    <a href="/article/kubernetes/kubernetes-troubleshooting/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes总架构图
+            [Kubernetes] Kubernetes集群问题排查
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. Kubernetes的总架构图
+            1. 查看系统Event事件
+ 1kubectl describe pod &lt;PodName&gt; --namespace=&lt;NAMESPACE&gt;
+该命令可以显示Pod创建时的配置定义、状态等信息和最近的Event事件，事件信息可用于排错。例如当Pod状态为Pending，可通过查看Event事件确认原因，一般原因有几种：
 
-2. Kubernetes各个组件介绍
-2.1 kube-master[控制节点]
-master的工作流程图
-
-
-Kubecfg将特定的请求，比如创建Pod，发送给Kubernetes Client。
-Kubernetes Client将请求发送给API server。
-API Server根据请求的类型，比如创建Pod时storage类型是pods，......
+没有可用的Node可调度
+开启了资源配额管理并......
         </div>
     </a>
     
@@ -734,11 +734,11 @@ interface
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>

@@ -420,16 +420,22 @@ Go语言中自带有一个轻量级的测试框架testing和自带的go test命�
 
 <div class="post-preview">
 
-    <a href="/article/golang/web-programming/golang-http-execution-flow/">
+    <a href="/article/golang/beego/beego-introduction/">
         <h2 class="post-title">
-            [Golang] GO HTTP执行流程
+            [Golang] beego介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. http包建立web服务器
-1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
+            1. beego的使用
+1.1. beego的安装
+1go get github.com/astaxie/beego
+1.2. beego的升级
+1、直接升级
+1go get -u github.com/astaxie/beego
+2、源码下载升级
+用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
         </div>
     </a>
     
@@ -449,17 +455,20 @@ Go语言中自带有一个轻量级的测试框架testing和自带的go test命�
 
 <div class="post-preview">
 
-    <a href="/article/golang/govendor-usage/">
+    <a href="/article/golang/golang-text-process/">
         <h2 class="post-title">
-            [Golang] govendor的使用
+            [Golang] Golang文本处理
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. govendor简介
-golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
-常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
+            1. JSON处理
+JSON是一种轻量级的数据交换语言。
+1.1. 解析JSON[Unmarshal(data []byte, v interface{})]
+1.1.1. Unmarshal源码
+/src/encoding/json/decode.go
+1234567891011121314151617181920212223242526272829303132func Unmarshal......
         </div>
     </a>
     
@@ -516,22 +525,16 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/article/golang/beego/beego-introduction/">
+    <a href="/article/golang/web-programming/golang-http-execution-flow/">
         <h2 class="post-title">
-            [Golang] beego介绍
+            [Golang] GO HTTP执行流程
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. beego的使用
-1.1. beego的安装
-1go get github.com/astaxie/beego
-1.2. beego的升级
-1、直接升级
-1go get -u github.com/astaxie/beego
-2、源码下载升级
-用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
+            1. http包建立web服务器
+1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
         </div>
     </a>
     
@@ -551,20 +554,17 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-text-process/">
+    <a href="/article/golang/govendor-usage/">
         <h2 class="post-title">
-            [Golang] Golang文本处理
+            [Golang] govendor的使用
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. JSON处理
-JSON是一种轻量级的数据交换语言。
-1.1. 解析JSON[Unmarshal(data []byte, v interface{})]
-1.1.1. Unmarshal源码
-/src/encoding/json/decode.go
-1234567891011121314151617181920212223242526272829303132func Unmarshal......
+            1. govendor简介
+golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
+常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
         </div>
     </a>
     
@@ -714,11 +714,11 @@ JSON是一种轻量级的数据交换语言。
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>

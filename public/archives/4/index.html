@@ -209,23 +209,20 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/influxdb-introduction/">
+    <a href="/article/kubernetes/kubernetes-network/">
         <h2 class="post-title">
-            [Kubernetes] Influxdb介绍
+            [Kubernetes] Kubernetes网络原理
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. InfluxDB简介
-InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
-主要特色功能：
-1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
-2）可度量性：你可以实时对大量数据进行计算
-3）基于事件：它支持任意的事件数据
-2. InfluxDB安装
-1）安装
-wget ......
+            1. kubernetes网络模型
+1.1. 基础原则
+
+每个Pod都拥有一个独立的IP地址，而且假定所有Pod都在一个可以直接连通的、扁平的网络空间中，不管是否运行在同一Node上都可以通过Pod的IP来访问。
+k8s中Pod的IP是最小粒度IP。同一个Pod内所有的容器共享一个网络堆栈，该模型称为IP-per-Pod模型。
+Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
         </div>
     </a>
     
@@ -275,18 +272,19 @@ Redis是......
 
 <div class="post-preview">
 
-    <a href="/article/etcd/etcd-commands/">
+    <a href="/article/etcd/etcd-auth&security/">
         <h2 class="post-title">
-            [Etcd] Etcd常用命令
+            [Etcd] Etcd访问控制
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、etcdctl介绍
-etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。
-用法：etcdctl [global options] command [command options][args…]
-二、Etcd常用命......
+            1. ETCD资源类型
+There are three types of resources in etcd
+permission resources: users and roles in the user store
+key-value resources: key-value pairs in the key-value store
+settings resources: securi......
         </div>
     </a>
     
@@ -306,19 +304,18 @@ etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可�
 
 <div class="post-preview">
 
-    <a href="/article/etcd/etcd-auth&security/">
+    <a href="/article/etcd/etcd-commands/">
         <h2 class="post-title">
-            [Etcd] Etcd访问控制
+            [Etcd] Etcd常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. ETCD资源类型
-There are three types of resources in etcd
-permission resources: users and roles in the user store
-key-value resources: key-value pairs in the key-value store
-settings resources: securi......
+            一、etcdctl介绍
+etcdctl是一个命令行的客户端，它提供了一下简洁的命令，可理解为命令工具集，可以方便我们在对服务进行测试或者手动修改数据库内容。etcdctl与其他xxxctl的命令原理及操作类似（例如kubectl，systemctl）。
+用法：etcdctl [global options] command [command options][args…]
+二、Etcd常用命......
         </div>
     </a>
     
@@ -402,21 +399,23 @@ Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请�
 
 <div class="post-preview">
 
-    <a href="/article/docker/code-analysis/code-analysis-of-docker-client/">
+    <a href="/article/docker/dockerfile-usage/">
         <h2 class="post-title">
-            [Docker] Docker源码分析（一）之Docker Client
+            [Docker] Dockerfile使用说明
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、创建Docker Client
-​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
-Docker Client运行流程图如下：
+            一、Dockerfile的说明
+dockerfile指令忽略大小写，建议大写，#作为注释，每行只支持一条指令，指令可以带多个参数。
+dockerfile指令分为构建指令和设置指令。
 
-说明：本文分析的代码为Docker 1.2.0版本。
-（一）Docker命令flag参数解析
-Docker......
+构建指令：用于构建image，其指定的操作不会在运行image的容器中执行。
+设置指令：用于设置image的属性，其指定的操作会在运行image的容器中执行。
+
+二、Dockerfile指令说明
+1、FROM（......
         </div>
     </a>
     
@@ -436,23 +435,21 @@ Docker......
 
 <div class="post-preview">
 
-    <a href="/article/docker/dockerfile-usage/">
+    <a href="/article/docker/code-analysis/code-analysis-of-docker-client/">
         <h2 class="post-title">
-            [Docker] Dockerfile使用说明
+            [Docker] Docker源码分析（一）之Docker Client
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Dockerfile的说明
-dockerfile指令忽略大小写，建议大写，#作为注释，每行只支持一条指令，指令可以带多个参数。
-dockerfile指令分为构建指令和设置指令。
+            一、创建Docker Client
+​    Docker是一个client/server的架构，通过二进制文件docker创建Docker客户端将请求类型与参数发送给Docker Server，Docker Server具体执行命令调用。
+Docker Client运行流程图如下：
 
-构建指令：用于构建image，其指定的操作不会在运行image的容器中执行。
-设置指令：用于设置image的属性，其指定的操作会在运行image的容器中执行。
-
-二、Dockerfile指令说明
-1、FROM（......
+说明：本文分析的代码为Docker 1.2.0版本。
+（一）Docker命令flag参数解析
+Docker......
         </div>
     </a>
     
@@ -670,11 +667,11 @@ Engine执行Docker内部的一系列工作，每一项工作都是......
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>

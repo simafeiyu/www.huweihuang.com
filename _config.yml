@@ -190,4 +190,4 @@ deploy:
   type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Fix content's toc link show 'undefine'
+  message: Support post page toc_nav_num customization

@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.huweihuang.com/article/golang/golang-object-oriented-programming/</loc>
+        <lastmod>2017-12-18T02:31:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.huweihuang.com/article/source-analysis/client-go-source-analysis/</loc>
         <lastmod>2017-12-17T12:09:27.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -193,14 +201,6 @@
     <url>
         <loc>http://www.huweihuang.com/article/golang/golang-packages/</loc>
         <lastmod>2017-12-16T14:17:40.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.huweihuang.com/article/golang/golang-object-oriented-programming/</loc>
-        <lastmod>2017-12-16T14:17:29.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

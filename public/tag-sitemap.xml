@@ -37,13 +37,6 @@
     </url>
 
     <url>
-        <loc>http://www.huweihuang.com/tags/Python/</loc>
-        <lastmod>2017-12-16T14:38:50.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://www.huweihuang.com/tags/SourceAnalysis/</loc>
         <lastmod>2017-12-17T12:09:27.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -53,6 +46,20 @@
     <url>
         <loc>http://www.huweihuang.com/tags/Golang/</loc>
         <lastmod>2017-12-18T02:31:37.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/Python/</loc>
+        <lastmod>2018-01-06T08:20:26.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.huweihuang.com/tags/MachineLearning/</loc>
+        <lastmod>2018-01-06T08:29:57.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

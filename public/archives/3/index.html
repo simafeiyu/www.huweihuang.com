@@ -209,74 +209,6 @@
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-text-process/">
-        <h2 class="post-title">
-            [Golang] Golang文本处理
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. JSON处理
-JSON是一种轻量级的数据交换语言。
-1.1. 解析JSON[Unmarshal(data []byte, v interface{})]
-1.1.1. Unmarshal源码
-/src/encoding/json/decode.go
-1234567891011121314151617181920212223242526272829303132func Unmarshal......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Golang" title="Golang">Golang</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/golang/beego/beego-introduction/">
-        <h2 class="post-title">
-            [Golang] beego介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. beego的使用
-1.1. beego的安装
-1go get github.com/astaxie/beego
-1.2. beego的升级
-1、直接升级
-1go get -u github.com/astaxie/beego
-2、源码下载升级
-用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-09-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Golang" title="Golang">Golang</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/golang/web-programming/golang-http-execution-flow/">
         <h2 class="post-title">
             [Golang] GO HTTP执行流程
@@ -287,6 +219,73 @@ JSON是一种轻量级的数据交换语言。
         <div class="post-content-preview">
             1. http包建立web服务器
 1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/golang/govendor-usage/">
+        <h2 class="post-title">
+            [Golang] govendor的使用
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. govendor简介
+golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
+常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-09-01
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Golang" title="Golang">Golang</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/golang/golang-gdb-debug/">
+        <h2 class="post-title">
+            [Golang] Golang之GDB调试
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. GDB简介
+GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
+
+启动程序，可以按照开发者的自定义要求运行程序。
+可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
+当程序被停住时，可以检查此时程序中所发生的事。
+动态的改变当前程序的执行环境。
+
+目前支持调试Go程序的GDB版本必须大于7.1。
+编译Go程序......
         </div>
     </a>
     
@@ -395,19 +394,48 @@ Scheduler：
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/heapster-introduction/">
+    <a href="/article/kubernetes/kubernetes-commands/">
         <h2 class="post-title">
-            [Kubernetes] Heapster介绍
+            [Kubernetes] Kubernetes常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. heapster简介
-Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
-Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
-2. heapster部署与配置
-......
+            一、kubectl介绍
+kubectl controls the Kubernetes cluster manager.
+Usage: kubectl [flags] kubectl [command]
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/kubernetes/monitoring/kubernetes-cluster-monitoring/">
+        <h2 class="post-title">
+            [Kubernetes] Kubernetes集群监控
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. 概述
+1.1. cAdvisor
+cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor......
         </div>
     </a>
     
@@ -456,55 +484,19 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-network/">
+    <a href="/article/kubernetes/monitoring/heapster-introduction/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes网络原理
+            [Kubernetes] Heapster介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. kubernetes网络模型
-1.1. 基础原则
-
-每个Pod都拥有一个独立的IP地址，而且假定所有Pod都在一个可以直接连通的、扁平的网络空间中，不管是否运行在同一Node上都可以通过Pod的IP来访问。
-k8s中Pod的IP是最小粒度IP。同一个Pod内所有的容器共享一个网络堆栈，该模型称为IP-per-Pod模型。
-Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/kubernetes/kubernetes-basic-concepts/">
-        <h2 class="post-title">
-            [Kubernetes] Kubernetes基本概念
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. Master
-集群的控制节点，负责整个集群的管理和控制，kubernetes的所有的命令基本都是发给Master，由它来负责具体的执行过程。
-1.1. Master的组件
-
-kube-apiserver：资源增删改查的入口
-kube-controller-manager：资源对象的大总管
-kube-scheduler：负责资源调度（Pod调度）
-etcd Server:kubernet......
+            1. heapster简介
+Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
+Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
+2. heapster部署与配置
+......
         </div>
     </a>
     
@@ -660,11 +652,11 @@ etcd Server:kubernet......
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
@@ -833,8 +825,8 @@ etcd Server:kubernet......
 
 <script>
     // dynamic User by Hux
-    var _gaId = 'UA-XXXXXXXX-X';
-    var _gaDomain = 'yoursite';
+    var _gaId = 'UA-114718458-2';
+    var _gaDomain = 'www.huweihuang.com';
 
     // Originial
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

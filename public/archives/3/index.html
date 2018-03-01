@@ -209,16 +209,22 @@
 
 <div class="post-preview">
 
-    <a href="/article/golang/web-programming/golang-http-execution-flow/">
+    <a href="/article/golang/beego/beego-introduction/">
         <h2 class="post-title">
-            [Golang] GO HTTP执行流程
+            [Golang] beego介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. http包建立web服务器
-1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
+            1. beego的使用
+1.1. beego的安装
+1go get github.com/astaxie/beego
+1.2. beego的升级
+1、直接升级
+1go get -u github.com/astaxie/beego
+2、源码下载升级
+用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
         </div>
     </a>
     
@@ -394,18 +400,17 @@ Scheduler：
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/kubernetes-commands/">
+    <a href="/article/kubernetes/monitoring/kubernetes-cluster-monitoring/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes常用命令
+            [Kubernetes] Kubernetes集群监控
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、kubectl介绍
-kubectl controls the Kubernetes cluster manager.
-Usage: kubectl [flags] kubectl [command]
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
+            1. 概述
+1.1. cAdvisor
+cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor......
         </div>
     </a>
     
@@ -425,17 +430,19 @@ Usage: kubectl [flags] kubectl [command]
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/kubernetes-cluster-monitoring/">
+    <a href="/article/kubernetes/monitoring/heapster-introduction/">
         <h2 class="post-title">
-            [Kubernetes] Kubernetes集群监控
+            [Kubernetes] Heapster介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. 概述
-1.1. cAdvisor
-cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采集，包括CPU使用情况、内存使用情况、网络吞吐量及文件系统使用情况，cAdvisor集成在Kubelet中，当kubelet启动时会自动启动cAdvisor，即一个cAdvisor仅对一台Node机器进行监控。kubelet的启动参数–cadvisor-port可以定义cAdvisor......
+            1. heapster简介
+Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
+Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
+2. heapster部署与配置
+......
         </div>
     </a>
     
@@ -484,19 +491,24 @@ cAdvisor对Node机器上的资源及容器进行实时监控和性能数据采�
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/heapster-introduction/">
+    <a href="/article/database/mysql-commonds/">
         <h2 class="post-title">
-            [Kubernetes] Heapster介绍
+            [Database] Mysql常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. heapster简介
-Heapster是容器集群监控和性能分析工具，天然的支持Kubernetes和CoreOS。
-Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都会运行cAdvisor，它会收集本机以及容器的监控数据(cpu,memory,filesystem,network,uptime)。
-2. heapster部署与配置
-......
+            1. 系统管理
+1.1. 连接mysql
+格式： mysql -h主机地址 -u用户名 －p用户密码
+连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
+连接远程：mysql -h主机地址 -u用户名 －p用户密码
+退出连接：exit
+1.2. 备份数据库
+1.导出整个数据库
+导出文件默认是存在mysql\bin目录下
+mysqldump -u 用户名......
         </div>
     </a>
     
@@ -506,7 +518,7 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
         </p>
         <div class="tags">
             
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+              <a href="/tags/#Database" title="Database">Database</a>
             
         </div>
     
@@ -558,11 +570,11 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
             
         
             
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
             
         
             
-            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -652,11 +664,11 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
@@ -675,6 +687,8 @@ Kubernetes有个出名的监控agent—cAdvisor。在每个kubernetes Node上都
 
     
         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
+    
+        <li><a href="http://huweihuang.me/" target="_blank">huweihuang.me</a></li>
     
         <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
     

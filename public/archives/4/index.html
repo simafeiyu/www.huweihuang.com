@@ -209,42 +209,6 @@
 
 <div class="post-preview">
 
-    <a href="/article/kubernetes/monitoring/influxdb-introduction/">
-        <h2 class="post-title">
-            [Kubernetes] Influxdb介绍
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            1. InfluxDB简介
-InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
-主要特色功能：
-1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
-2）可度量性：你可以实时对大量数据进行计算
-3）基于事件：它支持任意的事件数据
-2. InfluxDB安装
-1）安装
-wget ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-08-13
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/article/kubernetes/kubernetes-network/">
         <h2 class="post-title">
             [Kubernetes] Kubernetes网络原理
@@ -278,24 +242,18 @@ Pod由docker0实际分配的IP，Pod内部看到的IP地址和......
 
 <div class="post-preview">
 
-    <a href="/article/database/mysql-commonds/">
+    <a href="/article/kubernetes/kubernetes-commands/">
         <h2 class="post-title">
-            [Database] Mysql常用命令
+            [Kubernetes] Kubernetes常用命令
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. 系统管理
-1.1. 连接mysql
-格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －p用户密码
-退出连接：exit
-1.2. 备份数据库
-1.导出整个数据库
-导出文件默认是存在mysql\bin目录下
-mysqldump -u 用户名......
+            一、kubectl介绍
+kubectl controls the Kubernetes cluster manager.
+Usage: kubectl [flags] kubectl [command]
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152......
         </div>
     </a>
     
@@ -305,7 +263,7 @@ mysqldump -u 用户名......
         </p>
         <div class="tags">
             
-              <a href="/tags/#Database" title="Database">Database</a>
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
             
         </div>
     
@@ -350,6 +308,42 @@ etcd Server:kubernet......
 
 <div class="post-preview">
 
+    <a href="/article/kubernetes/monitoring/influxdb-introduction/">
+        <h2 class="post-title">
+            [Kubernetes] Influxdb介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            1. InfluxDB简介
+InfluxDB是一个当下比较流行的时序数据库，InfluxDB使用 Go 语言编写，无需外部依赖，安装配置非常方便，适合构建大型分布式系统的监控系统。
+主要特色功能：
+1）基于时间序列，支持与时间有关的相关函数（如最大，最小，求和等）
+2）可度量性：你可以实时对大量数据进行计算
+3）基于事件：它支持任意的事件数据
+2. InfluxDB安装
+1）安装
+wget ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Kubernetes" title="Kubernetes">Kubernetes</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
     <a href="/article/database/redis-introduction/">
         <h2 class="post-title">
             [Database] Redis介绍
@@ -371,6 +365,38 @@ Redis是......
         <div class="tags">
             
               <a href="/tags/#Database" title="Database">Database</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/etcd/etcd-introduction/">
+        <h2 class="post-title">
+            [Etcd] Etcd介绍
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            一、Etcd是什么（what）
+（一）概述
+etcd is a distributed, consistent key-value store for shared configuration and service discovery, with a focus on being:
+
+Secure: automatic TLS with optional client cert authe......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by 胡伟煌 on
+            2017-07-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#Etcd" title="Etcd">Etcd</a>
             
         </div>
     
@@ -443,49 +469,19 @@ settings resources: securi......
 
 <div class="post-preview">
 
-    <a href="/article/etcd/etcd-introduction/">
+    <a href="/article/docker/code-analysis/code-analysis-of-docker-daemon/">
         <h2 class="post-title">
-            [Etcd] Etcd介绍
+            [Docker] Docker源码分析（二）之Docker Daemon
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            一、Etcd是什么（what）
-（一）概述
-etcd is a distributed, consistent key-value store for shared configuration and service discovery, with a focus on being:
+            一、Docker Daemon架构示意图
 
-Secure: automatic TLS with optional client cert authe......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by 胡伟煌 on
-            2017-07-10
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Etcd" title="Etcd">Etcd</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/article/docker/code-analysis/code-analysis-of-docker-server/">
-        <h2 class="post-title">
-            [Docker] Docker源码分析（三）之Docker Server
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            一、Docker Server创建流程
-Docker Server是Daemon Server的重要组成部分，功能：接收Docker Client发送的请求，并按照相应的路由规则实现请求的路由分发，最终将请求处理的结果返回给Docker Client。
-Docker Daemon启动，在mainDaemon()运行的最后创建并运行serverapi的Job，让Docker Daemon提供A......
+Docker Daemon是Docker架构中运行在后台的守护进程，大致可以分为Docker Server、Engine和Job三部分。
+Docker Daemon可以认为是通过Docker Server模块接受Docker Client的请求，并在Engine中处理请求，然后根据请求类型，创建出指定的Job并运行。
+运行过程的作用有以下几种可能：......
         </div>
     </a>
     
@@ -581,11 +577,11 @@ Docker......
             
         
             
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
             
         
             
-            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
@@ -675,11 +671,11 @@ Docker......
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
@@ -698,6 +694,8 @@ Docker......
 
     
         <li><a href="http://blog.csdn.net/huwh_" target="_blank">CSDN Blog 胡伟煌</a></li>
+    
+        <li><a href="http://huweihuang.me/" target="_blank">huweihuang.me</a></li>
     
         <li><a href="http://dockone.io/people/胡伟煌" target="_blank">DockOne 胡伟煌</a></li>
     

@@ -23,13 +23,15 @@ header-img: "http://ozilwgpje.bkt.clouddn.com/about.jpg"
 
 ### 参与社区
 
- > CSDN博客:http://blog.csdn.net/huwh_
+ > CSDN博客: http://blog.csdn.net/huwh_
  >
- > Github:https://github.com/huweihuang
+ >个人博客: http://huweihuang.me/
  >
- > 阿里云栖社区:https://yq.aliyun.com/u/huweihuang
+ > Github: https://github.com/huweihuang
  >
- > DockOne社区:http://dockone.io/people/胡伟煌
+ > 阿里云栖社区: https://yq.aliyun.com/u/huweihuang
+ >
+ > DockOne社区: http://dockone.io/people/胡伟煌
 
 ### 联系我
 

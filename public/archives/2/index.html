@@ -545,20 +545,24 @@ Go语言中自带有一个轻量级的测试框架testing和自带的go test命�
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-text-process/">
+    <a href="/article/golang/golang-gdb-debug/">
         <h2 class="post-title">
-            [Golang] Golang文本处理
+            [Golang] Golang之GDB调试
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. JSON处理
-JSON是一种轻量级的数据交换语言。
-1.1. 解析JSON[Unmarshal(data []byte, v interface{})]
-1.1.1. Unmarshal源码
-/src/encoding/json/decode.go
-1234567891011121314151617181920212223242526272829303132func Unmarshal......
+            1. GDB简介
+GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
+
+启动程序，可以按照开发者的自定义要求运行程序。
+可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
+当程序被停住时，可以检查此时程序中所发生的事。
+动态的改变当前程序的执行环境。
+
+目前支持调试Go程序的GDB版本必须大于7.1。
+编译Go程序......
         </div>
     </a>
     
@@ -578,16 +582,17 @@ JSON是一种轻量级的数据交换语言。
 
 <div class="post-preview">
 
-    <a href="/article/golang/web-programming/golang-http-execution-flow/">
+    <a href="/article/golang/govendor-usage/">
         <h2 class="post-title">
-            [Golang] GO HTTP执行流程
+            [Golang] govendor的使用
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. http包建立web服务器
-1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
+            1. govendor简介
+golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
+常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
         </div>
     </a>
     
@@ -649,11 +654,11 @@ JSON是一种轻量级的数据交换语言。
             
         
             
-            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
+            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
             
         
             
-            <a href="/tags/#Docker" title="Docker" rel="6">Docker</a>
+            <a href="/tags/#Etcd" title="Etcd" rel="3">Etcd</a>
             
         
             
@@ -743,11 +748,11 @@ JSON是一种轻量级的数据交换语言。
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
+          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
         </li>
       
         <li>
-          <a href="/article/kubernetes/kubernetes-troubleshooting/">[Kubernetes] Kubernetes集群问题排查</a>
+          <a href="/article/kubernetes/kubernetes-architecture/">[Kubernetes] Kubernetes总架构图</a>
         </li>
       
         <li>

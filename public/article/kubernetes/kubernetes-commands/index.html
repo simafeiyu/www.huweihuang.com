@@ -248,7 +248,7 @@
 <p>4）cluster-info:[Display cluster info]</p>
 <p>5） version:[Print the client and server version information]</p>
 <p>6）api-versions:[Print the supported API versions]</p>
-
+<div><h3 id="推荐文章">推荐文章<span style="font-size:0.45em; color:gray"></span></h3><ul><li><a href="http://www.huweihuang.com/article/kubernetes/kubernetes-pod-introduction/">[Kubernetes] Kubernetes之Pod详解</a></li><li><a href="http://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-kubelet/">[Kubernetes] Kubernetes核心原理（四）之kubelet</a></li><li><a href="http://www.huweihuang.com/article/kubernetes/monitoring/kubernetes-cluster-monitoring/">[Kubernetes] Kubernetes集群监控</a></li></ul></div>
                 
 
                 <hr>
@@ -256,12 +256,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/kubernetes/kubernetes-network/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes网络原理">&larr; Previous Post</a>
+                            <a href="/article/kubernetes/monitoring/cadvisor-introduction/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] cAdvisor介绍">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/kubernetes/kubernetes-basic-concepts/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes基本概念">Next Post &rarr;</a>
+                            <a href="/article/kubernetes/kubernetes-network/" data-toggle="tooltip" data-placement="top" title="[Kubernetes] Kubernetes网络原理">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -294,7 +294,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-kubectl介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、kubectl介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-操作的资源对象"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、操作的资源对象</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三-kubectl命令分类command"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、kubectl命令分类[command]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一增"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">（一）增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二删"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">（二）删</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三改"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">（三）改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#四查"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">（四）查</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一-kubectl介绍"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">一、kubectl介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#二-操作的资源对象"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">二、操作的资源对象</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三-kubectl命令分类command"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">三、kubectl命令分类[command]</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#一增"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">（一）增</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#二删"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">（二）删</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#三改"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">（三）改</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#四查"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">（四）查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#推荐文章"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">推荐文章</span></a></li></ol></li></ol>
         
         </div>
       </aside>

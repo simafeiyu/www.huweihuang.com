@@ -545,24 +545,22 @@ Go语言中自带有一个轻量级的测试框架testing和自带的go test命�
 
 <div class="post-preview">
 
-    <a href="/article/golang/golang-gdb-debug/">
+    <a href="/article/golang/beego/beego-introduction/">
         <h2 class="post-title">
-            [Golang] Golang之GDB调试
+            [Golang] beego介绍
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. GDB简介
-GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程序调试工具。使用GDB可以做如下事情：
-
-启动程序，可以按照开发者的自定义要求运行程序。
-可让被调试的程序在开发者设定的调置的断点处停住。（断点可以是条件表达式）
-当程序被停住时，可以检查此时程序中所发生的事。
-动态的改变当前程序的执行环境。
-
-目前支持调试Go程序的GDB版本必须大于7.1。
-编译Go程序......
+            1. beego的使用
+1.1. beego的安装
+1go get github.com/astaxie/beego
+1.2. beego的升级
+1、直接升级
+1go get -u github.com/astaxie/beego
+2、源码下载升级
+用户访问 https://github.com/astaxie/beego ,下载源码，然后覆盖到 $GOPATH/src/github.com......
         </div>
     </a>
     
@@ -582,17 +580,16 @@ GDB是FSF(自由软件基金会)发布的一个强大的类UNIX系统下的程�
 
 <div class="post-preview">
 
-    <a href="/article/golang/govendor-usage/">
+    <a href="/article/golang/web-programming/golang-http-execution-flow/">
         <h2 class="post-title">
-            [Golang] govendor的使用
+            [Golang] GO HTTP执行流程
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            1. govendor简介
-golang工程的依赖包经常使用go get 的方式来获取，例如：go get github.com/kardianos/govendor ，会将依赖包下载到GOPATH的路径下。
-常用的依赖包管理工具有godep，govendor等，在Golang1.5之后，Go提供了 GO15VENDOREXPERIMENT 环境变量，用于将go build时的应用路径搜索调......
+            1. http包建立web服务器
+1234567891011121314151617181920212223242526package mainimport (    "fmt"    "log"    "net/http"    "strings")func sayhelloName(w http.ResponseWriter, r *http.Request) &#123;    r.P......
         </div>
     </a>
     

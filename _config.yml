@@ -46,7 +46,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 
 # Disqus settings
-#disqus_username: your-disqus-ID
+#disqus_username: disqus_xnHQs3J42D
 
 # Duoshuo settings
 # duoshuo_username: kaijun
@@ -191,6 +191,13 @@ recommended_posts:
   autoDisplay: true, #自动在文章底部显示推荐文章
   titleHtml: <h3>推荐文章<span style="font-size:0.45em; color:gray"></span></h3> #自定义标题
 
+# baidu push 
+baidu_url_submit:
+  count: 3 ## 提交最新的一个链接
+  host: www.huweihuang.com ## 在百度站长平台中注册的域名
+  token: xxx ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
 
 ## Themes: https://hexo.io/themes/
 theme: huweihuang
@@ -198,11 +205,14 @@ theme: huweihuang
 #sitemap
 sitemap:
   path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Add recommended posts
+  message: Add baidu push and baidusitemap and robots.txt
+- type: baidu_url_submitter ## baidu push

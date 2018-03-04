@@ -46,7 +46,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 
 # Disqus settings
-#disqus_username: disqus_xnHQs3J42D
+disqus_username: huweihuang   # disqus short name (A shortname is the unique identifier assigned to a Disqus site.)
 
 # Duoshuo settings
 # duoshuo_username: kaijun
@@ -93,8 +93,8 @@ friends: [
         href: "http://blog.csdn.net/huwh_"
     },
     {
-        title: "huweihuang.me",
-        href: "http://huweihuang.me/"
+        title: "huweihuang.net",
+        href: "http://huweihuang.net/"
     },
     {
         title: "DockOne 胡伟煌",
@@ -189,9 +189,9 @@ recommended_posts:
   internalLinks: 3 #内部文章数量
   externalLinks: 0 #外部文章数量
   autoDisplay: true, #自动在文章底部显示推荐文章
-  titleHtml: <h3>推荐文章<span style="font-size:0.45em; color:gray"></span></h3> #自定义标题
+  titleHtml: <h2>推荐文章<span style="font-size:0.45em; color:gray"></span></h2> #自定义标题
 
-# baidu push 
+# baidu submit 
 baidu_url_submit:
   count: 3 ## 提交最新的一个链接
   host: www.huweihuang.com ## 在百度站长平台中注册的域名
@@ -214,5 +214,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Add baidu push and baidusitemap and robots.txt
+  message: Change friends links to huweihuang.net 
 - type: baidu_url_submitter ## baidu push

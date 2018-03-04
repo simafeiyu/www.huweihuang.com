@@ -4,7 +4,7 @@ title: "About"
 date: 2017-10-04 10:48:33
 description: "走在成为极客的路上"
 header-img: "http://ozilwgpje.bkt.clouddn.com/about.jpg"
-
+comments: false
 ---
 
 ### 一句话
@@ -25,7 +25,7 @@ header-img: "http://ozilwgpje.bkt.clouddn.com/about.jpg"
 
  > CSDN博客: http://blog.csdn.net/huwh_
  >
- >个人博客: http://huweihuang.me/
+ >个人博客: http://huweihuang.net
  >
  > Github: https://github.com/huweihuang
  >

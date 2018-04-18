@@ -214,5 +214,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Change friends links to huweihuang.net 
+  message: Post redis page 
 - type: baidu_url_submitter ## baidu push

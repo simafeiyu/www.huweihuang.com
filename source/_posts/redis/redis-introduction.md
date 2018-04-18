@@ -1,13 +1,13 @@
 ---
-title: "[Database] Redis介绍"
+title: "[Redis] Redis介绍"
 catalog: true
 date: 2017-07-15 10:50:57
 type: "categories"
 subtitle:
 tags:
-- Database
+- Redis
 catagories:
-- Database
+- Redis
 ---
 
 ## 一、redis是什么？（what）

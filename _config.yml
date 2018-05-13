@@ -25,8 +25,8 @@ SEOTitle: 胡伟煌 | Blog
 email: huweihuang@foxmail.com
 description: ""
 keyword: ""
-header-img: http://ozilwgpje.bkt.clouddn.com/home.png
-article-img: http://ozilwgpje.bkt.clouddn.com/article_header.png
+header-img: http://ozilwgpje.bkt.clouddn.com/scenery/city.jpg
+article-img: http://ozilwgpje.bkt.clouddn.com/scenery/night.jpg
 # header-img: img/header_img/home-bg-2-dark.png
 signature: false #show signature
 signature-img: img/signature/BeanTechSign-white.png 
@@ -214,5 +214,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Post redis page 
+  message: Change header images
 - type: baidu_url_submitter ## baidu push

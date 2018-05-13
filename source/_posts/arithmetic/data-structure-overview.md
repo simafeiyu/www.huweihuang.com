@@ -4,7 +4,7 @@ catalog: true
 date: 2018-4-17 22:26:24
 type: "tags"
 subtitle:
-header-img: "http://ozilwgpje.bkt.clouddn.com/article2.jpg"
+header-img: "http://ozilwgpje.bkt.clouddn.com/scenery/building.jpg"
 tags:
 - Arithmetic
 catagories:

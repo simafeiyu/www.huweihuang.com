@@ -29,12 +29,12 @@ go get -u -v github.com/kardianos/govendor
 
 ```shell
 #进入到项目目录
-cd /home/gopath/src/waetool
+cd /home/gopath/src/mytool
 #初始化vendor目录
 govendor init
 #查看vendor目录
-[root@CC54425A waetool]# ls
-commands  main.go  vendor  waetool_test.sh
+[root@CC54425A mytool]# ls
+commands  main.go  vendor  mytool_test.sh
 #进入vendor目录
 cd vendor
 #将GOPATH中本工程使用到的依赖包自动移动到vendor目录中
@@ -52,7 +52,7 @@ govendor只是用来管理项目的依赖包，如果GOPATH中本身没有项目
 ## 3. govendor使用命令
 
 ```shell
-[root@CC54425A waetool]# govendor
+[root@CC54425A mytool]# govendor
 govendor (v1.0.8): record dependencies and copy into vendor folder
     -govendor-licenses    Show govendor's licenses.
     -version              Show govendor version
@@ -116,7 +116,7 @@ If using go1.5, ensure GO15VENDOREXPERIMENT=1 is set.
             "revisionTime": "2017-08-04T09:34:15Z"
         }
     ],
-    "rootPath": "waetool"
+    "rootPath": "mytool"
 }
 ```
 

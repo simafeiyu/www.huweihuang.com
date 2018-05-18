@@ -101,14 +101,14 @@ FLANNEL_ETCD="http://127.0.0.1:4001"
   
 # etcd config key. This is the configuration key that flannel queries
 # For address range assignment
-FLANNEL_ETCD_KEY="/wae/flannel/product/network"
+FLANNEL_ETCD_KEY="/xxx/flannel/product/network"
   
 # Any additional options that you want to pass
 FLANNEL_OPTIONS=" -iface=eth0"
 ```
 #### **3、初始化flannel的etcd配置**
 ```
-etcdctl set /wae/flannel/network/config '{
+etcdctl set /xxx/flannel/network/config '{
    "Network": "10.0.0.0/16",
    "Backend": {
        "Type": "vxlan"

@@ -20,8 +20,8 @@ rpm -ivh nginx-xxx.rpm
 
 #### 1.2.1. 下载源码包
 
-```shell
-wget http://blob.wae.haplat.net/nginx/nginx-1.9.13.tar.gz
+```shell 
+wget http://nginx.org/download/nginx-1.9.13.tar.gz
 ```
 
 ### 1.2.2. 创建临时目录并解压源码包

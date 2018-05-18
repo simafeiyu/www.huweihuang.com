@@ -32,9 +32,9 @@ crontab –e
 
 ```shell
 #拉取镜像
-docker pull registry.wae.haplat.net/test/heapster:v1.3.0
+docker pull heapster:latest
 #运行容器
-docker run -d -p 8082:8082 --net=host registry.wae.haplat.net/test/heapster:latest --source=kubernetes:http://<k8s-server-ip>:8080?inClusterConfig=false\&useServiceAccount=false --sink=influxdb:http://<influxdb-ip>:8086?db=<k8s_env_zone>
+docker run -d -p 8082:8082 --net=host heapster:latest --source=kubernetes:http://<k8s-server-ip>:8080?inClusterConfig=false\&useServiceAccount=false --sink=influxdb:http://<influxdb-ip>:8086?db=<k8s_env_zone>
 ```
 
 ### 2.3. 配置说明

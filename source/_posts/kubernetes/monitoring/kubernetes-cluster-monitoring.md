@@ -265,10 +265,10 @@ kubelet create -f heapster-controller.yaml
 ### 4.1. 拉取镜像
 
 ```shell
-docker pull registry.wae.haplat.net/test/influxdb:1.0.0
-docker pull registry.wae.haplat.net/test/cadvisor:latest
-docker pull registry.wae.haplat.net/test/grafana:latest
-docker pull registry.wae.haplat.net/test/heapster:latest
+docker pull influxdb:latest
+docker pull cadvisor:latest
+docker pull grafana:latest
+docker pull heapster:latest
 ```
 
 ### 4.2. 运行容器
@@ -277,21 +277,21 @@ docker pull registry.wae.haplat.net/test/heapster:latest
 
 ```shell
 #influxdb
-docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv registry.wae.haplat.net/test/influxdb:1.0.0
+docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv influxdb:latest
 ```
 
 #### 4.2.2. cadvisor
 
 ```shell
 #cadvisor
-docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true --link influxsrv:influxsrv --name=cadvisor registry.wae.haplat.net/test/cadvisor:latest -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086
+docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true --link influxsrv:influxsrv --name=cadvisor cadvisor:latest -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=influxsrv:8086
 ```
 
 #### 4.2.3. grafana
 
 ```shell
 #grafana
-docker run -d -p 3000:3000 -e INFLUXDB_HOST=influxsrv -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=root -e INFLUXDB_PASS=root --link influxsrv:influxsrv --name grafana registry.wae.haplat.net/test/grafana:latest
+docker run -d -p 3000:3000 -e INFLUXDB_HOST=influxsrv -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=root -e INFLUXDB_PASS=root --link influxsrv:influxsrv --name grafana grafana:latest
 ```
 
 #### 4.2.4. heapster

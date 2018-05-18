@@ -40,7 +40,7 @@ Events:
   FirstSeen LastSeen    Count   From            SubobjectPath       Reason      Message
   ───────── ────────    ─────   ────            ─────────────       ──────      ───────
   7m        7m      1   {scheduler }                    Scheduled   Successfully assigned yangsc-1-0-0-index0 to 10.8.216.19
-  7m        7m      1   {kubelet 10.8.216.19}   containers{infra}   Pulled      Container image "registry.wae.haplat.net/kube-system/pause:0.8.0" already present on machine
+  7m        7m      1   {kubelet 10.8.216.19}   containers{infra}   Pulled      Container image "gcr.io/kube-system/pause:0.8.0" already present on machine
   7m        7m      1   {kubelet 10.8.216.19}   containers{infra}   Created     Created with docker id 84f133c324d0
   7m        7m      1   {kubelet 10.8.216.19}   containers{infra}   Started     Started with docker id 84f133c324d0
   7m        7m      1   {kubelet 10.8.216.19}   containers{yangsc0} Started     Started with docker id 3f9f82abb145
@@ -55,10 +55,10 @@ Events:
   5m        5m      1   {kubelet 10.8.216.19}   containers{yangsc0} Created     Created with docker id 7d9ee8610b28
   3m        3m      1   {kubelet 10.8.216.19}   containers{yangsc0} Started     Started with docker id 88b9e8d582dd
   3m        3m      1   {kubelet 10.8.216.19}   containers{yangsc0} Created     Created with docker id 88b9e8d582dd
-  7m        1m      7   {kubelet 10.8.216.19}   containers{yangsc0} Pulling     Pulling image "registry.ts.wae.haplat.net/test/tcp-hello:1.0.0"
+  7m        1m      7   {kubelet 10.8.216.19}   containers{yangsc0} Pulling     Pulling image "gcr.io/test/tcp-hello:1.0.0"
   1m        1m      1   {kubelet 10.8.216.19}   containers{yangsc0} Started     Started with docker id 089abff050e7
   1m        1m      1   {kubelet 10.8.216.19}   containers{yangsc0} Created     Created with docker id 089abff050e7
-  7m        1m      7   {kubelet 10.8.216.19}   containers{yangsc0} Pulled      Successfully pulled image "registry.ts.wae.haplat.net/test/tcp-hello:1.0.0"
+  7m        1m      7   {kubelet 10.8.216.19}   containers{yangsc0} Pulled      Successfully pulled image "gcr.io/test/tcp-hello:1.0.0"
   6m        7s      34  {kubelet 10.8.216.19}   containers{yangsc0} Backoff     Back-off restarting failed docker container
 ```
 
@@ -91,8 +91,8 @@ System Info:
  Kernel Version:        3.10.0-327.28.3.el7.x86_64  
  OS Image:          CentOS Linux 7 (Core)  
  Container Runtime Version: docker://1.13.1  
- Kubelet Version:       v1.1.1-wae2-13.1+79c90c68bfb72f-dirty  
- Kube-Proxy Version:        v1.1.1-wae2-13.1+79c90c68bfb72f-dirty  
+ Kubelet Version:       v1.1.1-xxx2-13.1+79c90c68bfb72f-dirty  
+ Kube-Proxy Version:        v1.1.1-xxx2-13.1+79c90c68bfb72f-dirty  
 ExternalID:         10.8.216.20  
 Non-terminated Pods:        (6 in total)  
   Namespace         Name                    CPU Requests    CPU Limits  Memory Requests Memory Limits  
@@ -121,7 +121,7 @@ kubectl describe rc mytest-1-0-0 --namespace=test
 [root@FC-43745A-10 ~]# kubectl describe rc mytest-1-0-0 --namespace=test  
 Name:       mytest-1-0-0  
 Namespace:  test  
-Image(s):   registry.ts.wae.haplat.net/test/mywebcalculator:1.0.1  
+Image(s):   gcr.io/test/mywebcalculator:1.0.1  
 Selector:   app=mytest,appVersion=1.0.0  
 Labels:     app=mytest,appVersion=1.0.0,env=ts,zone=inner  
 Replicas:   1 current / 1 desired  
@@ -165,15 +165,15 @@ No resource limits.
 ### 1.5. Service
 
 ```
-kubectl describe service wae-containers-1-1-0 --namespace=test
+kubectl describe service xxx-containers-1-1-0 --namespace=test
 ```
 
 ```shell
-[root@FC-43745A-10 ~]# kubectl describe service wae-containers-1-1-0 --namespace=test  
-Name:           wae-containers-1-1-0  
+[root@FC-43745A-10 ~]# kubectl describe service xxx-containers-1-1-0 --namespace=test  
+Name:           xxx-containers-1-1-0  
 Namespace:      test  
-Labels:         app=wae-containers,appVersion=1.1.0,env=ts,zone=inner  
-Selector:       app=wae-containers,appVersion=1.1.0  
+Labels:         app=xxx-containers,appVersion=1.1.0,env=ts,zone=inner  
+Selector:       app=xxx-containers,appVersion=1.1.0  
 Type:           ClusterIP  
 IP:         10.254.46.42  
 Port:           port-dna-tcp-35913  35913/TCP  

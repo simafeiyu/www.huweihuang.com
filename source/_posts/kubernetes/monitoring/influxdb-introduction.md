@@ -43,7 +43,7 @@ http://服务器IP:8083
 
 docker pull influxdb
 
-docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv registry.wae.haplat.net/test/influxdb:1.0.0
+docker run -d -p 8083:8083 -p 8086:8086 --expose 8090 --expose 8099 --volume=/opt/data/influxdb:/data --name influxsrv influxdb:latest
 
 ## 3. InfluxDB的基本概念
 

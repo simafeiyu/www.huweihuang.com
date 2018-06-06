@@ -44,9 +44,11 @@ linkedin_username:  huweihuang
 # Build settings
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
+# Livere
+livere_uid: MTAyMC8zNDM0Mi8xMDg3OQ==
 
 # Disqus settings
-disqus_username: huweihuang   # disqus short name (A shortname is the unique identifier assigned to a Disqus site.)
+#disqus_username: huweihuang   # disqus short name (A shortname is the unique identifier assigned to a Disqus site.)
 
 # Duoshuo settings
 # duoshuo_username: kaijun
@@ -214,5 +216,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Change header images
+  message: Add livere comment
 - type: baidu_url_submitter ## baidu push

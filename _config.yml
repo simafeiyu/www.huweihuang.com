@@ -204,11 +204,15 @@ baidu_url_submit:
 ## Themes: https://hexo.io/themes/
 theme: huweihuang
 
-#sitemap
+# sitemap
 sitemap:
   path: sitemap.xml
 baidusitemap:
   path: baidusitemap.xml
+
+# hexo-tag-aplayer, reference: https://github.com/MoePlayer/hexo-tag-aplayer
+aplayer:
+  meting: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -216,5 +220,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Add livere comment
+  message: Add music player
 - type: baidu_url_submitter ## baidu push

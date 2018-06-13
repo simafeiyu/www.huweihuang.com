@@ -4,7 +4,7 @@ catalog: true
 date: 2018-6-6 21:06:24
 type: "tags"
 subtitle:
-header-img: "http://ozilwgpje.bkt.clouddn.com/scenery/building.jpg"
+header-img: "http://ozilwgpje.bkt.clouddn.com/scenery/building.jpg?imageslim"
 tags:
 - Linux
 catagories:
@@ -279,7 +279,7 @@ password=xxxx               ; default is no password (open server)
 
 具体如下：
 
-![supervisor](supervisor.png)
+![supervisor](http://res.cloudinary.com/dqxtn0ick/image/upload/v1528457482/article/linux/supervisor.png)
 
 ## 7. supervisor.conf详细配置
 
@@ -423,4 +423,3 @@ files = supervisord.d/conf/*.conf
 
 http://supervisord.org/
 
-{% meting "569213279" "netease" "song" %}

@@ -4,7 +4,7 @@ catalog: true
 date: 2018-4-17 22:26:24
 type: "tags"
 subtitle:
-header-img: "http://ozilwgpje.bkt.clouddn.com/scenery/building.jpg"
+header-img: "http://ozilwgpje.bkt.clouddn.com/scenery/building.jpg?imageslim"
 tags:
 - Arithmetic
 catagories:
@@ -152,4 +152,3 @@ r = {<1,2>,<1,3>,<3,4>}
 
 《数据结构教程》[清华大学出版社]
 
-{% meting "414118616" "netease" "song" %}

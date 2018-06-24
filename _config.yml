@@ -25,8 +25,8 @@ SEOTitle: 胡伟煌 | Blog
 email: huweihuang@foxmail.com
 description: ""
 keyword: ""
-header-img: http://ozilwgpje.bkt.clouddn.com/scenery/city.jpg
-article-img: http://ozilwgpje.bkt.clouddn.com/scenery/night.jpg
+header-img: http://ozilwgpje.bkt.clouddn.com/blog/home.jpg?imageslim
+article-img: http://ozilwgpje.bkt.clouddn.com/blog/article.jpg?imageslim
 # header-img: img/header_img/home-bg-2-dark.png
 signature: false #show signature
 signature-img: img/signature/BeanTechSign-white.png 
@@ -78,7 +78,7 @@ widgets:
 
 # widget behavior
 ## Archive
-archives-img: http://ozilwgpje.bkt.clouddn.com/archives.jpg
+archives-img: http://ozilwgpje.bkt.clouddn.com/archives.jpg?imageslim
 archive_type: 'monthly'
 show_count: true
 
@@ -211,8 +211,8 @@ baidusitemap:
   path: baidusitemap.xml
 
 # hexo-tag-aplayer, reference: https://github.com/MoePlayer/hexo-tag-aplayer
-aplayer:
-  meting: true
+# aplayer:
+#   meting: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -220,5 +220,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Add music player
+  message: Slim header image
 - type: baidu_url_submitter ## baidu push

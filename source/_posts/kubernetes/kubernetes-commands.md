@@ -1,5 +1,5 @@
 ---
-title: "[Kubernetes] Kubernetes常用命令"
+title: "[Kubernetes] Kubernetes常用命令（kubectl）"
 catalog: true
 date: 2017-08-13 10:50:57
 type: "categories"
@@ -11,11 +11,13 @@ catagories:
 - Kubernetes
 ---
 
-## 一、kubectl介绍
+## 1. kubectl介绍
 
 kubectl controls the Kubernetes cluster manager.
 
-Usage: kubectl [flags] kubectl [command]
+Usage:
+ kubectl [flags] 
+ kubectl [command]
 
 ```shell
 [root@node5 ~]# kubectl --help
@@ -81,18 +83,18 @@ Flags:
 Use "kubectl [command] --help" for more information about a command.
 ```
 
-## 二、操作的资源对象
+## 2. 操作的资源对象
 
 1. Node
-2. Pods
+2. Podes
 3. Replication Controllers
 4. Services
 5. Namespace
 6. ComponentStatus
 
-## 三、kubectl命令分类[command]
+## 3. kubectl命令分类[command]
 
-### （一）增
+### 3.1 增
 
 1）create:[Create a resource by filename or stdin]
 
@@ -102,11 +104,11 @@ Use "kubectl [command] --help" for more information about a command.
 
 4）proxy:[Run a proxy to the Kubernetes API server ]
 
-### （二）删
+### 3.2 删
 
 1）delete:[Delete resources ]
 
-### （三）改
+### 3.3 改
 
 1）scale:[Set a new size for a Replication Controller]
 
@@ -126,7 +128,7 @@ Use "kubectl [command] --help" for more information about a command.
 
 9）config:[config modifies kubeconfig files]
 
-### （四）查
+### 3.4 查
 
 1）get:[Display one or many resources]
 
@@ -139,3 +141,97 @@ Use "kubectl [command] --help" for more information about a command.
 5） version:[Print the client and server version information]
 
 6）api-versions:[Print the supported API versions]
+
+## 4. 配置K8S环境
+
+### 4.1 非安全方式
+
+```shell
+kubectl config set-cluster k8s --server=http://<url> 
+kubectl config set-context <namespace> --cluster=k8s --namespace=<namespace> 
+
+kubectl config use-context <namespace> 
+```
+
+### 4.2 安全方式
+
+```shell
+kubectl config set-cluster k8s --server=https://<url> --insecure-skip-tls-verify=true
+kubectl config set-credentials k8s-user --username=<username> --password=<password>
+
+kubectl config set-context <namespace> --cluster=k8s --user=k8s-user --namespace=<namespace> 
+kubectl config use-context <namespace>
+```
+
+### 4.3 查询当前配置环境
+
+```shell
+[root@mysql2 ]# kubectl cluster-info
+Kubernetes master is running at http://192.168.19.2:8081
+```
+
+## 5. Pod相关命令
+
+### 5.1 查询Pod
+
+```shell
+kubectl get pod -o wide --namespace=<NAMESPACE>
+```
+
+### 5.2 进入Pod
+
+```shell
+kubectl exec -it <Pod_NAME> /bin/bash --namespace=<namespace>
+```
+
+### 5.3 删除Pod
+
+```shell
+kubectl delete pod wsop-proxy-1-0-9-ii97y 
+```
+
+### 5.4 日志查看
+
+```shell
+$ 查看运行容器日志 
+kubectl logs wsop-proxy-1-0-9-ii97y --namespace=<namespace>
+$ 查看上一个挂掉的容器日志 
+kubectl logs wsop-proxy-1-0-9-ii97y -p --namespace=<namespace> 
+```
+
+## 6. Node隔离与恢复
+
+说明：Node设置隔离之后，原先运行在该Node上的Pod不受影响，后续的Pod不会调度到被隔离的Node上。
+
+**1. Node隔离**
+
+```shell
+kubectl patch node <NodeName> -p '{"spec":{"unschedulable":true}}'
+```
+**2. Node恢复**
+
+```shell
+kubectl patch node <NodeName> -p '{"spec":{"unschedulable":false}}'
+```
+
+## 7. kubectl label
+
+**1. 固定Pod到指定机器**
+
+```shell
+kubectl label node <NodeName> namespace/<NAMESPACE>=true
+```
+
+**2. 取消Pod固定机器**
+
+```shell
+kubectl label node <NodeName> namespace/<NAMESPACE>-
+```
+
+## 8. kubectl 自动补全
+
+```shell
+# for linux
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```

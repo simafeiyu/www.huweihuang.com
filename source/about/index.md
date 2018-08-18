@@ -9,13 +9,18 @@ comments: false
 
 ### 一句话
 
->Just do it !    (翻译：我只是个搞 IT的！哭笑脸)
+> Just do it !    (翻译：我只是个搞 IT的！哭笑脸)
+
+### 十六字
+
+> 物竞天择，适者生存
+> 成者为王，败者为寇
 
 ### 关于我
 
->一个莫名其妙的，喜欢敲代码，喜欢研究技术的，表面上高冷、不苟言笑的，
+> 一个莫名其妙的，喜欢敲代码，喜欢研究技术的，表面上高冷、不苟言笑的，
 >
->偶尔又嬉皮笑脸，偶尔又特立独行的，双重性格的技术爱好者！
+> 偶尔又嬉皮笑脸，偶尔又特立独行的，双重性格的技术爱好者！
 
 ### 兴趣方向
 
@@ -25,7 +30,7 @@ comments: false
 
  > CSDN博客: http://blog.csdn.net/huwh_
  >
- >个人博客: http://huweihuang.net
+ > 个人博客: http://huweihuang.net
  >
  > Github: https://github.com/huweihuang
  >
@@ -35,4 +40,4 @@ comments: false
 
 ### 联系我
 
->Email: huweihuang@foxmail.com
+> Email: huweihuang@foxmail.com

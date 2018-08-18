@@ -220,5 +220,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: New post
+  message: Update for about me
 - type: baidu_url_submitter ## baidu push

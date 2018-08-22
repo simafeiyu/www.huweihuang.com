@@ -38,6 +38,12 @@ comments: false
  >
  > DockOne社区: http://dockone.io/people/胡伟煌
 
+### GitBook
+
+> [Kubernetes 学习笔记](https://www.huweihuang.com/kubernetes-notes/)
+> 
+> [Golang 学习笔记](https://www.huweihuang.com/golang-notes/)
+
 ### 联系我
 
 > Email: huweihuang@foxmail.com

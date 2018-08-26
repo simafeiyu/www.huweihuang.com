@@ -95,6 +95,14 @@ friends: [
         href: "http://blog.csdn.net/huwh_"
     },
     {
+        title: "Kubernetes 学习笔记",
+        href: "https://www.huweihuang.com/kubernetes-notes"
+    },
+    {
+        title: "Golang 学习笔记",
+        href: "https://www.huweihuang.com/golang-notes"
+    },
+    {
         title: "huweihuang.net",
         href: "http://huweihuang.net/"
     },
@@ -220,5 +228,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: Update for about me
+  message: "MOD: Add friend links for k8s and golang notes"
 - type: baidu_url_submitter ## baidu push

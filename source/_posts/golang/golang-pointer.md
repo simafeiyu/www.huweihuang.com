@@ -11,7 +11,7 @@ catagories:
 - Golang
 ---
 
-## 1. 指针的概念
+# 1. 指针的概念
 
 | 概念   | 说明                                |
 | ---- | --------------------------------- |
@@ -20,11 +20,11 @@ catagories:
 | &    | 取地址符，例如：{指针}:=&{变量}               |
 | *    | 取值符，例如：{变量}:=*{指针}                |
 
-## 2. 内存地址说明
+# 2. 内存地址说明
 
-### 2.1. 内存定义
+## 2.1. 内存定义
 计算机的内存 RAM 可以把它想象成一些有序的盒子，一个接一个的排成一排，每一个盒子或者单元格都被一个唯一的数字标记依次递增，这个数字就是该单元格的地址，也就是内存的地址。
-![什么是内存](/img/article/golang/go指针/什么是内存.png)
+![什么是内存](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578751/article/golang/pointer/memory.png)
 
 **硬件角度**：内存是CPU沟通的桥梁，程序运行在内存中。
 
@@ -39,9 +39,9 @@ catagories:
 | 变量值  | 房间里的具体存储物                     |
 | 指针地址 | 指针的地址：存储指针内存块的地址              |
 
-### 2.2. 内存单位和编址
+## 2.2. 内存单位和编址
 
-#### 2.2.1. 内存单位
+## 2.2.1. 内存单位
 
 | 单位       | 说明                                |
 | -------- | --------------------------------- |
@@ -52,34 +52,34 @@ catagories:
 | MB       | 1MB=1024KB                        |
 | GB       | 1GB=1024MB                        |
 
-#### 2.2.2. 内存编址
+## 2.2.2. 内存编址
 
 计算机中的内存按字节编址，每个地址的存储单元可以存放一个字节的数据，CPU通过内存地址获取指令和数据，并不关心这个地址所代表的空间在什么位置，内存地址和地址指向的空间共同构成了一个内存单元。
 
-#### 2.2.3. 内存地址
+## 2.2.3. 内存地址
 
 内存地址通常用16进制的数据表示，例如0x0ffc1。
-## 3.变量与指针运算理解
+# 3.变量与指针运算理解
 编写一段程序，检索出值并存储在地址为 200 的一个块内存中，将其乘以 3，并将结果存储在地址为 201 的另一块内存中
-### 3.1.本质
+## 3.1.本质
 1. 检索出内存地址为 200 的值，并将其存储在 CPU 中
 2. 将存储在 CPU 中的值乘以 3
 3. 将 CPU 中存储的结果，写入地址为 201 的内存块中
 
-![什么是变量](/img/article/golang/go指针/什么是变量.png)
+![什么是变量](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578752/article/golang/pointer/var1.png)
 
-### 3.2.基于变量的理解
+## 3.2.基于变量的理解
 1. 获取变量 a 中存储的值，并将其存储在 CPU 中
 2. 将其乘以 3
 3. 将结果保存在变量 b 中
 
-![什么是变量2](/img/article/golang/go指针/什么是变量2.png)
+![什么是变量2](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578752/article/golang/pointer/var2.png)
 
 ```
 var a = 6 
 var b = a * 3
 ```
-### 3.3.基于指针的理解
+## 3.3.基于指针的理解
 ```go
 func main() {
     a := 200
@@ -92,21 +92,21 @@ func main() {
 
 **1.a:=200**
 
-![什么是指针](/img/article/golang/go指针/什么是指针.png)
+![什么是指针](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578751/article/golang/pointer/pointer1.png)
 
 **2.  b := &a**
 
-![什么是指针2](/img/article/golang/go指针/什么是指针2.png)
+![什么是指针2](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578751/article/golang/pointer/pointer2.png)
 
 **3. *b++**
 
-![什么是指针3](/img/article/golang/go指针/什么是指针3.png)
+![什么是指针3](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578752/article/golang/pointer/pointer3.png)
 
-![什么是指针4](/img/article/golang/go指针/什么是指针4.png)
+![什么是指针4](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578752/article/golang/pointer/pointer4.png)
 
-## 4. 指针的使用
+# 4. 指针的使用
 
-### 4.1. 方法中的指针
+## 4.1. 方法中的指针
 
 方法即为有接受者的函数，接受者可以是类型的实例变量或者是类型的实例指针变量。但两种效果不同。
 
@@ -156,7 +156,7 @@ Go会根据Person的示例类型，转换成指针类型再拷贝，即 person.C
 
 指针类型的接受者，如果实例对象是值，那么go会转换成指针，然后再拷贝，如果本身就是指针对象，那么就直接拷贝指针实例。因为指针都指向一处值，就能修改对象了。
 
-## 5. 零值与nil(空指针)
+# 5. 零值与nil(空指针)
 
 变量声明而没有赋值，默认为零值，不同类型零值不同，例如字符串零值为空字符串；
 
@@ -194,7 +194,7 @@ aNewPot = new(int)
 fmt.Printf("aNewPot: %p %#v %#v \n", &aNewPot, aNewPot, *aNewPot) // 输出 aNewPot: 0xc42007a028 (*int)(0xc42006e1f0) 217
 ```
 
-## 6. 总结
+# 6. 总结
 
 - Golang提供了指针用于操作数据内存，并通过引用来修改变量。
 - 只声明未赋值的变量，golang都会自动为其初始化为零值，基础数据类型的零值比较简单，引用类型和指针的零值都为nil，nil类型不能直接赋值，因此需要通过new开辟一个内存，或者通过make初始化数据类型，或者两者配合，然后才能赋值。
@@ -204,5 +204,7 @@ fmt.Printf("aNewPot: %p %#v %#v \n", &aNewPot, aNewPot, *aNewPot) // 输出 aNew
 
 
 参考：
-[http://www.jianshu.com/p/d23f78a3922b](http://www.jianshu.com/p/d23f78a3922b)
-[http://www.jianshu.com/p/44b9429d7bef](http://www.jianshu.com/p/44b9429d7bef)
+
+- [http://www.jianshu.com/p/d23f78a3922b](http://www.jianshu.com/p/d23f78a3922b)
+  
+- [http://www.jianshu.com/p/44b9429d7bef](http://www.jianshu.com/p/44b9429d7bef)

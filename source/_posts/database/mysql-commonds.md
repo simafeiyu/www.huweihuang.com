@@ -119,7 +119,7 @@ select user,host from mysql.user order by user;
 
 #### 1.4.5. 权限列表
 
-![img](/img/article/database/权限列表.jpg)
+![img](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578472/article/database/permission.jpg)
 
 #### 1.4.6. 查看主从关系
 

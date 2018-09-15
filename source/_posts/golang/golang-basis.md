@@ -190,7 +190,7 @@ v2:=(1==2)
 
 ##### 3.1.2整型
 
- ![整型](/img/article/golang/整型.png)
+ ![整型](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578665/article/golang/basics/int.png)
 
 ```go
 //1、类型表示
@@ -215,7 +215,7 @@ if i==1 || j==2  //编译通过，可以与字面常量（literal）进行比较
 //Go(^x)取反与C语言(~x)不同，其他类似，具体见下表
 ```
 
-  ![位运算](/img/article/golang/位运算.png)
+  ![位运算](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578663/article/golang/basics/bit-operation.png)
 
 ##### 3.1.3浮点型
 
@@ -250,7 +250,7 @@ var str string
 str="hello world"
 ```
 
- ![字符串操作](/img/article/golang/字符串操作.png)
+ ![字符串操作](https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578664/article/golang/basics/string.png)
 
 ##### 3.1.6字符类型
 

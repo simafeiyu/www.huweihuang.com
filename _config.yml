@@ -228,5 +228,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Add friend links for k8s and golang notes"
+  message: "MOD: Use image bed to reference the article images"
 - type: baidu_url_submitter ## baidu push

@@ -21,7 +21,7 @@ catagories:
 
 旧版本的Docker命名为`docker`或`docker-engine`，如果有安装旧版本，先卸载旧版本
 
-```shell
+```bash
 $ sudo yum remove -y docker \
                   docker-client \
                   docker-client-latest \
@@ -38,7 +38,7 @@ $ sudo yum remove -y docker \
 
 1、安装yum-utils、device-mapper-persistent-data、lvm2
 
-```shell
+```bash
 $ sudo yum install -y yum-utils \
   device-mapper-persistent-data \
   lvm2
@@ -46,7 +46,7 @@ $ sudo yum install -y yum-utils \
 
 2、添加软件源
 
-```shell
+```bash
 $ sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
@@ -56,13 +56,13 @@ $ sudo yum-config-manager \
 
 安装最新版本的Docker CE。
 
-```shell
+```bash
 $ sudo yum install -y docker-ce 
 ```
 
 #### 1.1.4. 启动Docker
 
-```shell
+```bash
 # 启动Docker
 $ sudo systemctl start docker
 # 运行容器
@@ -73,7 +73,7 @@ $ sudo docker run hello-world
 
 1、列出可安装版本
 
-```shell
+```bash
 $ yum list docker-ce --showduplicates | sort -r
 
 docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
@@ -83,7 +83,7 @@ docker-ce.x86_64            18.03.0.ce-1.el7.centos             docker-ce-stable
 
 例如：docker-ce-18.03.0.ce
 
-```shell
+```bash
 $ sudo yum install docker-ce-<VERSION STRING>
 ```
 
@@ -93,7 +93,7 @@ $ sudo yum install docker-ce-<VERSION STRING>
 
 ### 1.4. 卸载Docker
 
-```shell
+```bash
 # 卸载Docker
 $ sudo yum remove docker-ce
 
@@ -109,7 +109,7 @@ $ sudo rm -rf /var/lib/docker
 
 旧版本的Docker命名为`docker`或`docker-engine`，如果有安装旧版本，先卸载旧版本
 
-```shell
+```bash
 sudo apt-get remove docker docker-engine docker.io
 ```
 
@@ -117,13 +117,13 @@ sudo apt-get remove docker docker-engine docker.io
 
 1、升级apt
 
-```shell
+```bash
 sudo apt-get update
 ```
 
 2、允许apt使用https
 
-```shell
+```bash
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
@@ -133,13 +133,13 @@ sudo apt-get install \
 
 3、添加Docker 官方的GPG密钥
 
-```shell
+```bash
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
 4、添加Docker软件源
 
-```shell
+```bash
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
@@ -148,7 +148,7 @@ sudo add-apt-repository \
 
 #### 2.1.3. 安装Docker
 
-```shell
+```bash
 # update
 sudo apt-get update
 
@@ -158,7 +158,7 @@ sudo apt-get install docker-ce
 
 #### 2.1.4. 启动Docker
 
-```shell
+```bash
 # 设置为开机启动
 sudo systemctl enable docker
 # 启动docker
@@ -169,7 +169,7 @@ sudo systemctl start docker
 
 1、列出仓库的可安装版本，`apt-cache madison docker-ce`。
 
-```shell
+```bash
 # apt-cache madison docker-ce
  docker-ce | 18.06.0~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
  docker-ce | 18.03.1~ce~3-0~ubuntu | https://download.docker.com/linux/ubuntu bionic/stable amd64 Packages
@@ -179,13 +179,13 @@ sudo systemctl start docker
 
 例如：docker-ce=18.03.0~ce-0~ubuntu
 
-```shell
+```bash
 sudo apt-get install docker-ce=<VERSION>
 ```
 
 ### 2.3.  升级Docker
 
-```shell
+```bash
 # 更新源
 sudo apt-get update
 # 依据上述方法，指定版本安装
@@ -193,7 +193,7 @@ sudo apt-get update
 
 ### 2.4. 卸载Docker
 
-```shell
+```bash
 # 卸载 docker ce
 sudo apt-get purge docker-ce
 

@@ -193,6 +193,8 @@ markdown:
 ## Plugins: https://hexo.io/plugins/
 
 # recommended-posts
+# reference: https://github.com/huiwang/hexo-recommended-posts
+# update then run command: hexo recommend
 recommended_posts:
   server: https://api.truelaurel.com #后端推荐服务器地址
   timeoutInMillis: 10000 #服务时长，超过此时长，则使用离线推荐模式
@@ -208,6 +210,10 @@ baidu_url_submit:
   token: xxx ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
+# hexo-tag-aplayer
+# reference: https://github.com/MoePlayer/hexo-tag-aplayer
+# aplayer:
+#   meting: true
 
 ## Themes: https://hexo.io/themes/
 theme: huweihuang
@@ -218,15 +224,11 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
 
-# hexo-tag-aplayer, reference: https://github.com/MoePlayer/hexo-tag-aplayer
-# aplayer:
-#   meting: true
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Use image bed to reference the article images"
+  message: "MOD: Generate recommend"
 - type: baidu_url_submitter ## baidu push

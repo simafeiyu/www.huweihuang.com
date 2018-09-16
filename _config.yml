@@ -215,6 +215,16 @@ baidu_url_submit:
 # aplayer:
 #   meting: true
 
+# MeingJS support for Aplayer
+# reference: https://github.com/metowolf/MetingJS & https://github.com/MoePlayer/APlayer
+metingjs: true
+data-id: 2423410161
+data-server: netease  
+data-type: playlist
+data-fixed: true
+# data-mini:
+# data-autoplay:    
+
 ## Themes: https://hexo.io/themes/
 theme: huweihuang
 
@@ -230,5 +240,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Generate recommend"
+  message: "MOD: Add MeingJS support for Aplayer"
 - type: baidu_url_submitter ## baidu push

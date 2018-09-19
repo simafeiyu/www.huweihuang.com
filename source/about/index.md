@@ -4,7 +4,7 @@ title: "About"
 date: 2017-10-04 10:48:33
 description: "走在成为极客的路上"
 header-img: "http://ozilwgpje.bkt.clouddn.com/blog/about.jpg?imageslim"
-comments: false
+comments: true
 aplayer: true
 fixed: false
 ---

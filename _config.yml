@@ -240,5 +240,5 @@ deploy:
 - type: git
   repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Add aplayer for about me"
+  message: "MOD: Add comment function for about me"
 - type: baidu_url_submitter ## baidu push

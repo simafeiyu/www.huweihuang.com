@@ -49,3 +49,7 @@ fixed: false
 ### 联系我
 
 > Email: huweihuang@foxmail.com
+
+### 微信公众号
+
+<img src="http://ozilwgpje.bkt.clouddn.com/wechat-public-acconut.jpg" width="35%">

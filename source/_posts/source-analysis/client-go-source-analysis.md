@@ -1,14 +1,14 @@
 ---
-title: "[SourceAnalysis] client-go的使用及源码分析"
+title: "[源码分析] client-go的使用及源码分析"
 catalog: true
 date: 2017-12-16 21:02:24
 type: "categories"
 subtitle:
 header-img: "http://ozilwgpje.bkt.clouddn.com/article2.jpg"
 tags:
-- SourceAnalysis
+- 源码分析
 catagories:
-- SourceAnalysis
+- 源码分析
 ---
 
 ## 1. client-go简介

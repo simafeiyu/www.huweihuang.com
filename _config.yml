@@ -37,8 +37,8 @@ signature-img: img/signature/BeanTechSign-white.png
 # weibo_username:     Demonbaneen
 # zhihu_username:     Demonbane
 github_username:    huweihuang
-# twitter_username:   Demonbane_x
-#facebook_username:  YenYuHsuan
+twitter_username:   huweihuang
+facebook_username:  huweihuang0
 linkedin_username:  huweihuang
 
 # Build settings
@@ -251,7 +251,7 @@ deploy:
 - type: git
   #repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Add kubelet code analysis"
+  message: "MOD: Add facebook and twitter link"
   repo: 
     github: https://github.com/huweihuang/huweihuang.github.io.git
     coding: https://git.coding.net/huweihuang/huweihuang.coding.me.git

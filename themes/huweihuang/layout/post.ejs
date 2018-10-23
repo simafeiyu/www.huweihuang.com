@@ -35,7 +35,7 @@ layout: layout
                 <br>
                 
                 <!-- require APlayer -->
-                <% if(config['metingjs']) { %>
+                <% if(config['metingjs'] && !page.aplayer) { %>
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
                     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
@@ -48,6 +48,21 @@ layout: layout
                     </div>
                 <% } %>
                 
+                <% if(page.aplayer) { %>
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+                
+                    <div class="aplayer"
+                        data-id="<%= page['data-id'] %>"
+                        data-server="<%= page['data-server'] %>"
+                        data-type="<%= page['data-type'] %>"
+                        data-fixed="<%= page['data-fixed'] %>" >
+                    </div>
+                <% } %>
+
+                <br>
+
                 <!-- duoshuo Share start -->
                 <% if(config['duoshuo_share'] && config['duoshuo_username']) { %>
                     <div class="ds-share"

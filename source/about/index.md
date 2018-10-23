@@ -6,7 +6,10 @@ description: "走在成为极客的路上"
 header-img: "http://ozilwgpje.bkt.clouddn.com/blog/about.jpg?imageslim"
 comments: true
 aplayer: true
-fixed: false
+data-id: 2423410161
+data-server: netease  
+data-type: playlist
+data-fixed: false
 ---
 
 ### 一句话

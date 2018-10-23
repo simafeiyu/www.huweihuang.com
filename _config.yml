@@ -251,7 +251,7 @@ deploy:
 - type: git
   #repository: https://github.com/huweihuang/huweihuang.github.io.git
   branch: master
-  message: "MOD: Add facebook and twitter link"
+  message: "MOD: Add music for post"
   repo: 
     github: https://github.com/huweihuang/huweihuang.github.io.git
     coding: https://git.coding.net/huweihuang/huweihuang.coding.me.git
